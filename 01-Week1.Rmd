@@ -1,7 +1,12 @@
 ---
-layout: "single"
-title: "Principal components analysis of the 1KGP populations"
+title: "01-Week1"
+output: html_document
+date: "2024-03-18"
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 ### Importing the data
 
