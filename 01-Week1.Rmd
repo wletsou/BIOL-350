@@ -1,14 +1,4 @@
----
-title: "01-Week1"
-output: html_document
-date: "2024-03-18"
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-### Importing the data
+# Week 1
 
 First we'll see how individuals can be separated by genetic ancestry using principal components analysis.&nbsp; First we'll need to load the libraries <kbd>SNPRelate</kbd> and <kbd>SeqArray</kbd>:
 
