@@ -1,3 +1,4 @@
+intro
 week-1
 pricipal-components-analysis-theory
 principal-components-analysis-practice
