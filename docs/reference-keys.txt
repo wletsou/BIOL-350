@@ -7,3 +7,7 @@ running-pca
 getting-population-labels
 plotting
 to-turn-in
+kinship-analysis
+kinship-theory
+king
+references

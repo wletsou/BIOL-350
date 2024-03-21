@@ -12,7 +12,8 @@ bookdown::gitbook:
         <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
     edit: https://github.com/wletsou/BIOL 350/edit/master/%s
     download: ["pdf"]
-#bookdown::pdf_book:
+    citation_package: biblatex
+# bookdown::pdf_book:
 #  includes:
 #    in_header: _preamble.tex
 #  latex_engine: xelatex
