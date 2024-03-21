@@ -15,7 +15,7 @@ description: Tutorial on genetic association studies.
 
 # Introduction {#intro}
 
-Welcome to BIOL-350 (Spring 2024) at New York Tech!&nbsp; For this set of lectures, follow along with the slides [here](https://wletsou.github.io/BIOL-350/master/docs/Biol%20350%20slides.pdf).&nbsp; Each chapter describes the theory and practice of the step in an analysis pipeline for you to conduct your own genetic association study.
+Welcome to BIOL-350 (Spring 2024) at New York Tech!&nbsp; For this set of lectures, follow along with the slides [here](https://wletsou.github.io/BIOL-350/Biol%20350%20slides.pdf).&nbsp; Each chapter describes the theory and practice of the step in an analysis pipeline for you to conduct your own genetic association study.
 
 
 
