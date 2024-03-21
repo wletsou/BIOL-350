@@ -125,7 +125,7 @@
 <p>To do PCA in R, we’ll need to load the libraries <kbd>SNPRelate</kbd> and <kbd>SeqArray</kbd>:</p>
 <pre><code>library(SNPRelate)
 library(SeqArray)</code></pre>
-<p>Download the <a href="https://github.com/wletsou/BIOL-350/raw/master/docs/CHB+YRI+CEU.chr1.vcf.gz">chr1 vcf file</a> containing just the CEU, YRI, and CHB populations.  Once you have the file, store its name as a variable:</p>
+<p>Download the <a href="https://github.com/wletsou/BIOL-350/raw/master/docs/CHB%2BYRI%2BCEU.chr1.vcf.gz">chr1 vcf file</a> containing just the CEU, YRI, and CHB populations.  Once you have the file, store its name as a variable:</p>
 <pre><code>vcf &lt;- &quot;path/to/file.vcf.gz&quot;</code></pre>
 <p>Now we’ll convert the vcf format to gds format, retaining the base filename and changing the vcf.gz extension to gds.  (This may take a minute to complete.)  Then we’ll import the gds file as a gds object.</p>
 <pre><code>seqVCF2GDS(vcf.fn = vcf,&quot;path/to/file.gds&quot;) # convert vcf to gds with a new file name
