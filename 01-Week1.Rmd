@@ -17,7 +17,7 @@ library(SNPRelate)
 library(SeqArray)
 ```
 
-Download the [chr1 vcf file](https://wletsou.github.io/BIOL-350/raw/master/docs/CHB+YRI+CEU.chr1.vcf.gz) containing just the CEU, YRI, and CHB populations.&nbsp;  Once you have the file, store its name as a variable:
+Download the [chr1 vcf file](https://github.com/wletsou/BIOL-350/raw/master/docs/CHB+YRI+CEU.chr1.vcf.gz) containing just the CEU, YRI, and CHB populations.&nbsp;  Once you have the file, store its name as a variable:
 
 ```
 vcf <- "path/to/file.vcf.gz"
