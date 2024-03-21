@@ -56,7 +56,7 @@ We'll plot individuals along EV1, EV2, and EV3 in several two-dimensional projec
 
 ### Getting population labels ###
 
-The [indivs file](https://raw.githubusercontent.com/wletsou/BIOL-350/master/docs/CHB%2BYRI%2BCEU.txt) contains each subject id along with its 1KGP population group.&nbsp; Let's import it now
+The [indivs file](https://raw.githubusercontent.com/wletsou/BIOL-350/master/docs/CHB%2BYRI%2BCEU.txt) contains each subject id along with its 1KGP population group.&nbsp; Let's import it now:
 
 ```
 indivs <- read.table("path/to/CHB+YRI+CEU.txt",header = FALSE)

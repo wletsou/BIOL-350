@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Kinship Analysis | BIOL 350: Bioinformatics</title>
+  <meta name="description" content="Tutorial on genetic association studies." />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Kinship Analysis | BIOL 350: Bioinformatics" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Tutorial on genetic association studies." />
+  <meta name="github-repo" content="openscapes/series" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Kinship Analysis | BIOL 350: Bioinformatics" />
+  
+  <meta name="twitter:description" content="Tutorial on genetic association studies." />
+  
+
+<meta name="author" content="William Letsou" />
+
+
+<meta name="date" content="2024-03-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="principal-components-analysis.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">BIOL 350: Bioinformatics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html"><i class="fa fa-check"></i><b>2</b> Principal Components Analysis</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#pricipal-components-analysis-theory"><i class="fa fa-check"></i><b>2.1</b> Pricipal components analysis: theory</a></li>
+<li class="chapter" data-level="2.2" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#principal-components-analysis-practice"><i class="fa fa-check"></i><b>2.2</b> Principal components analysis: practice</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#importing-the-data"><i class="fa fa-check"></i><b>2.2.1</b> Importing the data</a></li>
+<li class="chapter" data-level="2.2.2" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#running-pca"><i class="fa fa-check"></i><b>2.2.2</b> Running PCA</a></li>
+<li class="chapter" data-level="2.2.3" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#getting-population-labels"><i class="fa fa-check"></i><b>2.2.3</b> Getting population labels</a></li>
+<li class="chapter" data-level="2.2.4" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#plotting"><i class="fa fa-check"></i><b>2.2.4</b> Plotting</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#to-turn-in"><i class="fa fa-check"></i><b>2.3</b> To turn in:</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="kinship-analysis.html"><a href="kinship-analysis.html"><i class="fa fa-check"></i><b>3</b> Kinship Analysis</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="kinship-analysis.html"><a href="kinship-analysis.html#kinship-theory"><i class="fa fa-check"></i><b>3.1</b> Kinship: theory</a></li>
+<li class="chapter" data-level="3.2" data-path="kinship-analysis.html"><a href="kinship-analysis.html#king"><i class="fa fa-check"></i><b>3.2</b> KING</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>4</b> References</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">BIOL 350: Bioinformatics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="kinship-analysis" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Kinship Analysis<a href="kinship-analysis.html#kinship-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="kinship-theory" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Kinship: theory<a href="kinship-analysis.html#kinship-theory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Kinship can be defined as the expected fraction of alleles that two individuals got from the same ancestor(s).  We say that two individuals share an allele of a SNP <em>identical-by-descent</em> or <em>IBD</em> if they inherited the same copy of the allele from a common ancestor.  IBD-sharing is different from simply carrying the same allele of a gene (known as <em>identical-by-state</em> or <em>IBS</em>-sharing), which unrelated individuals may do if the allele is common enough in the population.  The <em>degree</em> <span class="math inline">\(R\)</span> of relationship may be defined as the effective number of meioses separating the relatives through the equation <span class="math display">\[\begin{equation}\frac{1}{2^R}=\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}},\tag{1}\end{equation}\]</span>in which <span class="math inline">\(R_i\)</span> is the number of meioses separating the relatives through the first relative’s <span class="math inline">\(i\)</span><sup>th</sup> parent.  For example, sibs are connected by two meioses through two parents, while a parent and child are connected by one meiosis through one parent: both relationships are degree-1.</p>
+<p>The probability that two relatives share an allele IBD is <span class="math inline">\(\frac{1}{2^R}\)</span>, as there is a <span class="math inline">\(\frac{1}{2}\)</span> probability that an allele is passed on in any meiosis, and <span class="math inline">\(R\)</span> is the effective number of meioses or steps between the relatives.  If <span class="math inline">\(2\times\frac{1}{2^R}\)</span> is the expected number of alleles shared IBD at any given locus, then the fraction of the genome shared by any two relatives is<span class="math display">\[\begin{equation}r=\frac{2\times\frac{1}{2^R}}{2}=\frac{1}{2^R}.\tag{2}\end{equation}\]</span></p>
+<p>However, genomic sharing can be realized in different ways depending on the probabilities <span class="math inline">\(\pi_0\)</span>, <span class="math inline">\(\pi_1\)</span>, and <span class="math inline">\(\pi_2\)</span> that individuals share zero, one, or two copies IBD at a locus.  The probability that the relatives inherit both both copies IBD, viz.,<span class="math display">\[\begin{equation}\pi_2=P\left(\text{share 2 IBD}\right)=2^2\frac{1}{2^{R_1}2^{R_2}},\tag{3a}\end{equation}\]</span> is simply the product of the probabilities of sharing through both parents.  The probability of sharing exactly one allele IBD,, viz.,<span class="math display">\[\begin{equation}\pi_1=P\left(\text{share 1 IBD}\right)=2\left(\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}\right)-2^3\frac{1}{2^{R_1}2^{R_2}},\tag{3b}\end{equation}\]</span> is the got by finding the probability <span class="math inline">\(2\left(\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}\right)-2^2\frac{1}{2^{R_1}2^{R_2}}\)</span> of sharing at least one allele IBD less the probability <span class="math inline">\(\pi_2\)</span> of sharing two.  Finally, the probability of sharing at zero alleles IBD, viz.,<span class="math display">\[\begin{equation}\pi_0=P\left(\text{share 0 IBD}\right)=1-2\frac{1}{2^{R_1}}-2\frac{1}{2^{R_2}}+2^2\frac{1}{2^{R_1}2^{R_2}},\tag{3c}\end{equation}\]</span>is got by subtracting the probability <span class="math inline">\(\pi_1+\pi_2\)</span> of sharing at least one allele IBD from 1.  The coefficients account for the fact that there are <span class="math inline">\(2\)</span> alleles at each locus and <span class="math inline">\(2^2\)</span> that can be shared.</p>
+<p>From (3a)–(3c), the fraction of the genome shared IBD is<span class="math display">\[\begin{equation}r=\frac{2\pi_2+1\pi_1}{2}=\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}=\frac{1}{2^R}.\tag{4}\end{equation}\]</span>But the same value of <span class="math inline">\(r\)</span> can obtain from different values of <span class="math inline">\(\pi_1\)</span> and <span class="math inline">\(\pi_2\)</span>.  For example, full sibs have a 25% probability of sharing two alleles and a 50% chance of sharing one allele at a locus, for a total fraction <span class="math inline">\(r=0.5\)</span> shared.  But a parent and child have 0% chance of sharing two alleles and a 100% chance of sharing one, also giving <span class="math inline">\(r=0.5\)</span>.  Thus, your parent does is not equal your sibling, despite the fact of your sharing equal amounts of your genome with each of them.  Put another way, parents cannot pass on their genotypes to their offspring.</p>
+</div>
+<div id="king" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> KING<a href="kinship-analysis.html#king" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>KING <span class="citation">[<a href="#ref-manichaikul_robust_2010">1</a>]</span> computes both the probability <span class="math inline">\(\pi_0\)</span> that two relatives share 0 alleles IBD as well as the coefficient of relatedness <span class="math inline">\(\phi=\frac{r}{2}\)</span>, defined as the probability that two alleles taken one from each relative are IBD at a locus (the maximum probability is <span class="math inline">\(\frac{1}{2}\)</span> because there is a 50% chance that the alleles chosen come from different parents).  The idea is to compare the counts <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> of the alternative alleles which two individuals each have at a genetic locus.  If pair are from a single ancestral population, the expected values and variances of the allele counts are <span class="math inline">\(\mathbb{E}\left(X\right)=\mathbb{E}\left(Y\right)=2p\)</span> and <span class="math inline">\(\sigma_X^2=\mathbb{E}\left(X^2\right)-\mathbb{E}\left(X\right)^2=\mathbb{E}\left(Y^2\right)-\mathbb{E}\left(Y\right)^2=2p\left(1-p\right)\)</span>.  Thus the expected value of the difference <span class="math inline">\(\mathbb{E}\left(X^2-Y^2\right)=\mathbb{E}\left(X^2\right)+\mathbb{E}\left(Y^2\right)-2\mathbb{E}\left(XY\right)\)</span> is<span class="math display">\[\begin{equation}\frac{\mathbb{E}\left(X^2-Y^2\right)}{\sigma_X^2+\sigma_Y^2}=1-\frac{\sigma_{XY}}{\sigma_X\sigma_Y}=1-r,\tag{5}\end{equation}\]</span>where <span class="math inline">\(\sigma_{XY}=\mathbb{E}\left(XY\right)-\mathbb{E}\left(X\right)\mathbb{E}\left(Y\right)\)</span> is the covariance of the genotype counts and <span class="math inline">\(r=2\phi\)</span> is the genetic correlation between two individuals; the latter can be interprettted as the amount of the genome shared IBD.</p>
+<p>KING estimates <span class="math inline">\(\phi\)</span> from Eq. (5) by counting the number <span class="math inline">\(N\)</span> of loci at which two individuals are heterozygous <span class="math inline">\(Aa,Aa\)</span> or opposite homozygous <span class="math inline">\(AA,aa\)</span>, as well as the total number of alleles at which each individual is heterozygous <span class="math inline">\(Aa\)</span>:<span class="math display">\[\begin{equation}\hat{\phi_{ij}}=\frac{N_{Aa,Aa}-2N_{AA,aa}}{N_{Aa}^{\left(i\right)}+N_{Aa}^{\left(j\right)}}.\tag{6}\end{equation}\]</span>From (6) it can be seen that shared heterozygous sites increase the estimated relatedness, and that unshared homozygous sites decrease relatedness.  Eq. (6) is called a “robust” estimator because it measures relatedness in a purely pairwise fashion: it does not rely on population estimates of allele frequencies.  However, if the individuals are not of the same genetic background, the allele frequency <span class="math inline">\(p\)</span> is not well-defined and Eq. (5) does not hold, leading to negative estimates of <span class="math inline">\(\phi\)</span>; this feature is not necessarily a problem, as it helps us to distinguish different ancestries within a single population.</p>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body">
+<div id="ref-manichaikul_robust_2010" class="csl-entry">
+1. Manichaikul A, Mychaleckyj JC, Rich SS, Daly K, Sale M, Chen W-M. <a href="https://doi.org/10.1093/bioinformatics/btq559">Robust relationship inference in genome-wide association studies</a>. Bioinformatics. 2010;26:2867–73.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="principal-components-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/wletsou/BIOL 350/edit/master/02-Week2.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["series.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"citation_package": "biblatex"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

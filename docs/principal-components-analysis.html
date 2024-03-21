@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="index.html"/>
-
+<link rel="next" href="kinship-analysis.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -58,6 +58,28 @@
 <style type="text/css">
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
@@ -91,6 +113,12 @@
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="principal-components-analysis.html"><a href="principal-components-analysis.html#to-turn-in"><i class="fa fa-check"></i><b>2.3</b> To turn in:</a></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="kinship-analysis.html"><a href="kinship-analysis.html"><i class="fa fa-check"></i><b>3</b> Kinship Analysis</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="kinship-analysis.html"><a href="kinship-analysis.html#kinship-theory"><i class="fa fa-check"></i><b>3.1</b> Kinship: theory</a></li>
+<li class="chapter" data-level="3.2" data-path="kinship-analysis.html"><a href="kinship-analysis.html#king"><i class="fa fa-check"></i><b>3.2</b> KING</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>4</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
 
@@ -144,7 +172,7 @@ genofile &lt;- seqOpen(&quot;path/to/file.gds&quot;) # import the gds object</co
 </div>
 <div id="getting-population-labels" class="section level3 hasAnchor" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> Getting population labels<a href="principal-components-analysis.html#getting-population-labels" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <a href="https://raw.githubusercontent.com/wletsou/BIOL-350/master/docs/CHB%2BYRI%2BCEU.txt">indivs file</a> contains each subject id along with its 1KGP population group.  Let’s import it now</p>
+<p>The <a href="https://raw.githubusercontent.com/wletsou/BIOL-350/master/docs/CHB%2BYRI%2BCEU.txt">indivs file</a> contains each subject id along with its 1KGP population group.  Let’s import it now:</p>
 <pre><code>indivs &lt;- read.table(&quot;path/to/CHB+YRI+CEU.txt&quot;,header = FALSE)
 colnames(indivs) &lt;- c(&quot;id&quot;,&quot;pop&quot;)</code></pre>
 <p>The second field of this table is <kbd>pop</kbd>, an assignment to each <kbd>id</kbd> of one of three 1KG population groups.  We want to match the right ID in <kbd>indivs</kbd> to the right ID in <kbd>df.pca</kbd> so that we can color our PCA plots by population.  If the tables are in the same order, matching will be easy, but it not, we have to use the <kbd>match(x,y)</kbd> function, which finds the positions in <kbd>y</kbd> corresponding to the same items in <kbd>x</kbd>.  Thus we can make a new column <kbd>pop</kbd> in <kbd>df.pca</kbd> with the corresponding <kbd>pop</kbd> values from <kbd>indivs</kbd> by</p>
@@ -183,8 +211,8 @@ legend(&quot;topright&quot;,legend = levels(factor(df.pca$pop)),bty = &quot;n&qu
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="kinship-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -233,7 +261,8 @@ gitbook.start({
 },
 "toc": {
 "collapse": "subsection"
-}
+},
+"citation_package": "biblatex"
 });
 });
 </script>
