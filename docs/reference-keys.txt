@@ -1,7 +1,9 @@
 intro
-week-1
+principal-components-analysis
 pricipal-components-analysis-theory
 principal-components-analysis-practice
+importing-the-data
+running-pca
 getting-population-labels
 plotting
 to-turn-in

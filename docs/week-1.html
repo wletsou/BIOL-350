@@ -23,7 +23,7 @@
 <meta name="author" content="William Letsou" />
 
 
-<meta name="date" content="2024-03-18" />
+<meta name="date" content="2024-03-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -81,9 +81,13 @@
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="week-1.html"><a href="week-1.html"><i class="fa fa-check"></i><b>2</b> Week 1</a>
 <ul>
-<li class="chapter" data-level="2.0.1" data-path="week-1.html"><a href="week-1.html#pricipal-components-analysis-theory"><i class="fa fa-check"></i><b>2.0.1</b> Pricipal components analysis: theory</a></li>
-<li class="chapter" data-level="2.0.2" data-path="week-1.html"><a href="week-1.html#principal-components-analysis-practice"><i class="fa fa-check"></i><b>2.0.2</b> Principal components analysis: practice</a></li>
-<li class="chapter" data-level="2.0.3" data-path="week-1.html"><a href="week-1.html#to-turn-in"><i class="fa fa-check"></i><b>2.0.3</b> To turn in:</a></li>
+<li class="chapter" data-level="2.1" data-path="week-1.html"><a href="week-1.html#pricipal-components-analysis-theory"><i class="fa fa-check"></i><b>2.1</b> Pricipal components analysis: theory</a></li>
+<li class="chapter" data-level="2.2" data-path="week-1.html"><a href="week-1.html#principal-components-analysis-practice"><i class="fa fa-check"></i><b>2.2</b> Principal components analysis: practice</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="week-1.html"><a href="week-1.html#getting-population-labels"><i class="fa fa-check"></i><b>2.2.1</b> Getting population labels</a></li>
+<li class="chapter" data-level="2.2.2" data-path="week-1.html"><a href="week-1.html#plotting"><i class="fa fa-check"></i><b>2.2.2</b> Plotting</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="week-1.html"><a href="week-1.html#to-turn-in"><i class="fa fa-check"></i><b>2.3</b> To turn in:</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
@@ -118,27 +122,27 @@ genofile &lt;- seqOpen(&quot;path/to/file.gds&quot;) # import the gds object</co
 <p>You can can see the various fields under <kbd>genofile</kbd> by printing it.  To access the data in one of the fields, do</p>
 <pre><code>seqGetData(genofile,&quot;sample.id&quot;) # view the sample ids</code></pre>
 <p>where the name of the field is enclosed in quotes.</p>
-<div id="pricipal-components-analysis-theory" class="section level3 hasAnchor" number="2.0.1">
-<h3><span class="header-section-number">2.0.1</span> Pricipal components analysis: theory<a href="week-1.html#pricipal-components-analysis-theory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The populations in our dataset can be separated into clusters based on their genotypes.  The inferred groups help control for confoundng due to ancestry and are also more reliable than self-reported race in association studies.  To see how it works, suppose \(\) is an \(nm\) (standardized) genotype matrix with individuals down the rows and SNPs across the columns.  Principal components analysis (PCA) says we can find an \(mn\) matrix \(\), a diagonal \(nn\) matrix \(\), and an \(nn\) matrix \(\) satisfying \[=^T.\] If we think of \(\) as the the (standardized) SNP genotypes of an “ideal” person of a certain ancestry, then \[x_{j} v_{i}=u_{ji}_i\] represents the amount of idealized person \(i\) in actual person \(j\), up to some proportionality constant \(_i\) that depends on the individual.  Then row \(j\) of \(\) are the <em>ancestries</em> of person \(j\), and column \(i\) of \(\) are the ancestries of each individual on ancestry \(i\).  It is important to remember that these “idealized” ancestries do not necessarily correspond with our preconceived notions of ancestry, so we cannot interpret them as “European,” “African,” or “Asian.”  If we rearrange Eq. (1) and use the fact that the columns of \(\) and \(\) are <em>orthonormal</em>, we can find that \[<sup>T=</sup>2,\] meaning that the columns of \(\) are the eigenvectors of the matrix \[^T\] whose \((i,j)\) entry is the genetic correlation between individuals \(i\) and \(j\), sometimes known as the <em>genomic relationship matrix</em> or GRM.  PCA works by finding the first several eigenvectors of the GRM and plotting each individual’s ancestry along each orthogonal vector in a rectangular grid.  Clusters of individuals in this grid represent distinct ancestry groups.</p>
+<div id="pricipal-components-analysis-theory" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Pricipal components analysis: theory<a href="week-1.html#pricipal-components-analysis-theory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The populations in our dataset can be separated into clusters based on their genotypes.  The inferred groups help control for confounding due to ancestry, and are also more reliable than self-reported race in association studies.  To see how it works, suppose <span class="math inline">\(\mathbf{X}\)</span> is an <span class="math inline">\(n\times m\)</span> (standardized) genotype matrix with individuals down the rows and SNPs across the columns.  Principal components analysis (PCA) says we can find an <span class="math inline">\(m\times n\)</span> matrix <span class="math inline">\(\mathbf{V}\)</span>, a diagonal <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(\mathbf{\Sigma}\)</span>, and an <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(\mathbf{U}\)</span> satisfying <span class="math display">\[\begin{equation}\mathbf{X}=\mathbf{U}\mathbf{\Sigma}\mathbf{V}^T.\tag{1}\end{equation}\]</span> If we think of <span class="math inline">\(\mathbf{V}\)</span> as the the (standardized) SNP genotypes of an “ideal” person of a certain ancestry, then <span class="math display">\[\begin{equation}x_{j\cdot} v_{\cdot i}=u_{ji}\lambda_i\end{equation}\]</span> represents the amount of idealized person <span class="math inline">\(i\)</span> in actual person <span class="math inline">\(j\)</span>, up to some proportionality constant <span class="math inline">\(\lambda_i\)</span> that depends on the individual.  Then rows <span class="math inline">\(j\)</span> of <span class="math inline">\(\mathbf{U}\)</span> are the <em>ancestries</em> of person <span class="math inline">\(j\)</span>, and columns <span class="math inline">\(i\)</span> of <span class="math inline">\(\mathbf{U}\)</span> are the ancestries of each individual on ancestry <span class="math inline">\(i\)</span>.  It is important to remember that these “idealized” ancestries do not necessarily correspond with our preconceived notions of ancestry, so we cannot interpret them as “European,” “African,” or “Asian,” say.  If we rearrange Eq. (1) and use the fact that the columns of <span class="math inline">\(\mathbf{U}\)</span> and <span class="math inline">\(\mathbf{V}\)</span> are <em>orthonormal</em>, we can find that <span class="math display">\[\begin{equation}\mathbf{X}\mathbf{X}^T\mathbf{U}=\mathbf{U}\mathbf{\Sigma}^2,\end{equation}\]</span> meaning that the columns of <span class="math inline">\(\mathbf{U}\)</span> are the eigenvectors of the matrix <span class="math display">\[\begin{equation}\frac{1}{m}\mathbf{X}\mathbf{X}^T\tag{2}\end{equation}\]</span> whose <span class="math inline">\(\left(i,j\right)\)</span> entry is the genetic correlation between individuals <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>, sometimes known as the <em>genomic relationship matrix</em> or GRM.  PCA works by finding the first several eigenvectors of the GRM and plotting each individual’s ancestry along each orthogonal vector in a rectangular grid.  Clusters of individuals in this grid represent distinct ancestry groups.</p>
 </div>
-<div id="principal-components-analysis-practice" class="section level3 hasAnchor" number="2.0.2">
-<h3><span class="header-section-number">2.0.2</span> Principal components analysis: practice<a href="week-1.html#principal-components-analysis-practice" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="principal-components-analysis-practice" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Principal components analysis: practice<a href="week-1.html#principal-components-analysis-practice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To run PCA in R, simply do</p>
 <pre><code>pca &lt;- snpgdsPCA(genofile) # runs PCA</code></pre>
 <p>to create an objects with 32 eignevectors of the GRM.  Make a data frame of the first several eigenvectors along with subject ids:</p>
 <pre><code>df.pca &lt;- data.frame(sample = pca$sample.id,EV1 = pca$eigenvect[,1],EV2 = pca$eigenvect[,2],EV3 = pca$eigenvect[,3],stringsAsFactors = FALSE)</code></pre>
 <p>We’ll plot individuals along EV1, EV2, and EV3 in several two-dimensional projections.  But we’ll want to see how the clustering done by PCA corresponds to individuals’ self-reported race; for that we’ll need another column in our data frame.</p>
-<div id="getting-population-labels" class="section level4 hasAnchor" number="2.0.2.1">
-<h4><span class="header-section-number">2.0.2.1</span> Getting population labels<a href="week-1.html#getting-population-labels" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The indivs <a href="https://raw.githubusercontent.com/wletsou/bioinformatics/master/docs/CHB%2BYRI%2BCEU.txt">file</a> contains each subject id along with its 1KG population group.  Let’s import it now</p>
+<div id="getting-population-labels" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Getting population labels<a href="week-1.html#getting-population-labels" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The indivs <a href="https://raw.githubusercontent.com/wletsou/bioinformatics/master/docs/CHB%2BYRI%2BCEU.txt">file</a> contains each subject id along with its 1KGP population group.  Let’s import it now</p>
 <pre><code>indivs &lt;- read.table(&quot;path/to/CHB+YRI+CEU.txt&quot;,header = FALSE)
 colnames(indivs) &lt;- c(&quot;id&quot;,&quot;pop&quot;)</code></pre>
 <p>The second field of this table is <kbd>pop</kbd>, an assignment to each <kbd>id</kbd> of one of three 1KG population groups.  We want to match the right ID in <kbd>indivs</kbd> to the right ID in <kbd>df.pca</kbd> so that we can color our PCA plots by population.  If the tables are in the same order, matching will be easy, but it not, we have to use the <kbd>match(x,y)</kbd> function, which finds the positions in <kbd>y</kbd> corresponding to the same items in <kbd>x</kbd>.  Thus we can make a new column <kbd>pop</kbd> in <kbd>df.pca</kbd> with the corresponding <kbd>pop</kbd> values from <kbd>indivs</kbd> by</p>
 <pre><code>df.pca$pop[match(indivs$id,df.pca$sample)] &lt;- indivs$pop # find the population group of each individual in df.pca</code></pre>
 </div>
-<div id="plotting" class="section level4 hasAnchor" number="2.0.2.2">
-<h4><span class="header-section-number">2.0.2.2</span> Plotting<a href="week-1.html#plotting" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="plotting" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Plotting<a href="week-1.html#plotting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now that we have a column of population labels, we can make a scatter plot colored by treating the <kbd>pop</kbd> column as vector of factors; we can get the unique values of a factor vector by applying the function <kbd>levels()</kbd> to it.  A plot of the second principal component vs. the first can then be generated by</p>
 <pre><code>plot(df.pca$EV1,df.pca$EV2,pch = 19,col = factor(df.pca$pop),xlab = &quot;PC1&quot;,ylab = &quot;PC2&quot;) # plot of PC2 vs. PC1
 legend(&quot;topright&quot;,legend = levels(factor(df.pca$pop)),bty = &quot;n&quot;,pch = 19,col = factor(levels(factor(df.pca$pop)))) # with a legend</code></pre>
@@ -147,8 +151,8 @@ legend(&quot;topright&quot;,legend = levels(factor(df.pca$pop)),bty = &quot;n&qu
 <pre><code>seqClose(genofile)</code></pre>
 </div>
 </div>
-<div id="to-turn-in" class="section level3 hasAnchor" number="2.0.3">
-<h3><span class="header-section-number">2.0.3</span> To turn in:<a href="week-1.html#to-turn-in" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="to-turn-in" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> To turn in:<a href="week-1.html#to-turn-in" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Make three (nicely formatted) plots of:</p>
 <ol style="list-style-type: decimal">
 <li>PC2 vs. PC1</li>
@@ -224,6 +228,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
