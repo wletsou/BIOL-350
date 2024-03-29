@@ -10,11 +10,15 @@ However, genomic sharing can be realized in different ways depending on the prob
 
 From (3a)&ndash;(3c), the fraction of the genome shared IBD is\begin{equation}r=\frac{2\pi_2+1\pi_1}{2}=\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}=\frac{1}{2^R}.\tag{4}\end{equation}But the same value of $r$ can obtain from different values of $\pi_1$ and $\pi_2$.&nbsp; For example, full sibs have a 25% probability of sharing two alleles and a 50% chance of sharing one allele at a locus, for a total fraction $r=0.5$ shared.&nbsp; But a parent and child have 0% chance of sharing two alleles and a 100% chance of sharing one, also giving $r=0.5$.&nbsp; Thus, your parent does is not equal your sibling, despite the fact of your sharing equal amounts of your genome with each of them.&nbsp; Put another way, parents cannot pass on their genotypes to their offspring.
 
-## KING ##
+### KING ###
 
 KING [@manichaikul_robust_2010] computes both the probability $\pi_0$ that two relatives share 0 alleles IBD as well as the coefficient of relatedness $\phi=\frac{r}{2}$, defined as the probability that two alleles taken one from each relative are IBD at a locus (the maximum probability is $\frac{1}{2}$ because there is a 50% chance that the alleles chosen come from different parents).&nbsp; The idea is to compare the counts $X$ and $Y$ of the alternative alleles which two individuals each have at a genetic locus.&nbsp; If pair are from a single ancestral population, the expected values and variances of the allele counts are $\mathbb{E}\left(X\right)=\mathbb{E}\left(Y\right)=2p$ and $\sigma_X^2=\mathbb{E}\left(X^2\right)-\mathbb{E}\left(X\right)^2=\mathbb{E}\left(Y^2\right)-\mathbb{E}\left(Y\right)^2=2p\left(1-p\right)$.&nbsp; Thus the expected value of the difference $\mathbb{E}\left(X^2-Y^2\right)=\mathbb{E}\left(X^2\right)+\mathbb{E}\left(Y^2\right)-2\mathbb{E}\left(XY\right)$ is\begin{equation}\frac{\mathbb{E}\left(X^2-Y^2\right)}{\sigma_X^2+\sigma_Y^2}=1-\frac{\sigma_{XY}}{\sigma_X\sigma_Y}=1-r,\tag{5}\end{equation}where $\sigma_{XY}=\mathbb{E}\left(XY\right)-\mathbb{E}\left(X\right)\mathbb{E}\left(Y\right)$ is the covariance of the genotype counts and $r=2\phi$ is the genetic correlation between two individuals; the latter can be interprettted as the amount of the genome shared IBD.
 
 KING estimates $\phi$ from Eq. (5) by counting the number $N$ of loci at which two individuals are heterozygous $Aa,Aa$ or opposite homozygous $AA,aa$, as well as the total number of alleles at which each individual is heterozygous $Aa$:\begin{equation}\hat{\phi_{ij}}=\frac{N_{Aa,Aa}-2N_{AA,aa}}{N_{Aa}^{\left(i\right)}+N_{Aa}^{\left(j\right)}}.\tag{6}\end{equation}From (6) it can be seen that shared heterozygous sites increase the estimated relatedness, and that unshared homozygous sites decrease relatedness.&nbsp;  Eq. (6) is called a "robust" estimator because it measures relatedness in a purely pairwise fashion: it does not rely on population estimates of allele frequencies.&nbsp; However, if the individuals are not of the same genetic background, the allele frequency $p$ is not well-defined and Eq. (5) does not hold, leading to negative estimates of $\phi$; this feature is not necessarily a problem, as it helps us to distinguish different ancestries within a single population.
+
+## Kinship: practice
+
+
 
 # References
 
