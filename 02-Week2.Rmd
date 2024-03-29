@@ -18,6 +18,21 @@ KING estimates $\phi$ from Eq. (5) by counting the number $N$ of loci at which t
 
 ## Kinship: practice
 
+Now we'll try kinship analysis for ourselves using a simulated GWAS dataset.  This dataset was created using the program bioGWAS [@changalidis_biogwas_2023], which uses other programs to simulate haplotypes [@su_hapgen2_2011] and phenotypes [@meyer_phenotypesimulator_2018] based on a set of input variants previously associated with breast cancer [@michailidou_genome-wide_2015] and made available by the MRC Interactive Epidemiology Unit's Open GWAS Project [@elsworth_mrc_2020].  This particular [vcf file](https://github.com/wletsou/BIOL-350/raw/master/docs/EUR_BCa.vcf.gz) contains 1000 chromosome 10 genotypes at 345,130 variants (304,770 of which are SNPs) generated from 263 1KGP females of European origin.  Download and unzip the file:
+
+```
+gunzip EUR_BCa.vcf.gz
+```
+
+and move it to your desired location.  The unzipped file is readable in plain text format, although it is very big.
+
+Next load the following R packages:
+
+```
+library(GWASTools)
+library(SNPRelate)
+library(GENESIS)
+```
 
 
 # References

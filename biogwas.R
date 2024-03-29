@@ -11,7 +11,7 @@ library(gdsfmt)
 library(GWASTools)
 library(SNPRelate)
 library(GENESIS)
-library(SeqVarTools)
+# library(SeqVarTools)
 
 directory <- "/Users/wletsou/Library/CloudStorage/OneDrive-NewYorkInstituteofTechnology/Courses/BIOL 350 Spring 2024/bioGWAS/data"
 
