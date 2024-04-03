@@ -66,6 +66,25 @@ plot(mypcrel$kinBtwn$k0,mypcrel$kinBtwn$kin,xlab = "IBD0 proportion",ylab = "Kin
 
 myGRM <- pcrelateToMatrix(mypcrel,scaleKin = 2) # genomic relationship matrix, multiplying each phi by 2
 
+# PC-Relate linear model
+p1 <- sum(getGenotype(genoData,snp = c(1,1),scan = c(1,1000))) / 2 / length(getGenotype(genoData,snp = c(1,1),scan = c(1,1000))) # population frequency of SNP 1
+
+Genotypes1 <- getGenotype(genoData,snp = c(1,1),scan = c(1,1000)) # genotypes at SNP 1
+Ancestry1 <-  mypcair$vectors[1:1000,1] # PC1
+Lambda1 <- mypcair$values[1] # eigenvalue for PC1
+
+p1 <- sum(Genotypes1) / 2 / length(Genotypes1) # population frequency of SNP1
+Ancestry1.weighted <- Ancestry1 * p1 * (1 - p1) * Lambda1
+lm0 <- lm(2 - Genotypes1 ~ Ancestry1.weighted) # slope is loading V_11 of SNP1 in the first principal component, i.e., genotype of SNP1 in ancestry 1
+
+par(mar = c(5.1,5.1,4.1,2.1) ) # left default plus one
+plot(Ancestry1.weighted,2 - Genotypes1,pch = 19,yaxt = 'n',xlab = 'Ancestry 1 loadings (weighted)',ylab = 'Genotype',main = sprintf('PCA loading of %s in ancestry 1',getVariable(genoData,'snp.rs.id')[1]),cex.axis = 1.5,cex.lab = 1.5,cex.main = 1.5) # genotypes vs. weight ancestry
+axis(side = 2,at = c(0,1,2),cex.axis = 1.5)
+par(new = TRUE)
+plot(seq(min(Ancestry1.weighted),max(Ancestry1.weighted),by = 0.001),sapply(seq(min(Ancestry1.weighted),max(Ancestry1.weighted),by = 0.001),function(X) lm0$coefficients[1] + lm0$coefficients[2] * X),col = 'blue',type = 'l', lwd = 2,axes = FALSE,xlab = '',ylab = '') # fit line to estimate PCA loading of SNP 1 in ancestry 1
+
+
+
 mydat <- data.frame(scanID = mypcair$sample.id,pc1 = mypcair$vectors[,1],pc2 = mypcair$vectors[,2],pc3 = mypcair$vectors[,3],pc4 = mypcair$vectors[,4],pc5 = mypcair$vectors[,5],pc6 = mypcair$vectors[,6],pc7 = mypcair$vectors[,7],pc8 = mypcair$vectors[,8],pc9 = mypcair$vectors[,9],pc10 = mypcair$vectors[,10],pheno = fam$Phenotype - 1) # data frame of fixed effects
 
 scanAnnot <- ScanAnnotationDataFrame(mydat)
