@@ -33,7 +33,10 @@ write.table(fam,"/Users/wletsou/Library/CloudStorage/OneDrive-NewYorkInstituteof
 vcf.fn <- sprintf("%s/pat_filt_sim.vcf",directory)
 gds.fn <- sprintf("%s/pat_filt_sim.gds",directory)
 snpgdsVCF2GDS(vcf.fn,gds.fn) # create gds file from vcf
-genofile <- snpgdsOpen(gds.fn) # import gds object
+genofile <- snpgdsOpen(gds.fn,readonly = FALSE) # import gds object
+
+read.gdsn(index.gdsn(genofile,"genotype"),start = c(1,1), count = c(5,5)) # read a 5 x 5 matrix of SNP genotypes
+add.gdsn(genofile,"phenotype",val = fam$Phenotype) # add a vector of phenotypes
 
 pca <- snpgdsPCA(genofile) # principal components analysis
 

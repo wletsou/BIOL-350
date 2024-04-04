@@ -11,6 +11,8 @@ csl: biomed-central.csl
 link-citations: yes
 github-repo: openscapes/series
 description: Tutorial on genetic association studies.
+output:
+  bookdown::html_document2: default
 ---
 
 # Introduction {#intro}
