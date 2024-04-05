@@ -501,7 +501,7 @@ r=\frac{2\pi_2+1\pi_1}{2}=\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}=\frac{1}{2^R}.
 </div>
 <div id="Week2_theory_pcair" class="section level3" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> PC-AiR</h3>
-<p>KING provides an estimate of relatedness.  But as cryptic relatedness can skew ancestry estimates determined by PCA, we should use kinship to correct PCA.  This is where principal components analysis in related samples, or PC-AiR <span class="citation">[<a href="#ref-conomos_robust_2015">2</a>]</span> comes in handy. PC-AiR identifies a subset of <span class="math inline">\(\mathcal{U}\)</span> of individuals who are unrelated to each other (via negative KING kinship estimates), but maximally related to individuals in a remaining set <span class="math inline">\(\mathcal{R}\)</span>. Recalling the math in <a href>Week 1</a>, the matrix
+<p>KING provides an estimate of relatedness.  But as cryptic relatedness can skew ancestry estimates determined by PCA, we should use kinship to correct PCA.  This is where principal components analysis in related samples, or PC-AiR <span class="citation">[<a href="#ref-conomos_robust_2015">2</a>]</span> comes in handy. PC-AiR identifies a subset of <span class="math inline">\(\mathcal{U}\)</span> of individuals who are unrelated to each other (via negative KING kinship estimates), but maximally related to individuals in a remaining set <span class="math inline">\(\mathcal{R}\)</span>. Recalling the math in <a href="#Week1">Week 1</a>, the matrix
 <span class="math display" id="eq:2-8">\[\begin{equation}
 \frac{1}{m}\mathbf{W}=\mathbf{X}^T\mathbf{U}=\mathbf{V}\mathbf{\Sigma},
 \tag{3.8}
@@ -525,7 +525,7 @@ r=\frac{2\pi_2+1\pi_1}{2}=\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}=\frac{1}{2^R}.
 <span class="math display" id="eq:2-11">\[\begin{equation}
 2\hat{\varphi}_{ij}=\frac{\sum_k\left(g_{ik}-2p_{ik}\right)\left(g_{jk}-2p_{jk}\right)}{2\sqrt{p_{ik}\left(1-p_{ik}\right)p_{jk}\left(1-p_{jk}\right)}}.
 \tag{3.11}
-\end{equation}\]</span>This new GRM will be used in <a href>Week 3</a> when we attempt to fit a linear mixed model for the effect of genotype on disease risk; for now we will use it to make an updated table of the relationship between individuals.</p>
+\end{equation}\]</span>This new GRM will be used in <a href="#Week3">Week 3</a> when we attempt to fit a linear mixed model for the effect of genotype on disease risk; for now we will use it to make an updated table of the relationship between individuals.</p>
 </div>
 </div>
 <div id="Week2_practice" class="section level2" number="3.2">
@@ -554,7 +554,7 @@ genofile &lt;- snpgdsOpen(gds.fn,readonly = FALSE) # import gds object</code></p
 <pre><code>index.gdsn(genofile,&quot;sample.id&quot;) # vector of sample names</code></pre>
 <p>or</p>
 <pre><code>index.gdsn(genofile,&quot;genotype&quot;,start = c(1,1), count = c(10,10)) # 10 × 10 sample of the SNP genotype matrix</code></pre>
-<p>This second line uses the <kbd>start</kbd> and <kbd>count</kbd> options to extract a range of data from the 1000 × 304770 matrix og genotypes.  If you have a vector of phenotypes (as will will in <a href>Week 3</a>), you can add it as a node in your gds:</p>
+<p>This second line uses the <kbd>start</kbd> and <kbd>count</kbd> options to extract a range of data from the 1000 × 304770 matrix og genotypes.  If you have a vector of phenotypes (as will will in <a href="#Week3">Week 3</a>), you can add it as a node in your gds:</p>
 <pre><code>add.gdsn(genofile,&quot;phenotype&quot;,val = fam$Phenotype) # add vector of phenotypes from a table</code></pre>
 </div>
 <div id="Week2_practice_pruning" class="section level3" number="3.2.2">
@@ -750,7 +750,7 @@ V_{li}^{-1}X_{ik}\left(Y_l-X_{lj}\beta_j\right)^T+V_{il}^{-1}\left(Y_l-X_{lj}\be
 </div>
 <div id="Week3_practice_fit" class="section level3" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> Fitting the model</h3>
-<p>Now we will fit the null model, i.e., Eq. <a href="#eq:4-9">(<strong>??</strong>)</a> with just the fixed covariates <span class="math inline">\(\beta\)</span> and the random SNP effects <span class="math inline">\(u\)</span>; no SNP main effects have been fitted yet.  The computation is accomplished efficiently in the <kbd>GENESIS</kbd> package <span class="citation">[<a href="#ref-gogarten_genetic_2019">10</a>]</span>.  We need to specify the covariates as columns in dataframe <kbd>mydat</kbd>, and pass the GRM as a covariate matrix:</p>
+<p>Now we will fit the null model, i.e., Eq. <a href="#eq:3-9">(4.9)</a> with just the fixed covariates <span class="math inline">\(\beta\)</span> and the random SNP effects <span class="math inline">\(u\)</span>; no SNP main effects have been fitted yet.  The computation is accomplished efficiently in the <kbd>GENESIS</kbd> package <span class="citation">[<a href="#ref-gogarten_genetic_2019">10</a>]</span>.  We need to specify the covariates as columns in dataframe <kbd>mydat</kbd>, and pass the GRM as a covariate matrix:</p>
 <pre><code>scanAnnot &lt;- ScanAnnotationDataFrame(mydat)
 nullmod &lt;- fitNullModel(scanAnnot, outcome = &quot;pheno&quot;, covars = c(&quot;pc1&quot;,&quot;pc2&quot;,&quot;pc3&quot;,&quot;pc4&quot;,&quot;pc5&quot;,&quot;pc6&quot;,&quot;pc7&quot;,&quot;pc8&quot;,&quot;pc9&quot;,&quot;pc10&quot;), cov.mat = myGRM, family = &quot;binomial&quot;) # null model</code></pre>
 <p>Now using our <kbd>GenotypeDataIterator</kbd> object, we can fit each SNP one-at-a-time:</p>

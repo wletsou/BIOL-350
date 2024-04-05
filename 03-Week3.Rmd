@@ -100,7 +100,7 @@ Here we have included the first ten PCs.&nbsp; The last column of this dataframe
 
 ### Fitting the model {#Week3_practice_fit}
 
-Now we will fit the null model, i.e., Eq. \@ref(eq:4-9) with just the fixed covariates $\beta$ and the random SNP effects $u$; no SNP main effects have been fitted yet.&nbsp; The computation is accomplished efficiently in the <kbd>GENESIS</kbd> package [@gogarten_genetic_2019].&nbsp; We need to specify the covariates as columns in dataframe <kbd>mydat</kbd>, and pass the GRM as a covariate matrix:
+Now we will fit the null model, i.e., Eq. \@ref(eq:3-9) with just the fixed covariates $\beta$ and the random SNP effects $u$; no SNP main effects have been fitted yet.&nbsp; The computation is accomplished efficiently in the <kbd>GENESIS</kbd> package [@gogarten_genetic_2019].&nbsp; We need to specify the covariates as columns in dataframe <kbd>mydat</kbd>, and pass the GRM as a covariate matrix:
 
 ```
 scanAnnot <- ScanAnnotationDataFrame(mydat)

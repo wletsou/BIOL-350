@@ -50,7 +50,7 @@ KING estimates $\phi$ from Eq. \@ref(eq:2-6) by counting the number $N$ of loci 
 
 ### PC-AiR {#Week2_theory_pcair}
 
-KING provides an estimate of relatedness.&nbsp; But as cryptic relatedness can skew ancestry estimates determined by PCA, we should use kinship to correct PCA.&nbsp; This is where principal components analysis in related samples, or PC-AiR [@conomos_robust_2015] comes in handy.&nbsp;PC-AiR identifies a subset of $\mathcal{U}$ of individuals who are unrelated to each other (via negative KING kinship estimates), but maximally related to individuals in a remaining set $\mathcal{R}$.&nbsp;Recalling the math in [Week 1](), the matrix
+KING provides an estimate of relatedness.&nbsp; But as cryptic relatedness can skew ancestry estimates determined by PCA, we should use kinship to correct PCA.&nbsp; This is where principal components analysis in related samples, or PC-AiR [@conomos_robust_2015] comes in handy.&nbsp;PC-AiR identifies a subset of $\mathcal{U}$ of individuals who are unrelated to each other (via negative KING kinship estimates), but maximally related to individuals in a remaining set $\mathcal{R}$.&nbsp;Recalling the math in [Week 1](#Week1), the matrix
 \begin{equation}
 \frac{1}{m}\mathbf{W}=\mathbf{X}^T\mathbf{U}=\mathbf{V}\mathbf{\Sigma},
 (\#eq:2-8)
@@ -74,7 +74,7 @@ Once we have ancestry-corrected principal components for all individuals, we can
 \begin{equation}
 2\hat{\varphi}_{ij}=\frac{\sum_k\left(g_{ik}-2p_{ik}\right)\left(g_{jk}-2p_{jk}\right)}{2\sqrt{p_{ik}\left(1-p_{ik}\right)p_{jk}\left(1-p_{jk}\right)}}.
 (\#eq:2-11)
-\end{equation}This new GRM will be used in [Week 3]() when we attempt to fit a linear mixed model for the effect of genotype on disease risk; for now we will use it to make an updated table of the relationship between individuals.
+\end{equation}This new GRM will be used in [Week 3](#Week3) when we attempt to fit a linear mixed model for the effect of genotype on disease risk; for now we will use it to make an updated table of the relationship between individuals.
 
 ## Kinship: practice {#Week2_practice}
 
@@ -135,7 +135,7 @@ or
 index.gdsn(genofile,"genotype",start = c(1,1), count = c(10,10)) # 10 × 10 sample of the SNP genotype matrix
 ```
 
-This second line uses the <kbd>start</kbd> and <kbd>count</kbd> options to extract a range of data from the 1000 × 304770 matrix og genotypes.&nbsp; If you have a vector of phenotypes (as will will in [Week 3]()), you can add it as a node in your gds:
+This second line uses the <kbd>start</kbd> and <kbd>count</kbd> options to extract a range of data from the 1000 × 304770 matrix og genotypes.&nbsp; If you have a vector of phenotypes (as will will in [Week 3](#Week3)), you can add it as a node in your gds:
 
 ```
 add.gdsn(genofile,"phenotype",val = fam$Phenotype) # add vector of phenotypes from a table
