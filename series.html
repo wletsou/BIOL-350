@@ -419,7 +419,7 @@ genofile &lt;- seqOpen(&quot;path/to/file.gds&quot;) # import the gds object</co
 <p>We’ll plot individuals along EV1, EV2, and EV3 in several two-dimensional projections.  But we’ll want to see how the clustering done by PCA corresponds to individuals’ self-reported race; for that we’ll need another column in our data frame.</p>
 </div>
 <div id="Week1_practice_labels" class="section level3" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> Getting population labels</h3>
+<h3><span class="header-section-number">2.2.3</span> Getting the population labels</h3>
 <p>The <a href="https://raw.githubusercontent.com/wletsou/BIOL-350/master/docs/CHB%2BYRI%2BCEU.txt">indivs file</a> contains each subject id along with its 1KGP population group.  Let’s import it now:</p>
 <pre><code>indivs &lt;- read.table(&quot;path/to/CHB+YRI+CEU.txt&quot;,header = FALSE)
 colnames(indivs) &lt;- c(&quot;id&quot;,&quot;pop&quot;)</code></pre>

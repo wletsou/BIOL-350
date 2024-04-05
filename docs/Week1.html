@@ -108,7 +108,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="Week1.html"><a href="Week1.html#Week1_practice_import"><i class="fa fa-check"></i><b>2.2.1</b> Importing the data</a></li>
 <li class="chapter" data-level="2.2.2" data-path="Week1.html"><a href="Week1.html#Week1_practice_pca"><i class="fa fa-check"></i><b>2.2.2</b> Running PCA</a></li>
-<li class="chapter" data-level="2.2.3" data-path="Week1.html"><a href="Week1.html#Week1_practice_labels"><i class="fa fa-check"></i><b>2.2.3</b> Getting population labels</a></li>
+<li class="chapter" data-level="2.2.3" data-path="Week1.html"><a href="Week1.html#Week1_practice_labels"><i class="fa fa-check"></i><b>2.2.3</b> Getting the population labels</a></li>
 <li class="chapter" data-level="2.2.4" data-path="Week1.html"><a href="Week1.html#Week1_practice_plot"><i class="fa fa-check"></i><b>2.2.4</b> Plotting</a></li>
 <li class="chapter" data-level="2.2.5" data-path="Week1.html"><a href="Week1.html#Week1_practice_turnin"><i class="fa fa-check"></i><b>2.2.5</b> To turn in:</a></li>
 </ul></li>
@@ -217,7 +217,7 @@ genofile &lt;- seqOpen(&quot;path/to/file.gds&quot;) # import the gds object</co
 <p>We’ll plot individuals along EV1, EV2, and EV3 in several two-dimensional projections.  But we’ll want to see how the clustering done by PCA corresponds to individuals’ self-reported race; for that we’ll need another column in our data frame.</p>
 </div>
 <div id="Week1_practice_labels" class="section level3 hasAnchor" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> Getting population labels<a href="Week1.html#Week1_practice_labels" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.2.3</span> Getting the population labels<a href="Week1.html#Week1_practice_labels" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <a href="https://raw.githubusercontent.com/wletsou/BIOL-350/master/docs/CHB%2BYRI%2BCEU.txt">indivs file</a> contains each subject id along with its 1KGP population group.  Let’s import it now:</p>
 <pre><code>indivs &lt;- read.table(&quot;path/to/CHB+YRI+CEU.txt&quot;,header = FALSE)
 colnames(indivs) &lt;- c(&quot;id&quot;,&quot;pop&quot;)</code></pre>

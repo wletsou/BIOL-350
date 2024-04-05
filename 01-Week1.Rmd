@@ -70,7 +70,7 @@ df.pca <- data.frame(sample = pca$sample.id,EV1 = pca$eigenvect[,1],EV2 = pca$ei
 
 We'll plot individuals along EV1, EV2, and EV3 in several two-dimensional projections.&nbsp; But we'll want to see how the clustering done by PCA corresponds to individuals' self-reported race; for that we'll need another column in our data frame.
 
-### Getting population labels {#Week1_practice_labels}
+### Getting the population labels {#Week1_practice_labels}
 
 The [indivs file](https://raw.githubusercontent.com/wletsou/BIOL-350/master/docs/CHB%2BYRI%2BCEU.txt) contains each subject id along with its 1KGP population group.&nbsp; Let's import it now:
 
