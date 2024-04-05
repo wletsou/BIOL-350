@@ -62,6 +62,8 @@ vcfWrite(genoData,vcf.file = "/Users/wletsou/Library/CloudStorage/OneDrive-NewYo
 
 mypcair <- pcair(genoData,kinobj = ibd$kinship,divobj = ibd$kinship,snp.include = pruned) # genotype principal components based on a subset of unrelated individuals
 
+plot(mypcair,vx = 2, vy = 3) # plot of PC2 vs PC1
+
 genoData.iterator <- GenotypeBlockIterator(genoData,snpInclude = pruned) 
 mypcrel <- pcrelate(genoData.iterator,pcs = mypcair$vectors[,1:2],training.set = mypcair$unrels) # kinship based on unrelated individuals
 par(mar = c(5.1,5.1,4.1,2.1) ) # left default plus one
@@ -98,6 +100,25 @@ par(mar = c(5.1,5.1,4.1,2.1) ) # left default plus one
 plot(assoc$pos,-log10(assoc$Score.pval),xlab = "Position",ylab = "-log10(p)",pch = 19,cex.axis = 1.5,cex.lab = 1.5,cex.main = 1.5) # Manhattan plot
 abline(h = 8 - log10(5),col = 'red',lty = 2) # genome-wide significance threshold
 123331690
+
+assoc[assoc$Score.pval < 1e-5,,]
+getVariable(genoData,"snp.rs.id")[271257]
+getVariable(genoData,"genotype")[,271257] # genotypes of all subjects at the SNP
+
+cases_genotypes <- getVariable(genoData,"genotype")[fam$Phenotype == 2,271257] # genotypes of cases at the SNP
+controls_genotypes <- getVariable(genoData,"genotype")[fam$Phenotype == 1,271257] # genotypes of controls at the SNP
+
+p_0 <- sum(getVariable(genoData,"genotype")[,271257]) / 2 / length(getVariable(genoData,"genotype")[,271257]) # combined allele frequency
+p_cases <- sum(cases_genotypes) / 2 / length(cases_genotypes) # cases allele frequency
+p_controls <- sum(controls_genotypes) / 2 / length(controls_genotypes) # controls allele frequency
+
+z <- (p_cases - p_controls) / sqrt(p_0 * (1 - p_0) * (1 / (length(cases_genotypes) - 1) + 1 / (length(controls_genotypes) - 1))) # z-score for allele frequency difference
+
+pnorm(-abs(z),lower.tail = TRUE) + pnorm(abs(z),lower.tail = FALSE) # two-sided p-value
+                                   
+                              
+
+(sum(cases_genotypes) / 2 / length(cases_genotypes) - sum(controls_genotypes) / 2 / length(controls_genotypes)) / sqrt(sum(getVariable(genoData,"genotype")[,271257]) / 2 / length(getVariable(genoData,"genotype")[,271257]) * (1 - sum(getVariable(genoData,"genotype")[,271257]) / 2 / length(getVariable(genoData,"genotype")[,271257])) * (1 / length(cases_genotypes) + 1 / length(controls_genotypes)))
 close(genoData)
 
 # compare to continuous phenotype

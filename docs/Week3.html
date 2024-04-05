@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Association testing | BIOL 350: Bioinformatics</title>
+  <meta name="description" content="Tutorial on genetic association studies." />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Association testing | BIOL 350: Bioinformatics" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Tutorial on genetic association studies." />
+  <meta name="github-repo" content="openscapes/series" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Association testing | BIOL 350: Bioinformatics" />
+  
+  <meta name="twitter:description" content="Tutorial on genetic association studies." />
+  
+
+<meta name="author" content="William Letsou" />
+
+
+<meta name="date" content="2024-04-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="Week2.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="lib/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/style.css" type="text/css" />
+<link rel="stylesheet" href="lib/css/lesson.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">BIOL 350: Bioinformatics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="Week1.html"><a href="Week1.html"><i class="fa fa-check"></i><b>2</b> Principal Components Analysis</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="Week1.html"><a href="Week1.html#Week1_theory"><i class="fa fa-check"></i><b>2.1</b> Pricipal components analysis: theory</a></li>
+<li class="chapter" data-level="2.2" data-path="Week1.html"><a href="Week1.html#Week1_practice"><i class="fa fa-check"></i><b>2.2</b> Principal components analysis: practice</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="Week1.html"><a href="Week1.html#Week1_practice_import"><i class="fa fa-check"></i><b>2.2.1</b> Importing the data</a></li>
+<li class="chapter" data-level="2.2.2" data-path="Week1.html"><a href="Week1.html#Week1_practice_pca"><i class="fa fa-check"></i><b>2.2.2</b> Running PCA</a></li>
+<li class="chapter" data-level="2.2.3" data-path="Week1.html"><a href="Week1.html#Week1_practice_labels"><i class="fa fa-check"></i><b>2.2.3</b> Getting population labels</a></li>
+<li class="chapter" data-level="2.2.4" data-path="Week1.html"><a href="Week1.html#Week1_practice_plot"><i class="fa fa-check"></i><b>2.2.4</b> Plotting</a></li>
+<li class="chapter" data-level="2.2.5" data-path="Week1.html"><a href="Week1.html#Week1_practice_turnin"><i class="fa fa-check"></i><b>2.2.5</b> To turn in:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="Week2.html"><a href="Week2.html"><i class="fa fa-check"></i><b>3</b> Kinship Analysis</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="Week2.html"><a href="Week2.html#Week2_theory"><i class="fa fa-check"></i><b>3.1</b> Kinship: theory</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="Week2.html"><a href="Week2.html#Week2_theory_king"><i class="fa fa-check"></i><b>3.1.1</b> KING</a></li>
+<li class="chapter" data-level="3.1.2" data-path="Week2.html"><a href="Week2.html#Week2_theory_pcair"><i class="fa fa-check"></i><b>3.1.2</b> PC-AiR</a></li>
+<li class="chapter" data-level="3.1.3" data-path="Week2.html"><a href="Week2.html#Week2_theory_pcrelate"><i class="fa fa-check"></i><b>3.1.3</b> PC-Relate</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="Week2.html"><a href="Week2.html#Week2_practice"><i class="fa fa-check"></i><b>3.2</b> Kinship: practice</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="Week2.html"><a href="Week2.html#Week2_practice_import"><i class="fa fa-check"></i><b>3.2.1</b> Importing data</a></li>
+<li class="chapter" data-level="3.2.2" data-path="Week2.html"><a href="Week2.html#Week2_practice_pruning"><i class="fa fa-check"></i><b>3.2.2</b> PCA and LD-pruning</a></li>
+<li class="chapter" data-level="3.2.3" data-path="Week2.html"><a href="Week2.html#Week2_practice_king"><i class="fa fa-check"></i><b>3.2.3</b> KING IBD and kinship calculation</a></li>
+<li class="chapter" data-level="3.2.4" data-path="Week2.html"><a href="Week2.html#Week2_practice_pcair"><i class="fa fa-check"></i><b>3.2.4</b> PC-AiR</a></li>
+<li class="chapter" data-level="3.2.5" data-path="Week2.html"><a href="Week2.html#Week2_practice_pcrelate"><i class="fa fa-check"></i><b>3.2.5</b> PC-Relate</a></li>
+<li class="chapter" data-level="3.2.6" data-path="Week2.html"><a href="Week2.html#Week2_practice_turnin"><i class="fa fa-check"></i><b>3.2.6</b> To turn in:</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="Week2.html"><a href="Week2.html#Week2_ref"><i class="fa fa-check"></i><b>3.3</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="Week3.html"><a href="Week3.html"><i class="fa fa-check"></i><b>4</b> Association testing</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Week3.html"><a href="Week3.html#Week3_theory"><i class="fa fa-check"></i><b>4.1</b> Statistics</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="Week3.html"><a href="Week3.html#Week3_theory_or"><i class="fa fa-check"></i><b>4.1.1</b> The odds ratio</a></li>
+<li class="chapter" data-level="4.1.2" data-path="Week3.html"><a href="Week3.html#Week3_theory_logit"><i class="fa fa-check"></i><b>4.1.2</b> The logistic model of disease risk</a></li>
+<li class="chapter" data-level="4.1.3" data-path="Week3.html"><a href="Week3.html#Week3_theory_glm"><i class="fa fa-check"></i><b>4.1.3</b> Linear mixed models</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="Week3.html"><a href="Week3.html#Week3_practice"><i class="fa fa-check"></i><b>4.2</b> Practice</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="Week3.html"><a href="Week3.html#Week3_practice_pheno"><i class="fa fa-check"></i><b>4.2.1</b> Get phenotype</a></li>
+<li class="chapter" data-level="4.2.2" data-path="Week3.html"><a href="Week3.html#Week3_practice_fit"><i class="fa fa-check"></i><b>4.2.2</b> Fitting the model</a></li>
+<li class="chapter" data-level="4.2.3" data-path="Week3.html"><a href="Week3.html#Week3_practice_analysis"><i class="fa fa-check"></i><b>4.2.3</b> Analyzing the results</a></li>
+<li class="chapter" data-level="4.2.4" data-path="Week3.html"><a href="Week3.html#to-turn-in-week3_practice_turnin"><i class="fa fa-check"></i><b>4.2.4</b> To turn in {#Week3_practice_turnin}:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="Week3.html"><a href="Week3.html#Week3_ref"><i class="fa fa-check"></i><b>4.3</b> References</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">BIOL 350: Bioinformatics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="Week3" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Association testing<a href="Week3.html#Week3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this assignment, we will use the kinship matrix and principal components derived from our dataset to fit a generalized linear model using the method of restricted maximum likelihood [@] to find the association of a polymorphism with the disease phenotype.</p>
+<div id="Week3_theory" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Statistics<a href="Week3.html#Week3_theory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="Week3_theory_or" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> The odds ratio<a href="Week3.html#Week3_theory_or" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The logic of any genetic association study is to see if an allele is enriched in subjects affected with disease.  In other words, we want to see if the allele is <em>associated</em> with disease.  We do this by collecting may individuals with disease and a similar number of healthy controls from the general popuation.  An individual’s risk is its probability <span class="math inline">\(P\left(\text{Disease}\mid\text{Allele}\right)\)</span> of developing disease over its lifetime, and the <em>relative risk</em> or RR is the ratio of the risk to carriers to the risk to non-carriers of the allele.  However, the RR is difficult to measure prosepctively because it involves waiting a long time for a potentially smaller number of cases to develop.  If we retrospectively select cases that have already developed and match them with healthy controls, we can instead calculate an individual’s probability <span class="math inline">\(P\left(\text{Allele}\mid\text{Disease}\right)\)</span> of carrying the allele conditioned on its disease status.  Related to the probability <span class="math inline">\(p\)</span> of an event is the <em>odds</em> <span class="math inline">\(\frac{p}{1-p}\)</span> of the the event, and it turns out that the <em>odds ratio</em>
+<span class="math display" id="eq:3-1">\[\begin{equation}
+\text{OR}=\frac{\frac{P\left(\text{Allele}\mid\text{Cases}\right)}{1-P\left(\text{Allele}\mid\text{Cases}\right)}}{\frac{P\left(\text{Allele}\mid\text{Controls}\right)}{1-P\left(\text{Allele}\mid\text{Controls}\right)}}
+\tag{4.1}
+\end{equation}\]</span>is invariant to whether we collect subjects prospectively or retrospectively.  Hence we use the OR as a convenient measure of the effect of an allele on disease risk in case-control studies.  However, the crude measure <a href="Week3.html#eq:3-1">(4.1)</a> cannot be adjusted for other factors like sex, age, and genetic ancestry which may also have an effect on disease risk.  For this type of analysis, we need logistic regression.</p>
+</div>
+<div id="Week3_theory_logit" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> The logistic model of disease risk<a href="Week3.html#Week3_theory_logit" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Normally we test the association between two variables using linear regression, but doing so requires that both the dependent and independent variables be continuous.  In genetic association studies, neither the outcome (disease) nor the predictor (number of risk alleles) is continuous.  However, an individual’s unobserved propensity <span class="math inline">\(p\)</span> is a continuous variable that ranges between 0 and 1; furthermore, the individual’s <em>log-odds</em> <span class="math inline">\(\log{\frac{p}{1-p}}\)</span> of disease is a continuous value that ranges between <span class="math inline">\(-\infty\)</span> and <span class="math inline">\(+\infty\)</span>.  Thus if we assume that the log-odds of disease can be represented by the equation
+<span class="math display" id="eq:3-2">\[\begin{equation}
+\log{\frac{p}{1-p}}=\beta_0+\beta_1X_1,
+\tag{4.2}
+\end{equation}\]</span> where <span class="math inline">\(X_1\)</span> is number of risk alleles and <span class="math inline">\(\beta_1\)</span> is the <em>log-odds-ratio</em>, then we can in principle fit a line and estimate its slope.  This slope <span class="math inline">\(\beta_1\)</span> would then be interpretted as the multiplicative increase in the log-odds of disease.</p>
+<p>Now, since we cannot observe <span class="math inline">\(p_i\)</span> for each subject <span class="math inline">\(i\)</span>, we cannot actually fit <a href="Week3.html#eq:3-2">(4.2)</a> using linear regression.  We can, however, use the concept of <em>maximum likelihood</em>.  In statistics, the likelihood of a disease model like <a href="Week3.html#eq:3-2">(4.2)</a> is the probability of the data being generated by the model, or
+<span class="math display" id="eq:3-3">\[\begin{equation}
+\mathcal{L}\left(\text{Model}\mid\text{Data}\right)=P\left(\text{Data}\mid\text{Model}\right).
+\tag{4.3}
+\end{equation}\]</span>Here the model is the set of parameters <span class="math inline">\(\beta_0,\beta_1\)</span> required to predict disease risk, and we can find estimates for the parameters by maximizing <a href="Week3.html#eq:3-3">(4.3)</a>, i.e., by finding the model most consistent with the data.  Furthermore, if the likelihood function has approximately the shape of a normal distribution, then we can estimate the statistical significance of our estimates by computing their standard error, got from the <em>curvature</em> or second derivative of <span class="math inline">\(\mathcal{L}\)</span> near the <span class="math inline">\(\beta\)</span> which maximize it.</p>
+<p>The binomial distribution is a good approximation to the normal distribution, so if we model the likelihood of the observed data as
+<span class="math display" id="eq:3-4">\[\begin{equation}
+\mathcal{L}=\prod_ip_i^{y_i}\left(1-p_i\right)^{1-y_i},
+\tag{4.4}
+\end{equation}\]</span> where <span class="math inline">\(y_i=0,1\)</span> is an indicator of disease status, then the <em>log-likelihood</em> is
+<span class="math display" id="eq:3-5">\[\begin{align}
+\ell&amp;=\sum_iy_i\log{p_i}+\left(1-y_i\right)\log{\left(1-p_i\right)}\\&amp;=\sum_iy_i\log{\frac{p_i}{1-p_i}}+\log{\left(1-p_i\right)}
+\tag{4.5}
+\end{align}\]</span>using <a href="Week3.html#eq:3-2">(4.2)</a>
+<span class="math display" id="eq:3-6">\[\begin{equation}
+\ell=\sum_iy_i\left(\beta_0+\beta_1X_{i1}\right)-\log{\left(1+e^{\beta_0+\beta_1X_{i1}}\right)}.
+\tag{4.6}
+\end{equation}\]</span>Eq. <a href="Week3.html#eq:3-6">(4.6)</a> is a function of the parameter <span class="math inline">\(\beta_1\)</span>.  Thus we can find the <em>maximum-likelihood estimate</em> <span class="math inline">\(\hat{\beta_1}\)</span> of <span class="math inline">\(\beta_1\)</span> by solving <span class="math inline">\(\frac{\partial \ell}{\partial \beta_1}\bigr\rvert_{\beta_1=\hat{\beta_1}}\)</span> for <span class="math inline">\(\hat{\beta_1}\)</span> and getting its standard error <span class="math inline">\(\frac{-1}{\frac{\partial^2\ell}{\partial \beta_1^2}\bigr\rvert_{\beta_1=\hat{\beta_1}}}\)</span> by evaluating the curvature of the log-likelihood at the best estimate of <span class="math inline">\(\beta_1\)</span>.  From these we can also get an estimate of the statistical significance.</p>
+<div id="Week3_theory_logit_simulation" class="section level4 hasAnchor" number="4.1.2.1">
+<h4><span class="header-section-number">4.1.2.1</span> Simulating phenotypes<a href="Week3.html#Week3_theory_logit_simulation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The <kbd>PhenotypeSimulator</kbd> package <span class="citation">[<a href="#ref-meyer_phenotypesimulator_2018">6</a>]</span> used to generate the phenotype data used in this assignment generates a vector <span class="math inline">\(\theta\)</span> of log-odds for each individual based on its genotype, given an input list of risk SNPs.  To go from the log-odds scale scale to the binary disease scale, we can rearrange the equation <span class="math inline">\(\log\frac{p}{1-p}=\theta\)</span> to generate a vector
+<span class="math display" id="eq:3-7">\[\begin{equation}
+\mathbb{P}\left(\text{Disease}\mid \theta\right)=\frac{e^{\theta}}{1+e^{\theta}}
+\tag{4.7}
+\end{equation}\]</span>of disease probabilities.  In a balanced case-control study, the probability of disease should be approximately 50%, corresponding to a mean log-odds of <span class="math inline">\(\overline{\theta}=0\)</span>.  If this condition does not obtain, we can recenter the data so that
+<span class="math display" id="eq:3-8">\[\begin{equation}
+\mathbb{P}\left(\text{Disease}\mid \theta\right)=\frac{e^{\theta -\overline{\theta}}}{1+e^{\theta-\overline{\theta}}}.
+\tag{4.8}
+\end{equation}\]</span>This is always possible (in simulated data) because the intercept term <span class="math inline">\(\beta_0\)</span> in Eq. <a href="Week3.html#eq:3-2">(4.2)</a> can be shifted without changing the odds ratio <span class="math inline">\(\beta_1\)</span>.  Disease phenotype can then be generated by drawing <span class="math inline">\(N\)</span> random numbers <span class="math inline">\(t_i\)</span> uniformly from the interval <span class="math inline">\(\left[0,1\right]\)</span> and calling everyone a case whose probability <span class="math inline">\(p_i\geq t_i\)</span>.</p>
+</div>
+</div>
+<div id="Week3_theory_glm" class="section level3 hasAnchor" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Linear mixed models<a href="Week3.html#Week3_theory_glm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In genome-wide association studies (GWAS) we want to estimate the odds ratio <span class="math inline">\(e^{\beta_1}\)</span> for each SNP to see if any SNPs are associated with disease.  However, there are millions of SNPs and only thousands of subjects, so we cannot fit all the parameters simultaneously.  Instead, one SNP effect <span class="math inline">\(\beta_1\)</span> is fit at a time, together with the other <em>fixed</em> covariate effects <span class="math inline">\(\beta_j\)</span> against a background of the composite, <em>random</em> effects of all the remaining SNPs together, so that our model has two components:
+<span class="math display" id="eq:3-9">\[\begin{equation}
+Y_i=\log{\frac{p_i}{1-p_i}}=\sum_jX_{ij}\beta_j+\sum_jZ_{ij}u_j+\varepsilon_i.
+\tag{4.9}
+\end{equation}\]</span>Here, <span class="math inline">\(\mathbf{Z}\)</span> is an <span class="math inline">\(n\times m\)</span> matrix of the (standardized) genotypes of <span class="math inline">\(n\)</span> individuals at <span class="math inline">\(m\)</span> SNPs and <span class="math inline">\(u_j\)</span> is the effect of SNP <span class="math inline">\(j\)</span> on the log-odds for individual <span class="math inline">\(i\)</span>.  The mixed-model framework assumes the random <span class="math inline">\(u\)</span> come from a normal distribution with mean 0 and standard deviation <span class="math inline">\(\sigma\)</span>, so that each variant has but a small effect on disease risk.</p>
+<p>Now, the variance of the log-odds <span class="math inline">\(Y\)</span> about its mean <span class="math inline">\(\mathbf{X}\beta\)</span> becomes
+<span class="math display" id="eq:3-10">\[\begin{align}
+\left(Y-\mathbf{X}\beta\right)\left(Y-\mathbf{X}\beta\right)^T&amp;=\mathbf{Z}uu^T\mathbf{Z}^T+\varepsilon\varepsilon^T\\ &amp;=\left(\mathbf{Z}\mathbf{Z}^T+\mathbf{I}\right)\sigma^2=\mathbf{V}.
+\tag{4.10}
+\end{align}\]</span>Rearranging and differentiating with respect to <span class="math inline">\(\beta_k\)</span> obtains (with summation over <span class="math inline">\(i\)</span>, <span class="math inline">\(j\)</span>, and <span class="math inline">\(l\)</span>)
+<span class="math display" id="eq:3-11">\[\begin{align}
+V_{li}^{-1}X_{ik}\left(Y_l-X_{lj}\beta_j\right)^T+V_{il}^{-1}\left(Y_l-X_{lj}\beta_j\right)X^T_{ki}&amp;=0\\\left(X^T_{ki}V_{il}^{-1}Y_l-X^T_{ki}V_{il}^{-1}X_{lj}\beta_j\right)^T+\left(X^T_{ki}V_{il}^{-1}Y_l-X^T_{ki}V_{il}^{-1}X_{lj}\beta_j\right)&amp;=0,
+\tag{4.11}
+\end{align}\]</span>since <span class="math inline">\(\mathbf{V}\)</span>–and hence <span class="math inline">\(\mathbf{V}^{-1}\)</span>–is a symmetric matrix.  And because the <span class="math inline">\(k\)</span><sup>th</sup> entry of a transposed vector is equal to the <span class="math inline">\(k\)</span><sup>th</sup> entry of the original vector, we get the maximum-likelihood solution
+<span class="math display" id="eq:3-10">\[\begin{equation}
+\mathbf{X}^T\left(\mathbf{I}+\mathbf{Z}\mathbf{Z}^T\right)^{-1}\mathbf{X}\hat{\beta}=\mathbf{X}^T\left(\mathbf{I}+\mathbf{Z}\mathbf{Z}^T\right)^{-1}Y,
+\tag{4.10}
+\end{equation}\]</span>where <span class="math inline">\(\frac{1}{m}\mathbf{Z}\mathbf{Z}^T\)</span> is the genomic relationship matrix (GRM) we used to compute principle components in <a href="Week1.html#Week1">Week 1</a>.  Thus we can estimatimate the <em>fixed effects</em> <span class="math inline">\(\beta\)</span>—including the SNP effect <span class="math inline">\(\beta_1\)</span>—and their standard errors without fitting the <em>random effects</em> of every other SNP simultaneously.</p>
+</div>
+</div>
+<div id="Week3_practice" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Practice<a href="Week3.html#Week3_practice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="Week3_practice_pheno" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Get phenotype<a href="Week3.html#Week3_practice_pheno" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The first item we shall need when associating SNPs with disease risk is a <a href="https://github.com/wletsou/BIOL-350/raw/master/docs/EUR_BCa.fam">phenotype file</a>.  Download and save this file to the same location as your work from <a href="Week2.html#Week2">Week 2</a>, along with the (unzipped) <a href="https://github.com/wletsou/BIOL-350/raw/master/docs/EUR_BCa.vcf.gz">vcf file</a>.</p>
+<p>Read in the phenotype file using</p>
+<pre><code>fam &lt;- read.table(&quot;/path/to/file/EUR_BCa.fam&quot;,header = TRUE)</code></pre>
+<p>This file is in PLINK format: its first column contains the family id of the individual in the second column; if the samples are unrelated, these two columns will be the same.  Similarly, the maternal and paternal ids are the ids of the mother and father of the sample, should they happen to be in the dataset.  Sex is left unspecified in this analysis. The most important column for our purposes is the Phenotype column, which contains a 1 for controls and a 2 for cases.</p>
+<p>Complete the steps <a href="Week2.html#Week2_practice_king">KING</a>, <a href="Week2.html#Week2_practice_pcair">PC-AiR</a>, and <a href="Week2.html#Week2_practice_pcrelate">PC-Relate</a> from <a href="Week2.html#Week2">Week 2</a>.  At the end of this analysis, you should have the results <kbd>mypcair</kbd> and <kbd>mypcrel</kbd> of PC-AiR and PC-Relate, and updated GRM, an open <kbd>GenotypeData</kbd> object called <kbd>genoData</kbd>, and a <kbd>GenotypeBlockIterator</kbd> object called <kbd>genoData.iterator</kbd>.  This last will iterate over each of the pruned SNPs included in your model as you test each one for association with the disease phenotype.</p>
+<p>The first step is to create a dataframe for the <em>null model</em>, which regresses phenotype on genetic ancestry only:</p>
+<pre><code>mydat &lt;- data.frame(scanID = mypcair$sample.id,pc1 = mypcair$vectors[,1],pc2 = mypcair$vectors[,2],pc3 = mypcair$vectors[,3],pc4 = mypcair$vectors[,4],pc5 = mypcair$vectors[,5],pc6 = mypcair$vectors[,6],pc7 = mypcair$vectors[,7],pc8 = mypcair$vectors[,8],pc9 = mypcair$vectors[,9],pc10 = mypcair$vectors[,10],pheno = fam$Phenotype - 1) # data frame of fixed effects</code></pre>
+<p>Here we have included the first ten PCs.  The last column of this dataframe contains the phenotypes from the <kbd>fam</kbd> file; we have subtracted 1 from each entry so that 0 corresponds to controls, and 1 to cases.</p>
+</div>
+<div id="Week3_practice_fit" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Fitting the model<a href="Week3.html#Week3_practice_fit" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now we will fit the null model, i.e., Eq. <a href="#eq:4-9">(<strong>??</strong>)</a> with just the fixed covariates <span class="math inline">\(\beta\)</span> and the random SNP effects <span class="math inline">\(u\)</span>; no SNP main effects have been fitted yet.  The computation is accomplished efficiently in the <kbd>GENESIS</kbd> package <span class="citation">[<a href="#ref-gogarten_genetic_2019">10</a>]</span>.  We need to specify the covariates as columns in dataframe <kbd>mydat</kbd>, and pass the GRM as a covariate matrix:</p>
+<pre><code>scanAnnot &lt;- ScanAnnotationDataFrame(mydat)
+nullmod &lt;- fitNullModel(scanAnnot, outcome = &quot;pheno&quot;, covars = c(&quot;pc1&quot;,&quot;pc2&quot;,&quot;pc3&quot;,&quot;pc4&quot;,&quot;pc5&quot;,&quot;pc6&quot;,&quot;pc7&quot;,&quot;pc8&quot;,&quot;pc9&quot;,&quot;pc10&quot;), cov.mat = myGRM, family = &quot;binomial&quot;) # null model</code></pre>
+<p>Now using our <kbd>GenotypeDataIterator</kbd> object, we can fit each SNP one-at-a-time:</p>
+<pre><code>assoc &lt;- assocTestSingle(genoData.iterator,null.model = nullmod) # model including SNPs</code></pre>
+</div>
+<div id="Week3_practice_analysis" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Analyzing the results<a href="Week3.html#Week3_practice_analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The dataframe <kbd>assoc</kbd> will contain a column <kbd>Est</kbd> of log-odds-ratios and another column <kbd>Score.pval</kbd> of p-values.  Make a Manhattan plot of the data using:</p>
+<pre><code>par(mar = c(5.1,5.1,4.1,2.1) ) # left default plus one
+plot(assoc$pos,-log10(assoc$Score.pval),xlab = &quot;Position&quot;,ylab = &quot;-log10(p)&quot;,pch = 19,cex.axis = 1.5,cex.lab = 1.5,cex.main = 1.5) # Manhattan plot
+abline(h = 8 - log10(5),col = &#39;red&#39;,lty = 2) # genome-wide significance threshold
+close(genoData)</code></pre>
+<p>Does any SNP appear to be associated with disease?  Is is genome-wide significant?</p>
+<p>To check that your answer makes sense, extract the data for the most-statistically-significant SNP:</p>
+<pre><code>assoc[assoc$Score.pval &lt; 1e-5,,] # most-significant SNP(s)</code></pre>
+<p>including its id and association statistics.  Then using the <kbd>GWASTools</kbd> <kbd>getVariable</kbd> on your <kbd>genoData</kbd> object, extract the name of this SNP:</p>
+<pre><code>getVariable(genoData,&quot;snp.rs.id&quot;)[...] # insert variant.id</code></pre>
+<p>To check that the SNP is indeed associated with disease, compute the allele frequency overall, and of the cases and controls separately (being sure to fill in <kbd>…</kbd> with the <kbd>variant.id</kbd> you found above):</p>
+<pre><code>cases_genotypes &lt;- getVariable(genoData,&quot;genotype&quot;)[fam$Phenotype == 2,...] # genotypes of cases at the SNP
+controls_genotypes &lt;- getVariable(genoData,&quot;genotype&quot;)[fam$Phenotype == 1,...] # genotypes of controls at the SNP
+
+p_0 &lt;- sum(getVariable(genoData,&quot;genotype&quot;)[,...]) / 2 / length(getVariable(genoData,&quot;genotype&quot;)[,...]) # combined allele frequency
+p_cases &lt;- sum(cases_genotypes) / 2 / length(cases_genotypes) # cases allele frequency
+p_controls &lt;- sum(controls_genotypes) / 2 / length(controls_genotypes) # controls allele frequency</code></pre>
+<p>Now you can compute a z-score, p-value, and (log) OR:</p>
+<pre><code>z &lt;- (p_cases - p_controls) / sqrt(p_0 * (1 - p_0) * (1 / (length(cases_genotypes) - 1) + 1 / (length(controls_genotypes) - 1))) # z-score for allele frequency difference
+
+pnorm(-abs(z),lower.tail = TRUE) + pnorm(abs(z),lower.tail = FALSE) # two-sided p-value
+
+log( p_cases * (1 - p_controls) / (1 - p_cases) / p_controls) # log-OR</code></pre>
+<p>How does your answer compare with the adjusted p-value found in the <kbd>assoc</kbd> table?  What might account for the difference?</p>
+</div>
+<div id="to-turn-in-week3_practice_turnin" class="section level3 hasAnchor" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> To turn in {#Week3_practice_turnin}:<a href="Week3.html#to-turn-in-week3_practice_turnin" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>A Manhattan plot of the SNPs in the region</li>
+<li>Information extracted from the <kbd>assoc</kbd> dataframe about the most-significant SNP</li>
+<li>Calculation of the crude logOR and p-value of the most-significant SNP</li>
+</ol>
+</div>
+</div>
+<div id="Week3_ref" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> References<a href="Week3.html#Week3_ref" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body">
+<div id="ref-meyer_phenotypesimulator_2018" class="csl-entry">
+6. Meyer HV, Birney E. <a href="https://doi.org/10.1093/bioinformatics/bty197"><span>PhenotypeSimulator</span>: <span>A</span> comprehensive framework for simulating multi-trait, multi-locus genotype to phenotype relationships</a>. Bioinformatics. 2018;34:2951–6.
+</div>
+<div id="ref-gogarten_genetic_2019" class="csl-entry">
+10. Gogarten SM, Sofer T, Chen H, Yu C, Brody JA, Thornton TA, et al. <a href="https://doi.org/10.1093/bioinformatics/btz567">Genetic association testing using the <span>GENESIS</span> <span>R</span>/<span>Bioconductor</span> package</a>. Bioinformatics. 2019;35:5346–8.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="Week2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/wletsou/BIOL 350/edit/master/03-Week3.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["series.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"citation_package": "biblatex"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

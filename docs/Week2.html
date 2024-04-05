@@ -23,7 +23,7 @@
 <meta name="author" content="William Letsou" />
 
 
-<meta name="date" content="2024-04-04" />
+<meta name="date" content="2024-04-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="Week1.html"/>
-<link rel="next" href="Week2_ref.html"/>
+<link rel="next" href="Week3.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -130,8 +130,25 @@ div.csl-indent {
 <li class="chapter" data-level="3.2.5" data-path="Week2.html"><a href="Week2.html#Week2_practice_pcrelate"><i class="fa fa-check"></i><b>3.2.5</b> PC-Relate</a></li>
 <li class="chapter" data-level="3.2.6" data-path="Week2.html"><a href="Week2.html#Week2_practice_turnin"><i class="fa fa-check"></i><b>3.2.6</b> To turn in:</a></li>
 </ul></li>
+<li class="chapter" data-level="3.3" data-path="Week2.html"><a href="Week2.html#Week2_ref"><i class="fa fa-check"></i><b>3.3</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="Week2_ref.html"><a href="Week2_ref.html"><i class="fa fa-check"></i><b>4</b> References</a></li>
+<li class="chapter" data-level="4" data-path="Week3.html"><a href="Week3.html"><i class="fa fa-check"></i><b>4</b> Association testing</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="Week3.html"><a href="Week3.html#Week3_theory"><i class="fa fa-check"></i><b>4.1</b> Statistics</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="Week3.html"><a href="Week3.html#Week3_theory_or"><i class="fa fa-check"></i><b>4.1.1</b> The odds ratio</a></li>
+<li class="chapter" data-level="4.1.2" data-path="Week3.html"><a href="Week3.html#Week3_theory_logit"><i class="fa fa-check"></i><b>4.1.2</b> The logistic model of disease risk</a></li>
+<li class="chapter" data-level="4.1.3" data-path="Week3.html"><a href="Week3.html#Week3_theory_glm"><i class="fa fa-check"></i><b>4.1.3</b> Linear mixed models</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="Week3.html"><a href="Week3.html#Week3_practice"><i class="fa fa-check"></i><b>4.2</b> Practice</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="Week3.html"><a href="Week3.html#Week3_practice_pheno"><i class="fa fa-check"></i><b>4.2.1</b> Get phenotype</a></li>
+<li class="chapter" data-level="4.2.2" data-path="Week3.html"><a href="Week3.html#Week3_practice_fit"><i class="fa fa-check"></i><b>4.2.2</b> Fitting the model</a></li>
+<li class="chapter" data-level="4.2.3" data-path="Week3.html"><a href="Week3.html#Week3_practice_analysis"><i class="fa fa-check"></i><b>4.2.3</b> Analyzing the results</a></li>
+<li class="chapter" data-level="4.2.4" data-path="Week3.html"><a href="Week3.html#to-turn-in-week3_practice_turnin"><i class="fa fa-check"></i><b>4.2.4</b> To turn in {#Week3_practice_turnin}:</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="Week3.html"><a href="Week3.html#Week3_ref"><i class="fa fa-check"></i><b>4.3</b> References</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
 
@@ -157,70 +174,70 @@ div.csl-indent {
 <div id="Week2_theory" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Kinship: theory<a href="Week2.html#Week2_theory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Kinship can be defined as the expected fraction of alleles that two individuals got from the same ancestor(s).  We say that two individuals share an allele of a SNP <em>identical-by-descent</em> or <em>IBD</em> if they inherited the same copy of the allele from a common ancestor.  IBD-sharing is different from simply carrying the same allele of a gene (known as <em>identical-by-state</em> or <em>IBS</em>-sharing), which unrelated individuals may do if the allele is common enough in the population.  The <em>degree</em> <span class="math inline">\(R\)</span> of relationship may be defined as the effective number of meioses separating the relatives through the equation
-<span class="math display" id="eq:eqn">\[\begin{equation}
+<span class="math display" id="eq:2-1">\[\begin{equation}
 \frac{1}{2^R}=\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}},
 \tag{3.1}
 \end{equation}\]</span>
 in which <span class="math inline">\(R_i\)</span> is the number of meioses separating the relatives through the first relative’s <span class="math inline">\(i\)</span><sup>th</sup> parent.  For example, sibs are connected by two meioses through two parents, while a parent and child are connected by one meiosis through one parent: both relationships are degree-1.</p>
 <p>The probability that two relatives share an allele IBD is <span class="math inline">\(\frac{1}{2^R}\)</span>, as there is a <span class="math inline">\(\frac{1}{2}\)</span> probability that an allele is passed on in any meiosis, and <span class="math inline">\(R\)</span> is the effective number of meioses or steps between the relatives.  If <span class="math inline">\(2\times\frac{1}{2^R}\)</span> is the expected number of alleles shared IBD at any given locus, then the fraction of the genome shared by any two relatives is
-<span class="math display" id="eq:2">\[\begin{equation}
+<span class="math display" id="eq:2-2">\[\begin{equation}
 r=\frac{2\times\frac{1}{2^R}}{2}=\frac{1}{2^R}.
-\tag{2.2}
+\tag{3.2}
 \end{equation}\]</span></p>
 <p>However, genomic sharing can be realized in different ways depending on the probabilities <span class="math inline">\(\pi_0\)</span>, <span class="math inline">\(\pi_1\)</span>, and <span class="math inline">\(\pi_2\)</span> that individuals share zero, one, or two copies IBD at a locus.  The probability that the relatives inherit both both copies IBD, viz.,
-<span class="math display" id="eq:3a">\[\begin{equation}
+<span class="math display" id="eq:2-3">\[\begin{equation}
 \pi_2=P\left(\text{share 2 IBD}\right)=2^2\frac{1}{2^{R_1}2^{R_2}},
-\tag{3.2}
-\end{equation}\]</span>is simply the product of the probabilities of sharing through both parents.  The probability of sharing exactly one allele IBD,, viz.,
-<span class="math display" id="eq:3b">\[\begin{equation}
-\pi_1=P\left(\text{share 1 IBD}\right)=2\left(\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}\right)-2^3\frac{1}{2^{R_1}2^{R_2}},
 \tag{3.3}
-\end{equation}\]</span>is the got by finding the probability <span class="math inline">\(2\left(\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}\right)-2^2\frac{1}{2^{R_1}2^{R_2}}\)</span> of sharing at least one allele IBD less the probability <span class="math inline">\(\pi_2\)</span> of sharing two.  Finally, the probability of sharing at zero alleles IBD, viz.,
-<span class="math display" id="eq:3c">\[\begin{equation}
-\pi_0=P\left(\text{share 0 IBD}\right)=1-2\frac{1}{2^{R_1}}-2\frac{1}{2^{R_2}}+2^2\frac{1}{2^{R_1}2^{R_2}},
+\end{equation}\]</span>is simply the product of the probabilities of sharing through both parents.  The probability of sharing exactly one allele IBD,, viz.,
+<span class="math display" id="eq:2-4">\[\begin{equation}
+\pi_1=P\left(\text{share 1 IBD}\right)=2\left(\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}\right)-2^3\frac{1}{2^{R_1}2^{R_2}},
 \tag{3.4}
+\end{equation}\]</span>is the got by finding the probability <span class="math inline">\(2\left(\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}\right)-2^2\frac{1}{2^{R_1}2^{R_2}}\)</span> of sharing at least one allele IBD less the probability <span class="math inline">\(\pi_2\)</span> of sharing two.  Finally, the probability of sharing at zero alleles IBD, viz.,
+<span class="math display" id="eq:2-5">\[\begin{equation}
+\pi_0=P\left(\text{share 0 IBD}\right)=1-2\frac{1}{2^{R_1}}-2\frac{1}{2^{R_2}}+2^2\frac{1}{2^{R_1}2^{R_2}},
+\tag{3.5}
 \end{equation}\]</span>is got by subtracting the probability <span class="math inline">\(\pi_1+\pi_2\)</span> of sharing at least one allele IBD from 1.  The coefficients account for the fact that there are <span class="math inline">\(2\)</span> alleles at each locus and <span class="math inline">\(2^2\)</span> that can be shared.</p>
-<p>From <a href="Week2.html#eq:3a">(3.2)</a>–<a href="Week2.html#eq:3c">(3.4)</a>, the fraction of the genome shared IBD is
-<span class="math display" id="eq:4">\[\begin{equation}
+<p>From <a href="Week2.html#eq:2-3">(3.3)</a>–<a href="Week2.html#eq:2-5">(3.5)</a>, the fraction of the genome shared IBD is
+<span class="math display" id="eq:2-4">\[\begin{equation}
 r=\frac{2\pi_2+1\pi_1}{2}=\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}=\frac{1}{2^R}.
-\tag{2.4}
+\tag{3.4}
 \end{equation}\]</span>But the same value of <span class="math inline">\(r\)</span> can obtain from different values of <span class="math inline">\(\pi_1\)</span> and <span class="math inline">\(\pi_2\)</span>.  For example, full sibs have a 25% probability of sharing two alleles and a 50% chance of sharing one allele at a locus, for a total fraction <span class="math inline">\(r=0.5\)</span> shared.  But a parent and child have 0% chance of sharing two alleles and a 100% chance of sharing one, also giving <span class="math inline">\(r=0.5\)</span>.  Thus, your parent does is not equal your sibling, despite the fact of your sharing equal amounts of your genome with each of them.  Put another way, parents cannot pass on their genotypes to their offspring.</p>
 <div id="Week2_theory_king" class="section level3 hasAnchor" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> KING<a href="Week2.html#Week2_theory_king" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>KING <span class="citation">[<a href="#ref-manichaikul_robust_2010">1</a>]</span> computes both the probability <span class="math inline">\(\pi_0\)</span> that two relatives share 0 alleles IBD as well as the coefficient of relatedness <span class="math inline">\(\phi=\frac{r}{2}\)</span>, defined as the probability that two alleles taken one from each relative are IBD at a locus (the maximum probability is <span class="math inline">\(\frac{1}{2}\)</span> because there is a 50% chance that the alleles chosen come from different parents).  The idea is to compare the counts <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> of the alternative alleles which two individuals each have at a genetic locus.  If the pair are from a single ancestral population, the expected values and variances of the allele counts are <span class="math inline">\(\mathbb{E}\left(X\right)=\mathbb{E}\left(Y\right)=2p\)</span> and <span class="math inline">\(\sigma_X^2=\mathbb{E}\left(X^2\right)-\mathbb{E}\left(X\right)^2=\mathbb{E}\left(Y^2\right)-\mathbb{E}\left(Y\right)^2=2p\left(1-p\right)\)</span>.  Thus the expected value of the difference <span class="math inline">\(\mathbb{E}\left(\left(X-Y\right)^2\right)=\mathbb{E}\left(X^2\right)+\mathbb{E}\left(Y^2\right)-2\mathbb{E}\left(XY\right)\)</span> is
-<span class="math display" id="eq:5">\[\begin{equation}\frac{\mathbb{E}\left(\left(X-Y\right)^2\right)}{\sigma_X^2+\sigma_Y^2}=1-\frac{\sigma_{XY}}{\sigma_X\sigma_Y}=1-r,
-\tag{3.5}
-\end{equation}\]</span>where <span class="math inline">\(\sigma_{XY}=\mathbb{E}\left(XY\right)-\mathbb{E}\left(X\right)\mathbb{E}\left(Y\right)\)</span> is the covariance of the genotype counts and <span class="math inline">\(r_{ij}=2\phi_{ij}\)</span> is the genetic correlation between individuals <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>; the latter can be interpreted as the amount of the genome shared IBD.</p>
-<p>KING estimates <span class="math inline">\(\phi\)</span> from Eq. <a href="Week2.html#eq:5">(3.5)</a> by counting the number <span class="math inline">\(N\)</span> of loci at which two individuals are heterozygous <span class="math inline">\(Aa,Aa\)</span> or opposite homozygous <span class="math inline">\(AA,aa\)</span>, as well as the total number of alleles at which each individual is heterozygous <span class="math inline">\(Aa\)</span>:
-<span class="math display" id="eq:6">\[\begin{equation}
-\hat{\phi_{ij}}=\frac{N_{Aa,Aa}-2N_{AA,aa}}{N_{Aa}^{\left(i\right)}+N_{Aa}^{\left(j\right)}}.
+<span class="math display" id="eq:2-6">\[\begin{equation}\frac{\mathbb{E}\left(\left(X-Y\right)^2\right)}{\sigma_X^2+\sigma_Y^2}=1-\frac{\sigma_{XY}}{\sigma_X\sigma_Y}=1-r,
 \tag{3.6}
-\end{equation}\]</span>From <a href="Week2.html#eq:6">(3.6)</a> it can be seen that shared heterozygous sites increase the estimated relatedness, and that unshared homozygous sites decrease relatedness.  Eq. <a href="Week2.html#eq:6">(3.6)</a> is called a “robust” estimator because it measures relatedness in a purely pairwise fashion: it does not rely on population estimates of allele frequencies.  However, if the individuals are not of the same genetic background, the allele frequency <span class="math inline">\(p\)</span> is not well-defined and Eq. <a href="Week2.html#eq:5">(3.5)</a> does not hold, leading to negative estimates of <span class="math inline">\(\phi\)</span>; this feature is not necessarily a problem, as it helps us to distinguish different ancestries within a single population.</p>
+\end{equation}\]</span>where <span class="math inline">\(\sigma_{XY}=\mathbb{E}\left(XY\right)-\mathbb{E}\left(X\right)\mathbb{E}\left(Y\right)\)</span> is the covariance of the genotype counts and <span class="math inline">\(r_{ij}=2\phi_{ij}\)</span> is the genetic correlation between individuals <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>; the latter can be interpreted as the amount of the genome shared IBD.</p>
+<p>KING estimates <span class="math inline">\(\phi\)</span> from Eq. <a href="Week2.html#eq:2-6">(3.6)</a> by counting the number <span class="math inline">\(N\)</span> of loci at which two individuals are heterozygous <span class="math inline">\(Aa,Aa\)</span> or opposite homozygous <span class="math inline">\(AA,aa\)</span>, as well as the total number of alleles at which each individual is heterozygous <span class="math inline">\(Aa\)</span>:
+<span class="math display" id="eq:2-7">\[\begin{equation}
+\hat{\phi_{ij}}=\frac{N_{Aa,Aa}-2N_{AA,aa}}{N_{Aa}^{\left(i\right)}+N_{Aa}^{\left(j\right)}}.
+\tag{3.7}
+\end{equation}\]</span>From <a href="Week2.html#eq:2-7">(3.7)</a> it can be seen that shared heterozygous sites increase the estimated relatedness, and that unshared homozygous sites decrease relatedness.  Eq. <a href="Week2.html#eq:2-7">(3.7)</a> is called a “robust” estimator because it measures relatedness in a purely pairwise fashion: it does not rely on population estimates of allele frequencies.  However, if the individuals are not of the same genetic background, the allele frequency <span class="math inline">\(p\)</span> is not well-defined and Eq. <a href="Week2.html#eq:2-6">(3.6)</a> does not hold, leading to negative estimates of <span class="math inline">\(\phi\)</span>; this feature is not necessarily a problem, as it helps us to distinguish different ancestries within a single population.</p>
 </div>
 <div id="Week2_theory_pcair" class="section level3 hasAnchor" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> PC-AiR<a href="Week2.html#Week2_theory_pcair" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>KING provides an estimate of relatedness.  But as cryptic relatedness can skew ancestry estimates determined by PCA, we should use kinship to correct PCA.  This is where principal components analysis in related samples, or PC-AiR <span class="citation">[<a href="#ref-conomos_robust_2015">2</a>]</span> comes in handy. PC-AiR identifies a subset of <span class="math inline">\(\mathcal{U}\)</span> of individuals who are unrelated to each other (via negative KING kinship estimates), but maximally related to individuals in a remaining set <span class="math inline">\(\mathcal{R}\)</span>. Recalling the math in <a href="">Week 1</a>, the matrix
-<span class="math display" id="eq:7">\[\begin{equation}
+<span class="math display" id="eq:2-8">\[\begin{equation}
 \frac{1}{m}\mathbf{W}=\mathbf{X}^T\mathbf{U}=\mathbf{V}\mathbf{\Sigma},
-\tag{3.7}
-\end{equation}\]</span>so that <span class="math inline">\(\frac{1}{m}w_{jk}\lambda_{kk}^{-1}=x_{ij}u_{ik}\lambda_{kk}^{-1}=v_{jk}\)</span> is the genotype at SNP <span class="math inline">\(k\)</span> in ancestry <span class="math inline">\(j\)</span> inferred from subjects’ genotypes <span class="math inline">\(\mathbb{X}\)</span> who are in subset <span class="math inline">\(\mathcal{U}\)</span>.  Then if we have an <span class="math inline">\(m\times n_u\)</span> genotype matrix <span class="math inline">\(\mathbf{X}&#39;\)</span> of individuals in the subset <span class="math inline">\(\mathcal{R}\)</span>, we can “apply” <span class="math inline">\(\mathbf{W}\)</span> to get an estimate of the “ancestry-corrected” PCs by:
-<span class="math display" id="eq:8">\[\begin{equation}
-\frac{1}{m}\mathbf{X}&#39;\mathbf{W}\mathbf{\Sigma}^{-1}=\mathbf{X}&#39;\mathbf{V}.
 \tag{3.8}
-\end{equation}\]</span>Eq. <a href="Week2.html#eq:8">(3.8)</a> is the matrix <span class="math inline">\(x&#39;_{i\cdot}v_{\cdot j}\)</span> of similarities between subjects <span class="math inline">\(i\)</span> in set <span class="math inline">\(\mathcal{R}\)</span> and ancestry <span class="math inline">\(j\)</span>.  In this way, we have estimated genotype principal components for all individuals (i.e., those in <span class="math inline">\(\mathcal{U}\)</span> and <span class="math inline">\(\mathcal{R}\)</span>) without the problem confounding due to cryptic relatedness.</p>
+\end{equation}\]</span>so that <span class="math inline">\(\frac{1}{m}w_{jk}\lambda_{kk}^{-1}=x_{ij}u_{ik}\lambda_{kk}^{-1}=v_{jk}\)</span> is the genotype at SNP <span class="math inline">\(k\)</span> in ancestry <span class="math inline">\(j\)</span> inferred from subjects’ genotypes <span class="math inline">\(\mathbb{X}\)</span> who are in subset <span class="math inline">\(\mathcal{U}\)</span>.  Then if we have an <span class="math inline">\(m\times n_u\)</span> genotype matrix <span class="math inline">\(\mathbf{X}&#39;\)</span> of individuals in the subset <span class="math inline">\(\mathcal{R}\)</span>, we can “apply” <span class="math inline">\(\mathbf{W}\)</span> to get an estimate of the “ancestry-corrected” PCs by:
+<span class="math display" id="eq:2-9">\[\begin{equation}
+\frac{1}{m}\mathbf{X}&#39;\mathbf{W}\mathbf{\Sigma}^{-1}=\mathbf{X}&#39;\mathbf{V}.
+\tag{3.9}
+\end{equation}\]</span>Eq. <a href="Week2.html#eq:2-9">(3.9)</a> is the matrix <span class="math inline">\(x&#39;_{i\cdot}v_{\cdot j}\)</span> of similarities between subjects <span class="math inline">\(i\)</span> in set <span class="math inline">\(\mathcal{R}\)</span> and ancestry <span class="math inline">\(j\)</span>.  In this way, we have estimated genotype principal components for all individuals (i.e., those in <span class="math inline">\(\mathcal{U}\)</span> and <span class="math inline">\(\mathcal{R}\)</span>) without the problem confounding due to cryptic relatedness.</p>
 </div>
 <div id="Week2_theory_pcrelate" class="section level3 hasAnchor" number="3.1.3">
 <h3><span class="header-section-number">3.1.3</span> PC-Relate<a href="Week2.html#Week2_theory_pcrelate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Once we have ancestry-corrected principal components for all individuals, we can obtain “corrected” expected genotypes <span class="math inline">\(\mathbb{E}\left(X_{ik}\right)=2p_{ik}\)</span> of SNPs <span class="math inline">\(k\)</span> for populations of admixed individuals <span class="math inline">\(i\)</span> using a method known as PC-Relate <span class="citation">[<a href="#ref-conomos_model-free_2016">3</a>]</span>.  Because in populations with both shared genetic ancestry and cryptic relatedness, we can use the PC estimates <span class="math inline">\(v_{kj}\)</span> of the allele frequencies in each population <span class="math inline">\(j\)</span> to express the scaled genotypes <span class="math inline">\(x_{ij}=\frac{g_{ik}-2p_k}{2p_k\left(1-p_k\right)}\)</span> as
-<span class="math display" id="eq:9">\[\begin{equation}
+<span class="math display" id="eq:2-9">\[\begin{equation}
 \mathbb{E}\left(x_{ik}\mid u_{ij}\right)=u_{ij}\lambda_{jj}v_{kj},
 \tag{3.9}
 \end{equation}\]</span>or in terms of the measured genotypes:
-<span class="math display" id="eq:10">\[\begin{equation}
+<span class="math display" id="eq:2-10">\[\begin{equation}
 \mathbb{E}\left(g_{ik}\mid u_{ij}\right)=2p_k+u_{ij}\lambda_{jj}v_{kj}\cdot 2p_k\left(1-p_k\right),
 \tag{3.10}
-\end{equation}\]</span>in which <span class="math inline">\(p_k\)</span> is the allele frequency estimated from the entire sample.  Eq. <a href="Week2.html#eq:10">(3.10)</a> says that if we make a graph of each individual’s genotype <span class="math inline">\(g_{ik}=0,1,2\)</span> at SNP <span class="math inline">\(k\)</span> vs. the (scaled) of the amount the individual’s population-<span class="math inline">\(j\)</span> genetic ancestry, the slope <span class="math inline">\(\lambda_{jj}v_{kj}2p_k\left(1-p_k\right)\)</span> should be the expected allele frequency in population <span class="math inline">\(j\)</span>.  In practice, the slopes are obtained from linear regression of the observed genotypes on genetic PCs, and the updated expected allele frequencies <span class="math inline">\(\mathbb{E}\left(g_{ik}\mid u_{ij}\right)=2p_{ik}\)</span> of SNPs <span class="math inline">\(k\)</span> for individuals <span class="math inline">\(i\)</span> are found by the corresponding value on the best-fit hyperplane, given individual <span class="math inline">\(i\)</span>’s genetic ancestry <span class="math inline">\(u_{ij}\)</span>.  We can then obtain a new genetic relationship matrix:
-<span class="math display" id="eq:11">\[\begin{equation}
+\end{equation}\]</span>in which <span class="math inline">\(p_k\)</span> is the allele frequency estimated from the entire sample.  Eq. <a href="Week2.html#eq:2-10">(3.10)</a> says that if we make a graph of each individual’s genotype <span class="math inline">\(g_{ik}=0,1,2\)</span> at SNP <span class="math inline">\(k\)</span> vs. the (scaled) of the amount the individual’s population-<span class="math inline">\(j\)</span> genetic ancestry, the slope <span class="math inline">\(\lambda_{jj}v_{kj}2p_k\left(1-p_k\right)\)</span> should be the expected allele frequency in population <span class="math inline">\(j\)</span>.  In practice, the slopes are obtained from linear regression of the observed genotypes on genetic PCs, and the updated expected allele frequencies <span class="math inline">\(\mathbb{E}\left(g_{ik}\mid u_{ij}\right)=2p_{ik}\)</span> of SNPs <span class="math inline">\(k\)</span> for individuals <span class="math inline">\(i\)</span> are found by the corresponding value on the best-fit hyperplane, given individual <span class="math inline">\(i\)</span>’s genetic ancestry <span class="math inline">\(u_{ij}\)</span>.  We can then obtain a new genetic relationship matrix:
+<span class="math display" id="eq:2-11">\[\begin{equation}
 2\hat{\varphi}_{ij}=\frac{\sum_k\left(g_{ik}-2p_{ik}\right)\left(g_{jk}-2p_{jk}\right)}{2\sqrt{p_{ik}\left(1-p_{ik}\right)p_{jk}\left(1-p_{jk}\right)}}.
 \tag{3.11}
 \end{equation}\]</span>This new GRM will be used in <a href="">Week 3</a> when we attempt to fit a linear mixed model for the effect of genotype on disease risk; for now we will use it to make an updated table of the relationship between individuals.</p>
@@ -291,7 +308,9 @@ genoData &lt;- GenotypeData(geno)</code></pre>
 <p>Now we can run PC-Air.  It is important to include the kinship estimates we got from KING, as well as the list of pruned SNPs.  These values will help PC-AiR determine a set <span class="math inline">\(\mathcal{U}\)</span> of ancestry-representative individuals and their principal components, which will then imputed into the remaining subset <span class="math inline">\(\mathcal{R}\)</span> of individuals:</p>
 <pre><code>mypcair &lt;- pcair(genoData,kinobj = ibd$kinship,divobj = ibd$kinship,snp.include = pruned) # genotype principal components based on a subset of unrelated individuals</code></pre>
 <p>Next we can make a plot of the first few PCs using:</p>
-<pre><code></code></pre>
+<pre><code>par(mar = c(5.1,5.1,4.1,2.1) ) # left default plus one
+plot(mypcair,vx = 1, vy = 2) # plot of PC2 vs PC1</code></pre>
+<p>Change the values of <kbd>vx</kbd> and <kbd>vy</kbd> to change which PCs are plotted.</p>
 </div>
 <div id="Week2_practice_pcrelate" class="section level3 hasAnchor" number="3.2.5">
 <h3><span class="header-section-number">3.2.5</span> PC-Relate<a href="Week2.html#Week2_practice_pcrelate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -320,6 +339,42 @@ plot(mypcrel$kinBtwn$k0,mypcrel$kinBtwn$kin,xlab = &quot;IBD0 proportion&quot;,y
 <li>10 × 10 samples of the GRM generated by both KING and PC-Relate.</li>
 </ol>
 </div>
+</div>
+<div id="Week2_ref" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> References<a href="Week2.html#Week2_ref" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="refs" class="references csl-bib-body">
+<div class="csl-entry">
+1. Manichaikul A, Mychaleckyj JC, Rich SS, Daly K, Sale M, Chen W-M. <a href="https://doi.org/10.1093/bioinformatics/btq559">Robust relationship inference in genome-wide association studies</a>. Bioinformatics. 2010;26:2867–73.
+</div>
+<div class="csl-entry">
+2. Conomos MP, Miller MB, Thornton TA. <a href="https://doi.org/10.1002/gepi.21896">Robust <span>Inference</span> of <span>Population</span> <span>Structure</span> for <span>Ancestry</span> <span>Prediction</span> and <span>Correction</span> of <span>Stratification</span> in the <span>Presence</span> of <span>Relatedness</span></a>. Genetic Epidemiology. 2015;39:276–93.
+</div>
+<div class="csl-entry">
+3. Conomos MP, Reiner AP, Weir BS, Thornton TA. <a href="https://doi.org/10.1016/j.ajhg.2015.11.022">Model-free <span>Estimation</span> of <span>Recent</span> <span>Genetic</span> <span>Relatedness</span></a>. The American Journal of Human Genetics. 2016;98:127–48.
+</div>
+<div class="csl-entry">
+4. Changalidis AI, Alexeev DA, Nasykhova YA, Glotov AS, Barbitoff YA. <a href="https://doi.org/10.3390/biology13010010"><span class="nocase">bioGWAS</span>: <span>A</span> <span>Simple</span> and <span>Flexible</span> <span>Tool</span> for <span>Simulating</span> <span>GWAS</span> <span>Datasets</span></a>. Biology. 2023;13:10.
+</div>
+<div class="csl-entry">
+5. Su Z, Marchini J, Donnelly P. <a href="https://doi.org/10.1093/bioinformatics/btr341"><span>HAPGEN2</span>: Simulation of multiple disease <span>SNPs</span></a>. Bioinformatics. 2011;27:2304–5.
+</div>
+<div class="csl-entry">
+6. Meyer HV, Birney E. <a href="https://doi.org/10.1093/bioinformatics/bty197"><span>PhenotypeSimulator</span>: <span>A</span> comprehensive framework for simulating multi-trait, multi-locus genotype to phenotype relationships</a>. Bioinformatics. 2018;34:2951–6.
+</div>
+<div class="csl-entry">
+7. Michailidou K, BOCS, kConFab Investigators, AOCS Group, NBCS, GENICA Network, et al. <a href="https://doi.org/10.1038/ng.3242">Genome-wide association analysis of more than 120,000 individuals identifies 15 new susceptibility loci for breast cancer</a>. Nature Genetics. 2015;47:373–80.
+</div>
+<div class="csl-entry">
+8. Elsworth B, Lyon M, Alexander T, Liu Y, Matthews P, Hallett J, et al. <a href="https://doi.org/10.1101/2020.08.10.244293">The <span>MRC</span> <span>IEU</span> <span>OpenGWAS</span> data infrastructure</a>. 2020.
+</div>
+<div class="csl-entry">
+9. Zheng X, Levine D, Shen J, Gogarten SM, Laurie C, Weir BS. <a href="https://doi.org/10.1093/bioinformatics/bts606">A high-performance computing toolset for relatedness and principal component analysis of <span>SNP</span> data</a>. Bioinformatics. 2012;28:3326–8.
+</div>
+<div class="csl-entry">
+10. Gogarten SM, Sofer T, Chen H, Yu C, Brody JA, Thornton TA, et al. <a href="https://doi.org/10.1093/bioinformatics/btz567">Genetic association testing using the <span>GENESIS</span> <span>R</span>/<span>Bioconductor</span> package</a>. Bioinformatics. 2019;35:5346–8.
+</div>
+</div>
+
 </div>
 </div>
 <h3>References</h3>
@@ -361,7 +416,7 @@ plot(mypcrel$kinBtwn$k0,mypcrel$kinBtwn$kin,xlab = &quot;IBD0 proportion&quot;,y
         </div>
       </div>
 <a href="Week1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="Week2_ref.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="Week3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

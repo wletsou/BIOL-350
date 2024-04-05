@@ -7,19 +7,19 @@ This week we'll see how individuals can be separated by genetic ancestry using p
 The populations in our dataset can be separated into clusters based on their genotypes.&nbsp; The inferred groups help control for confounding due to ancestry, and are also more reliable than self-reported race in association studies.&nbsp; To see how it works, suppose $\mathbf{X}$ is an $n\times m$ (standardized) genotype matrix with individuals down the rows and SNPs across the columns.&nbsp;  Principal components analysis (PCA) says we can find an $m\times n$ matrix $\mathbf{V}$, a diagonal $n\times n$ matrix $\mathbf{\Sigma}$, and an $n\times n$ matrix $\mathbf{U}$ satisfying
 \begin{equation}
 \mathbf{X}=\mathbf{U}\mathbf{\Sigma}\mathbf{V}^T.
-(\#eq:1)
+(\#eq:1-1)
 \end{equation}If we think of $\mathbf{V}$ as the the (standardized) SNP genotypes of an "ideal" person of a certain ancestry, then
 \begin{equation}
 x_{j\cdot} v_{\cdot i}=u_{ji}\lambda_{jj}
-(\#eq:2)
-\end{equation}represents the amount of idealized person $i$ in actual person $j$, up to some proportionality constant $\lambda_{jj}$ that depends on the ancestry.&nbsp; Then rows $j$ of $\mathbf{U}$ are the *ancestries* of person $j$, and columns $i$ of $\mathbf{U}$ are the ancestries of each individual on ancestry $i$.&nbsp; It is important to remember that these "idealized" ancestries do not necessarily correspond with our preconceived notions of ancestry, so we cannot interpret them as "European," "African," or "Asian," say.&nbsp; If we rearrange Eq. \@ref(eq:1) and use the fact that the columns of $\mathbf{U}$ and $\mathbf{V}$ are *orthonormal*, we can find that 
+(\#eq:1-2)
+\end{equation}represents the amount of idealized person $i$ in actual person $j$, up to some proportionality constant $\lambda_{jj}$ that depends on the ancestry.&nbsp; Then rows $j$ of $\mathbf{U}$ are the *ancestries* of person $j$, and columns $i$ of $\mathbf{U}$ are the ancestries of each individual on ancestry $i$.&nbsp; It is important to remember that these "idealized" ancestries do not necessarily correspond with our preconceived notions of ancestry, so we cannot interpret them as "European," "African," or "Asian," say.&nbsp; If we rearrange Eq. \@ref(eq:1-1) and use the fact that the columns of $\mathbf{U}$ and $\mathbf{V}$ are *orthonormal*, we can find that 
 \begin{equation}
 \mathbf{X}\mathbf{X}^T\mathbf{U}=\mathbf{U}\mathbf{\Sigma}^2,
-(\#eq:3)
+(\#eq:1-3)
 \end{equation}meaning that the columns of $\mathbf{U}$ are the eigenvectors of the matrix
 \begin{equation}
 \frac{1}{m}\mathbf{X}\mathbf{X}^T
-(\#eq:4)
+(\#eq:1-4)
 \end{equation} whose $\left(i,j\right)$ entry is the genetic correlation between individuals $i$ and $j$, sometimes known as the *genomic relationship matrix* or GRM.&nbsp; PCA works by finding the first several eigenvectors of the GRM and plotting each individual's ancestry along each orthogonal vector in a rectangular grid.&nbsp; Clusters of individuals in this grid represent distinct ancestry groups.
 
 ## Principal components analysis: practice {#Week1_practice}
