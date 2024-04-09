@@ -33,6 +33,7 @@ Week1_practice_pca
 Week1_practice_labels
 Week1_practice_plot
 Week1_practice_turnin
+Week1_ref
 Week2
 Week2_theory
 Week2_theory_king

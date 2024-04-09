@@ -13,6 +13,9 @@ library(SNPRelate)
 library(GENESIS)
 # library(SeqVarTools)
 
+
+vcf <- "Downloads/CHB+YRI+CEU.chr1.vcf.gz"
+
 directory <- "/Users/wletsou/Library/CloudStorage/OneDrive-NewYorkInstituteofTechnology/Courses/BIOL 350 Spring 2024/bioGWAS/data"
 
 # convert continuous phenotype to binary

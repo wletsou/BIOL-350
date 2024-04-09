@@ -111,6 +111,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.2.4" data-path="Week1.html"><a href="Week1.html#Week1_practice_plot"><i class="fa fa-check"></i><b>2.2.4</b> Plotting</a></li>
 <li class="chapter" data-level="2.2.5" data-path="Week1.html"><a href="Week1.html#Week1_practice_turnin"><i class="fa fa-check"></i><b>2.2.5</b> To turn in:</a></li>
 </ul></li>
+<li class="chapter" data-level="2.3" data-path="Week1.html"><a href="Week1.html#Week1_ref"><i class="fa fa-check"></i><b>2.3</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="Week2.html"><a href="Week2.html"><i class="fa fa-check"></i><b>3</b> Kinship Analysis</a>
 <ul>
@@ -170,10 +171,10 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="Week1" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Principal Components Analysis<a href="Week1.html#Week1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This week we’ll see how individuals can be separated by genetic ancestry using principal components analysis.  We’ll practice applying PCA on a subset of the 1KGP data.</p>
+<p>This week we’ll see how individuals can be separated by genetic ancestry using principal components analysis.  We’ll practice applying PCA on a subset of the 1KGP data <span class="citation">[<a href="#ref-the_1000_genomes_project_consortium_global_2015">1</a>]</span>.</p>
 <div id="Week1_theory" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Pricipal components analysis: theory<a href="Week1.html#Week1_theory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The populations in our dataset can be separated into clusters based on their genotypes.  The inferred groups help control for confounding due to ancestry, and are also more reliable than self-reported race in association studies.  To see how it works, suppose <span class="math inline">\(\mathbf{X}\)</span> is an <span class="math inline">\(n\times m\)</span> (standardized) genotype matrix with individuals down the rows and SNPs across the columns.  Principal components analysis (PCA) says we can find an <span class="math inline">\(m\times n\)</span> matrix <span class="math inline">\(\mathbf{V}\)</span>, a diagonal <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(\mathbf{\Sigma}\)</span>, and an <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(\mathbf{U}\)</span> satisfying
+<p>The populations in our dataset can be separated into clusters based on their genotypes.  The inferred groups help control for confounding due to ancestry, and are also more reliable than self-reported race in association studies <span class="citation">[<a href="#ref-price_principal_2006">2</a>]</span>.  To see how it works, suppose <span class="math inline">\(\mathbf{X}\)</span> is an <span class="math inline">\(n\times m\)</span> (standardized) genotype matrix with individuals down the rows and SNPs across the columns.  Principal components analysis (PCA) says we can find an <span class="math inline">\(m\times n\)</span> matrix <span class="math inline">\(\mathbf{V}\)</span>, a diagonal <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(\mathbf{\Sigma}\)</span>, and an <span class="math inline">\(n\times n\)</span> matrix <span class="math inline">\(\mathbf{U}\)</span> satisfying
 <span class="math display" id="eq:1-1">\[\begin{equation}
 \mathbf{X}=\mathbf{U}\mathbf{\Sigma}\mathbf{V}^T.
 \tag{2.1}
@@ -190,9 +191,14 @@ x_{j\cdot} v_{\cdot i}=u_{ji}\lambda_{ii}
 \frac{1}{m}\mathbf{X}\mathbf{X}^T
 \tag{2.4}
 \end{equation}\]</span> whose <span class="math inline">\(\left(i,j\right)\)</span> entry is the genetic correlation between individuals <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>, sometimes known as the <em>genomic relationship matrix</em> or GRM.  PCA works by finding the first several eigenvectors of the GRM and plotting each individual’s ancestry along each orthogonal vector in a rectangular grid.  Clusters of individuals in this grid represent distinct ancestry groups.</p>
+<p>PCA is used in many field besides genetics, and a good tutorial can be found here <span class="citation">[<a href="#ref-shlens_tutorial_2014">3</a>]</span>.</p>
 </div>
 <div id="Week1_practice" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Principal components analysis: practice<a href="Week1.html#Week1_practice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We’ll need to use several <kbd>Biocondunctor</kbd> packages in the following analyses.  If you have not used <kbd>Biocondunctor</kbd> before, run:</p>
+<pre><code>install.packages(&quot;BiocManager&quot;,repos = &quot;http://cran.us.r-project.org&quot;)</code></pre>
+<p>Then to install a package from <kbd>Biocondunctor</kbd> for the first time, use the <kbd>BiocManager::installs()</kbd> command with the name of your package in quotes.  For example:</p>
+<pre><code>BiocManager::install(&quot;SNPRelate&quot;)</code></pre>
 <div id="Week1_practice_import" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Importing the data<a href="Week1.html#Week1_practice_import" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To do PCA in R, we’ll need to load the libraries <kbd>SNPRelate</kbd> and <kbd>SeqArray</kbd>:</p>
@@ -200,16 +206,16 @@ x_{j\cdot} v_{\cdot i}=u_{ji}\lambda_{ii}
 library(SeqArray)</code></pre>
 <p>Download the <a href="https://github.com/wletsou/BIOL-350/raw/master/docs/CHB%2BYRI%2BCEU.chr1.vcf.gz">chr1 vcf file</a> containing just the CEU, YRI, and CHB populations.  Once you have the file, store its name as a variable:</p>
 <pre><code>vcf &lt;- &quot;path/to/file.vcf.gz&quot;</code></pre>
-<p>Now we’ll convert the vcf format to gds format, retaining the base filename and changing the vcf.gz extension to gds.  (This may take a minute to complete.)  Then we’ll import the gds file as a gds object.</p>
+<p>Now we’ll convert from vcf format to gds format, retaining the base filename and changing the vcf.gz extension to gds.  (This may take a minute to complete.)  Then we’ll import the gds file as a gds object:</p>
 <pre><code>seqVCF2GDS(vcf.fn = vcf,&quot;path/to/file.gds&quot;) # convert vcf to gds with a new file name
 genofile &lt;- seqOpen(&quot;path/to/file.gds&quot;) # import the gds object</code></pre>
 <p>You can can see the various fields under <kbd>genofile</kbd> by printing it.  To access the data in one of the fields, do</p>
 <pre><code>seqGetData(genofile,&quot;sample.id&quot;) # view the sample ids</code></pre>
-<p>where the name of the field is enclosed in quotes.</p>
+<p>where the name of the field is enclosed in quotes.  Other functions for manipulating and view gds files are contained in the <kbd>SeqArray</kbd> package <span class="citation">[<a href="#ref-zheng_high-performance_2012">4</a>, <a href="#ref-zheng_seqarraystorage-efficient_2017">5</a>]</span>.</p>
 </div>
 <div id="Week1_practice_pca" class="section level3 hasAnchor" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> Running PCA<a href="Week1.html#Week1_practice_pca" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>To run PCA in R, simply do</p>
+<p>To run PCA in R using the <kbd>SNPRelate</kbd> package <span class="citation">[<a href="#ref-zheng_high-performance_2012">4</a>]</span>, simply do</p>
 <pre><code>pca &lt;- snpgdsPCA(genofile) # runs PCA</code></pre>
 <p>to create an objects with 32 eignevectors of the GRM.  Make a data frame of the first several eigenvectors along with subject ids:</p>
 <pre><code>df.pca &lt;- data.frame(sample = pca$sample.id,EV1 = pca$eigenvect[,1],EV2 = pca$eigenvect[,2],EV3 = pca$eigenvect[,3],stringsAsFactors = FALSE)</code></pre>
@@ -247,8 +253,29 @@ legend(&quot;topright&quot;,legend = levels(factor(df.pca$pop)),bty = &quot;n&qu
 <li>What the gradients of the different PCs represent, that is, what axis of variation each PC appears to explain</li>
 <li>How to subset your <kbd>df.pca</kbd> data frame to isolate individuals of each population (i.e., provide code)</li>
 </ol>
+</div>
+</div>
+<div id="Week1_ref" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> References<a href="Week1.html#Week1_ref" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body">
+<div id="ref-the_1000_genomes_project_consortium_global_2015" class="csl-entry">
+1. The 1000 Genomes Project Consortium, Auton A, Abecasis GR, Steering committee, Altshuler DM, Durbin RM, et al. <a href="https://doi.org/10.1038/nature15393">A global reference for human genetic variation</a>. Nature. 2015;526:68–74.
+</div>
+<div id="ref-price_principal_2006" class="csl-entry">
+2. Price AL, Patterson NJ, Plenge RM, Weinblatt ME, Shadick NA, Reich D. <a href="https://doi.org/10.1038/ng1847">Principal components analysis corrects for stratification in genome-wide association studies</a>. Nature Genetics. 2006;38:904–9.
+</div>
+<div id="ref-shlens_tutorial_2014" class="csl-entry">
+3. Shlens J. <a href="http://arxiv.org/abs/1404.1100">A <span>Tutorial</span> on <span>Principal</span> <span>Component</span> <span>Analysis</span></a>. 2014.
+</div>
+<div id="ref-zheng_high-performance_2012" class="csl-entry">
+4. Zheng X, Levine D, Shen J, Gogarten SM, Laurie C, Weir BS. <a href="https://doi.org/10.1093/bioinformatics/bts606">A high-performance computing toolset for relatedness and principal component analysis of <span>SNP</span> data</a>. Bioinformatics. 2012;28:3326–8.
+</div>
+<div id="ref-zheng_seqarraystorage-efficient_2017" class="csl-entry">
+5. Zheng X, Gogarten SM, Lawrence M, Stilp A, Conomos MP, Weir BS, et al. <a href="https://doi.org/10.1093/bioinformatics/btx145"><span>SeqArray</span>—a storage-efficient high-performance data format for <span>WGS</span> variant calls</a>. Bioinformatics. 2017;33:2251–7.
 </div>
 </div>
             </section>

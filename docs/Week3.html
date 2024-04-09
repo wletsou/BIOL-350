@@ -111,6 +111,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.2.4" data-path="Week1.html"><a href="Week1.html#Week1_practice_plot"><i class="fa fa-check"></i><b>2.2.4</b> Plotting</a></li>
 <li class="chapter" data-level="2.2.5" data-path="Week1.html"><a href="Week1.html#Week1_practice_turnin"><i class="fa fa-check"></i><b>2.2.5</b> To turn in:</a></li>
 </ul></li>
+<li class="chapter" data-level="2.3" data-path="Week1.html"><a href="Week1.html#Week1_ref"><i class="fa fa-check"></i><b>2.3</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="Week2.html"><a href="Week2.html"><i class="fa fa-check"></i><b>3</b> Kinship Analysis</a>
 <ul>
@@ -208,7 +209,7 @@ div.csl-indent {
 \end{equation}\]</span>Eq. <a href="Week3.html#eq:3-6">(4.6)</a> is a function of the parameter <span class="math inline">\(\beta_1\)</span>.  Thus we can find the <em>maximum-likelihood estimate</em> <span class="math inline">\(\hat{\beta_1}\)</span> of <span class="math inline">\(\beta_1\)</span> by solving <span class="math inline">\(\frac{\partial \ell}{\partial \beta_1}\bigr\rvert_{\beta_1=\hat{\beta_1}}\)</span> for <span class="math inline">\(\hat{\beta_1}\)</span> and getting its standard error <span class="math inline">\(\frac{-1}{\frac{\partial^2\ell}{\partial \beta_1^2}\bigr\rvert_{\beta_1=\hat{\beta_1}}}\)</span> by evaluating the curvature of the log-likelihood at the best estimate of <span class="math inline">\(\beta_1\)</span>.  From these we can also get an estimate of the statistical significance.</p>
 <div id="Week3_theory_logit_simulation" class="section level4 hasAnchor" number="4.1.2.1">
 <h4><span class="header-section-number">4.1.2.1</span> Simulating phenotypes<a href="Week3.html#Week3_theory_logit_simulation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The <kbd>PhenotypeSimulator</kbd> package <span class="citation">[<a href="#ref-meyer_phenotypesimulator_2018">6</a>]</span> used to generate the phenotype data used in this assignment generates a vector <span class="math inline">\(\theta\)</span> of log-odds for each individual based on its genotype, given an input list of risk SNPs.  To go from the log-odds scale scale to the binary disease scale, we can rearrange the equation <span class="math inline">\(\log\frac{p}{1-p}=\theta\)</span> to generate a vector
+<p>The <kbd>PhenotypeSimulator</kbd> package <span class="citation">[<a href="#ref-meyer_phenotypesimulator_2018">11</a>]</span> used to generate the phenotype data used in this assignment generates a vector <span class="math inline">\(\theta\)</span> of log-odds for each individual based on its genotype, given an input list of risk SNPs.  To go from the log-odds scale scale to the binary disease scale, we can rearrange the equation <span class="math inline">\(\log\frac{p}{1-p}=\theta\)</span> to generate a vector
 <span class="math display" id="eq:3-7">\[\begin{equation}
 \mathbb{P}\left(\text{Disease}\mid \theta\right)=\frac{e^{\theta}}{1+e^{\theta}}
 \tag{4.7}
@@ -256,7 +257,7 @@ V_{li}^{-1}X_{ik}\left(Y_l-X_{lj}\beta_j\right)^T+V_{il}^{-1}\left(Y_l-X_{lj}\be
 </div>
 <div id="Week3_practice_fit" class="section level3 hasAnchor" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> Fitting the model<a href="Week3.html#Week3_practice_fit" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Now we will fit the null model, i.e., Eq. <a href="Week3.html#eq:3-9">(4.9)</a> with just the fixed covariates <span class="math inline">\(\beta\)</span> and the random SNP effects <span class="math inline">\(u\)</span>; no SNP main effects have been fitted yet.  The computation is accomplished efficiently in the <kbd>GENESIS</kbd> package <span class="citation">[<a href="#ref-gogarten_genetic_2019">10</a>]</span>.  We need to specify the covariates as columns in dataframe <kbd>mydat</kbd>, and pass the GRM as a covariate matrix:</p>
+<p>Now we will fit the null model, i.e., Eq. <a href="Week3.html#eq:3-9">(4.9)</a> with just the fixed covariates <span class="math inline">\(\beta\)</span> and the random SNP effects <span class="math inline">\(u\)</span>; no SNP main effects have been fitted yet.  The computation is accomplished efficiently in the <kbd>GENESIS</kbd> package <span class="citation">[<a href="#ref-gogarten_genetic_2019">14</a>]</span>.  We need to specify the covariates as columns in dataframe <kbd>mydat</kbd>, and pass the GRM as a covariate matrix:</p>
 <pre><code>scanAnnot &lt;- ScanAnnotationDataFrame(mydat)
 nullmod &lt;- fitNullModel(scanAnnot, outcome = &quot;pheno&quot;, covars = c(&quot;pc1&quot;,&quot;pc2&quot;,&quot;pc3&quot;,&quot;pc4&quot;,&quot;pc5&quot;,&quot;pc6&quot;,&quot;pc7&quot;,&quot;pc8&quot;,&quot;pc9&quot;,&quot;pc10&quot;), cov.mat = myGRM, family = &quot;binomial&quot;) # null model</code></pre>
 <p>Now using our <kbd>GenotypeDataIterator</kbd> object, we can fit each SNP one-at-a-time:</p>
@@ -306,10 +307,10 @@ log( p_cases * (1 - p_controls) / (1 - p_cases) / p_controls) # log-OR</code></p
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body">
 <div id="ref-meyer_phenotypesimulator_2018" class="csl-entry">
-6. Meyer HV, Birney E. <a href="https://doi.org/10.1093/bioinformatics/bty197"><span>PhenotypeSimulator</span>: <span>A</span> comprehensive framework for simulating multi-trait, multi-locus genotype to phenotype relationships</a>. Bioinformatics. 2018;34:2951–6.
+11. Meyer HV, Birney E. <a href="https://doi.org/10.1093/bioinformatics/bty197"><span>PhenotypeSimulator</span>: <span>A</span> comprehensive framework for simulating multi-trait, multi-locus genotype to phenotype relationships</a>. Bioinformatics. 2018;34:2951–6.
 </div>
 <div id="ref-gogarten_genetic_2019" class="csl-entry">
-10. Gogarten SM, Sofer T, Chen H, Yu C, Brody JA, Thornton TA, et al. <a href="https://doi.org/10.1093/bioinformatics/btz567">Genetic association testing using the <span>GENESIS</span> <span>R</span>/<span>Bioconductor</span> package</a>. Bioinformatics. 2019;35:5346–8.
+14. Gogarten SM, Sofer T, Chen H, Yu C, Brody JA, Thornton TA, et al. <a href="https://doi.org/10.1093/bioinformatics/btz567">Genetic association testing using the <span>GENESIS</span> <span>R</span>/<span>Bioconductor</span> package</a>. Bioinformatics. 2019;35:5346–8.
 </div>
 </div>
             </section>
