@@ -10,9 +10,9 @@ The populations in our dataset can be separated into clusters based on their gen
 (\#eq:1-1)
 \end{equation}If we think of $\mathbf{V}$ as the the (standardized) SNP genotypes of an "ideal" person of a certain ancestry, then
 \begin{equation}
-x_{j\cdot} v_{\cdot i}=u_{ji}\lambda_{jj}
+x_{j\cdot} v_{\cdot i}=u_{ji}\lambda_{ii}
 (\#eq:1-2)
-\end{equation}represents the amount of idealized person $i$ in actual person $j$, up to some proportionality constant $\lambda_{jj}$ that depends on the ancestry.&nbsp; Then rows $j$ of $\mathbf{U}$ are the *ancestries* of person $j$, and columns $i$ of $\mathbf{U}$ are the ancestries of each individual on ancestry $i$.&nbsp; It is important to remember that these "idealized" ancestries do not necessarily correspond with our preconceived notions of ancestry, so we cannot interpret them as "European," "African," or "Asian," say.&nbsp; If we rearrange Eq. \@ref(eq:1-1) and use the fact that the columns of $\mathbf{U}$ and $\mathbf{V}$ are *orthonormal*, we can find that 
+\end{equation}represents the amount of idealized person $i$ in actual person $j$, up to some proportionality constant $\lambda_{ii}$ that depends on the ancestry.&nbsp; Then rows $j$ of $\mathbf{U}$ are the *ancestries* of person $j$, and columns $i$ of $\mathbf{U}$ are the ancestries of each individual on ancestry $i$.&nbsp; It is important to remember that these "idealized" ancestries do not necessarily correspond with our preconceived notions of ancestry, so we cannot interpret them as "European," "African," or "Asian," say.&nbsp; If we rearrange Eq. \@ref(eq:1-1) and use the fact that the columns of $\mathbf{U}$ and $\mathbf{V}$ are *orthonormal*, we can find that 
 \begin{equation}
 \mathbf{X}\mathbf{X}^T\mathbf{U}=\mathbf{U}\mathbf{\Sigma}^2,
 (\#eq:1-3)
