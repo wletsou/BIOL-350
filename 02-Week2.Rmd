@@ -46,7 +46,7 @@ KING estimates $\varphi$ from Eq. \@ref(eq:2-6) by counting the number $N$ of lo
 \begin{equation}
 \hat{\varphi_{ij}}=\frac{N_{Aa,Aa}-2N_{AA,aa}}{N_{Aa}^{\left(i\right)}+N_{Aa}^{\left(j\right)}}.
 (\#eq:2-7)
-\end{equation}From \@ref(eq:2-7) it can be seen that shared heterozygous sites increase the estimated relatedness, and that unshared homozygous sites decrease relatedness.&nbsp;  Eq. \@ref(eq:2-7) is called a "robust" estimator because it measures relatedness in a purely pairwise fashion: it does not rely on population estimates of allele frequencies.&nbsp; However, if the individuals are not of the same genetic background, the allele frequency $p$ is not well-defined and Eq. \@ref(eq:2-6) does not hold, leading to negative estimates of $\phi$; this feature is not necessarily a problem, as it helps us to distinguish different ancestries within a single population.
+\end{equation}From \@ref(eq:2-7) it can be seen that shared heterozygous sites increase the estimated relatedness, and that unshared homozygous sites decrease relatedness.&nbsp;  Eq. \@ref(eq:2-7) is called a "robust" estimator because it measures relatedness in a purely pairwise fashion: it does not rely on population estimates of allele frequencies.&nbsp; However, if the individuals are not of the same genetic background, the allele frequency $p$ is not well-defined and Eq. \@ref(eq:2-6) does not hold, leading to negative estimates of $\varphi$; this feature is not necessarily a problem, as it helps us to distinguish different ancestries within a single population.
 
 ### PC-AiR {#Week2_theory_pcair}
 
