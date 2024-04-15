@@ -480,15 +480,15 @@ r=\frac{2\times\frac{1}{2^R}}{2}=\frac{1}{2^R}.
 <span class="math display" id="eq:2-3">\[\begin{equation}
 \pi_2=P\left(\text{share 2 IBD}\right)=2^2\frac{1}{2^{R_1}2^{R_2}},
 \tag{3.3}
-\end{equation}\]</span>is simply the product of the probabilities of sharing through both parents.  The probability of sharing exactly one allele IBD,, viz.,
+\end{equation}\]</span>is simply the product of the probabilities of sharing through both parents.  The probability of sharing exactly one allele IBD, viz.,
 <span class="math display" id="eq:2-4">\[\begin{equation}
 \pi_1=P\left(\text{share 1 IBD}\right)=2\left(\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}\right)-2^3\frac{1}{2^{R_1}2^{R_2}},
 \tag{3.4}
-\end{equation}\]</span>is the got by finding the probability <span class="math inline">\(2\left(\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}\right)-2^2\frac{1}{2^{R_1}2^{R_2}}\)</span> of sharing at least one allele IBD less the probability <span class="math inline">\(\pi_2\)</span> of sharing two.  Finally, the probability of sharing at zero alleles IBD, viz.,
+\end{equation}\]</span>is the got by finding the probability <span class="math inline">\(2\left(\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}\right)-2^2\frac{1}{2^{R_1}2^{R_2}}\)</span> of sharing at least one allele IBD less the probability <span class="math inline">\(\pi_2\)</span> of sharing two.  Finally, the probability of sharing at least zero alleles IBD, viz.,
 <span class="math display" id="eq:2-5">\[\begin{equation}
 \pi_0=P\left(\text{share 0 IBD}\right)=1-2\frac{1}{2^{R_1}}-2\frac{1}{2^{R_2}}+2^2\frac{1}{2^{R_1}2^{R_2}},
 \tag{3.5}
-\end{equation}\]</span>is got by subtracting the probability <span class="math inline">\(\pi_1+\pi_2\)</span> of sharing at least one allele IBD from 1.  The coefficients account for the fact that there are <span class="math inline">\(2\)</span> alleles at each locus and <span class="math inline">\(2^2\)</span> that can be shared.</p>
+\end{equation}\]</span>is got by subtracting the probability <span class="math inline">\(\pi_1+\pi_2\)</span> of sharing at least one allele IBD from 1.  The coefficients account for the fact that there are <span class="math inline">\(2\)</span> alleles at each locus, and <span class="math inline">\(2^2\)</span> that can be shared.</p>
 <p>From <a href="#eq:2-3">(3.3)</a>–<a href="#eq:2-5">(3.5)</a>, the fraction of the genome shared IBD is
 <span class="math display" id="eq:2-4">\[\begin{equation}
 r=\frac{2\pi_2+1\pi_1}{2}=\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}=\frac{1}{2^R}.
@@ -499,10 +499,10 @@ r=\frac{2\pi_2+1\pi_1}{2}=\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}=\frac{1}{2^R}.
 <p>KING <span class="citation">[<a href="#ref-manichaikul_robust_2010">6</a>]</span> computes both the probability <span class="math inline">\(\pi_0\)</span> that two relatives share 0 alleles IBD as well as the coefficient of relatedness <span class="math inline">\(\phi=\frac{r}{2}\)</span>, defined as the probability that two alleles taken one from each relative are IBD at a locus (the maximum probability is <span class="math inline">\(\frac{1}{2}\)</span> because there is a 50% chance that the alleles chosen come from different parents).  The idea is to compare the counts <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> of the alternative alleles which two individuals each have at a genetic locus.  If the pair are from a single ancestral population, the expected values and variances of the allele counts are <span class="math inline">\(\mathbb{E}\left(X\right)=\mathbb{E}\left(Y\right)=2p\)</span> and <span class="math inline">\(\sigma_X^2=\mathbb{E}\left(X^2\right)-\mathbb{E}\left(X\right)^2=\mathbb{E}\left(Y^2\right)-\mathbb{E}\left(Y\right)^2=2p\left(1-p\right)\)</span>.  Thus the expected value of the difference <span class="math inline">\(\mathbb{E}\left(\left(X-Y\right)^2\right)=\mathbb{E}\left(X^2\right)+\mathbb{E}\left(Y^2\right)-2\mathbb{E}\left(XY\right)\)</span> is
 <span class="math display" id="eq:2-6">\[\begin{equation}\frac{\mathbb{E}\left(\left(X-Y\right)^2\right)}{\sigma_X^2+\sigma_Y^2}=1-\frac{\sigma_{XY}}{\sigma_X\sigma_Y}=1-r,
 \tag{3.6}
-\end{equation}\]</span>where <span class="math inline">\(\sigma_{XY}=\mathbb{E}\left(XY\right)-\mathbb{E}\left(X\right)\mathbb{E}\left(Y\right)\)</span> is the covariance of the genotype counts and <span class="math inline">\(r_{ij}=2\phi_{ij}\)</span> is the genetic correlation between individuals <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>; the latter can be interpreted as the amount of the genome shared IBD.</p>
-<p>KING estimates <span class="math inline">\(\phi\)</span> from Eq. <a href="#eq:2-6">(3.6)</a> by counting the number <span class="math inline">\(N\)</span> of loci at which two individuals are heterozygous <span class="math inline">\(Aa,Aa\)</span> or opposite homozygous <span class="math inline">\(AA,aa\)</span>, as well as the total number of alleles at which each individual is heterozygous <span class="math inline">\(Aa\)</span>:
+\end{equation}\]</span>where <span class="math inline">\(\sigma_{XY}=\mathbb{E}\left(XY\right)-\mathbb{E}\left(X\right)\mathbb{E}\left(Y\right)\)</span> is the covariance of the genotype counts and <span class="math inline">\(r_{ij}=2\varphi_{ij}\)</span> is the genetic correlation between individuals <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>; the latter can be interpreted as the amount of the genome shared IBD.</p>
+<p>KING estimates <span class="math inline">\(\varphi\)</span> from Eq. <a href="#eq:2-6">(3.6)</a> by counting the number <span class="math inline">\(N\)</span> of loci at which two individuals are heterozygous <span class="math inline">\(Aa,Aa\)</span> or opposite homozygous <span class="math inline">\(AA,aa\)</span>, as well as the total number of alleles at which each individual is heterozygous <span class="math inline">\(Aa\)</span>:
 <span class="math display" id="eq:2-7">\[\begin{equation}
-\hat{\phi_{ij}}=\frac{N_{Aa,Aa}-2N_{AA,aa}}{N_{Aa}^{\left(i\right)}+N_{Aa}^{\left(j\right)}}.
+\hat{\varphi_{ij}}=\frac{N_{Aa,Aa}-2N_{AA,aa}}{N_{Aa}^{\left(i\right)}+N_{Aa}^{\left(j\right)}}.
 \tag{3.7}
 \end{equation}\]</span>From <a href="#eq:2-7">(3.7)</a> it can be seen that shared heterozygous sites increase the estimated relatedness, and that unshared homozygous sites decrease relatedness.  Eq. <a href="#eq:2-7">(3.7)</a> is called a “robust” estimator because it measures relatedness in a purely pairwise fashion: it does not rely on population estimates of allele frequencies.  However, if the individuals are not of the same genetic background, the allele frequency <span class="math inline">\(p\)</span> is not well-defined and Eq. <a href="#eq:2-6">(3.6)</a> does not hold, leading to negative estimates of <span class="math inline">\(\phi\)</span>; this feature is not necessarily a problem, as it helps us to distinguish different ancestries within a single population.</p>
 </div>
@@ -524,7 +524,7 @@ r=\frac{2\pi_2+1\pi_1}{2}=\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}=\frac{1}{2^R}.
 <span class="math display" id="eq:2-9">\[\begin{equation}
 \mathbb{E}\left(x_{ik}\mid u_{ij}\right)=u_{ij}\lambda_{jj}v_{kj},
 \tag{3.9}
-\end{equation}\]</span>or in terms of the measured genotypes:
+\end{equation}\]</span>or, in terms of the measured genotypes:
 <span class="math display" id="eq:2-10">\[\begin{equation}
 \mathbb{E}\left(g_{ik}\mid u_{ij}\right)=2p_k+u_{ij}\lambda_{jj}v_{kj}\cdot 2p_k\left(1-p_k\right),
 \tag{3.10}
@@ -561,7 +561,7 @@ genofile &lt;- snpgdsOpen(gds.fn,readonly = FALSE) # import gds object</code></p
 <pre><code>index.gdsn(genofile,&quot;sample.id&quot;) # vector of sample names</code></pre>
 <p>or</p>
 <pre><code>index.gdsn(genofile,&quot;genotype&quot;,start = c(1,1), count = c(10,10)) # 10 × 10 sample of the SNP genotype matrix</code></pre>
-<p>This second line uses the <kbd>start</kbd> and <kbd>count</kbd> options to extract a range of data from the 1000 × 304770 matrix og genotypes.  If you have a vector of phenotypes (as will will in <a href="#Week3">Week 3</a>), you can add it as a node in your gds:</p>
+<p>This second line uses the <kbd>start</kbd> and <kbd>count</kbd> options to extract a range of data from the 1000 × 304,770 matrix of genotypes.  If you have a vector of phenotypes (as will will in <a href="#Week3">Week 3</a>), you can add it as a node in your gds:</p>
 <pre><code>add.gdsn(genofile,&quot;phenotype&quot;,val = fam$Phenotype) # add vector of phenotypes from a table</code></pre>
 </div>
 <div id="Week2_practice_pruning" class="section level3" number="3.2.2">
@@ -586,7 +586,7 @@ rownames(ibd$kinship) &lt;- ibd$sample.id</code></pre>
 <p>Finally, we will make a plot of kinship vs. the fraction of the genome shared IBS = 0.  This will take a minute or two to plot, because the data consist of all pairwise observations.</p>
 <pre><code>par(mar = c(5.1,5.1,4.1,2.1) ) # left default plus one
 plot(ibd$IBS0,ibd$kinship,ylab = &quot;Kinship coeffecient&quot;,xlab = &quot;IBS0&quot;,main = &quot;KING relatedness estimation&quot;, ylim = c(0,1),pch = 19,cex.lab = 1.5,cex.axis = 1.5,cex.main = 1.5) # plot kinship coefficient vs. proportion of SNPs not shared IBS</code></pre>
-<p>You should notice that related individuals have a low fraction of IBS = 0, whereas unrelated individuals have a larger proportion.  The graph should be approximately linear, but with discontinuities as the relationsips become closer.&amp;nsbp; There should not be many close relatives in this dataset.&amp;nsbp; What, for example, is the largest inferred value of <span class="math inline">\(\varphi\)</span>?</p>
+<p>You should notice that related individuals have a low fraction of IBS = 0, whereas unrelated individuals have a larger proportion.  The graph should be approximately linear, but with discontinuities as the relationsips become closer.  There should not be many close relatives in this dataset.  What, for example, is the largest inferred value of <span class="math inline">\(\varphi\)</span>?</p>
 <p>In addition, if you remove the <kbd>ylim = c(0,1)</kbd> option, you will see a large cluster of negative kinship coefficients.  These values are expected if the (simulated) individuals are from different genetic backgrounds.</p>
 <p>Before proceding to the next step, close your gds file:</p>
 <pre><code>closefn.gds(genofile)</code></pre>
@@ -606,7 +606,7 @@ plot(mypcair,vx = 1, vy = 2) # plot of PC2 vs PC1</code></pre>
 </div>
 <div id="Week2_practice_pcrelate" class="section level3" number="3.2.5">
 <h3><span class="header-section-number">3.2.5</span> PC-Relate</h3>
-<p>With our improved PCA results from PC-AiR, we will next update the GRM using individual-specific expected genotype counts <span class="math inline">\(2p_{ik}\)</span>.&amp;nbps; First we need to create an interator that evaluates blocks of SNPs one at a time.</p>
+<p>With our improved PCA results from PC-AiR, we will next update the GRM using individual-specific expected genotype counts <span class="math inline">\(2p_{ik}\)</span>.  First we need to create an interator that evaluates blocks of SNPs one at a time.</p>
 <pre><code>genoData.iterator &lt;- GenotypeBlockIterator(genoData,snpInclude = pruned)</code></pre>
 <p>From our pruned set of SNPs, you should have only one block.</p>
 <p>Next we can run PC-Relate to update the kinship coefficients.  From the PCs determined from PC-Air, we can get the new GRM by running:</p>
@@ -614,7 +614,7 @@ plot(mypcair,vx = 1, vy = 2) # plot of PC2 vs PC1</code></pre>
 <p>The output object contains a field called <kbd>kinBtwn</kbd> which contains subfields <kbd>k0</kbd> and <kbd>kin</kbd> corresponding to the fraction of the genome shared IBD = 0 and the kinship between each pair of individuals.  Make a plot of these values, similar to KING’s, using:</p>
 <pre><code>par(mar = c(5.1,5.1,4.1,2.1) ) # left default plus one
 plot(mypcrel$kinBtwn$k0,mypcrel$kinBtwn$kin,xlab = &quot;IBD0 proportion&quot;,ylab = &quot;Kinship coefficient&quot;,main = &quot;PC-relate relatedness estimation&quot;,pch = 19,cex.axis = 1.5,cex.lab = 1.5,cex.main = 1.5) # kinship vs. IBD0</code></pre>
-<p>Finally, we conver the results of <kbd>pcrelate</kbd> to a GRM:</p>
+<p>Finally, we convert the results of <kbd>pcrelate</kbd> to a GRM:</p>
 <pre><code>myGRM &lt;- pcrelateToMatrix(mypcrel,scaleKin = 2) # genomic relationship matrix, multiplying each phi by 2</code></pre>
 <p>We scale by a factor of 2 in this code so that each kinship is multiplied by 2: then the entries of the GRM will represent the fraction of the genome shared IBD.  Extract a 10 × 10 subset of this matrix to see if the results make sense, and how they compare to KING’s kinship matrix computed above:</p>
 <pre><code>myGRM[1:10,1:10]</code></pre>

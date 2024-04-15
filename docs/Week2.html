@@ -188,15 +188,15 @@ r=\frac{2\times\frac{1}{2^R}}{2}=\frac{1}{2^R}.
 <span class="math display" id="eq:2-3">\[\begin{equation}
 \pi_2=P\left(\text{share 2 IBD}\right)=2^2\frac{1}{2^{R_1}2^{R_2}},
 \tag{3.3}
-\end{equation}\]</span>is simply the product of the probabilities of sharing through both parents.  The probability of sharing exactly one allele IBD,, viz.,
+\end{equation}\]</span>is simply the product of the probabilities of sharing through both parents.  The probability of sharing exactly one allele IBD, viz.,
 <span class="math display" id="eq:2-4">\[\begin{equation}
 \pi_1=P\left(\text{share 1 IBD}\right)=2\left(\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}\right)-2^3\frac{1}{2^{R_1}2^{R_2}},
 \tag{3.4}
-\end{equation}\]</span>is the got by finding the probability <span class="math inline">\(2\left(\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}\right)-2^2\frac{1}{2^{R_1}2^{R_2}}\)</span> of sharing at least one allele IBD less the probability <span class="math inline">\(\pi_2\)</span> of sharing two.  Finally, the probability of sharing at zero alleles IBD, viz.,
+\end{equation}\]</span>is the got by finding the probability <span class="math inline">\(2\left(\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}\right)-2^2\frac{1}{2^{R_1}2^{R_2}}\)</span> of sharing at least one allele IBD less the probability <span class="math inline">\(\pi_2\)</span> of sharing two.  Finally, the probability of sharing at least zero alleles IBD, viz.,
 <span class="math display" id="eq:2-5">\[\begin{equation}
 \pi_0=P\left(\text{share 0 IBD}\right)=1-2\frac{1}{2^{R_1}}-2\frac{1}{2^{R_2}}+2^2\frac{1}{2^{R_1}2^{R_2}},
 \tag{3.5}
-\end{equation}\]</span>is got by subtracting the probability <span class="math inline">\(\pi_1+\pi_2\)</span> of sharing at least one allele IBD from 1.  The coefficients account for the fact that there are <span class="math inline">\(2\)</span> alleles at each locus and <span class="math inline">\(2^2\)</span> that can be shared.</p>
+\end{equation}\]</span>is got by subtracting the probability <span class="math inline">\(\pi_1+\pi_2\)</span> of sharing at least one allele IBD from 1.  The coefficients account for the fact that there are <span class="math inline">\(2\)</span> alleles at each locus, and <span class="math inline">\(2^2\)</span> that can be shared.</p>
 <p>From <a href="Week2.html#eq:2-3">(3.3)</a>–<a href="Week2.html#eq:2-5">(3.5)</a>, the fraction of the genome shared IBD is
 <span class="math display" id="eq:2-4">\[\begin{equation}
 r=\frac{2\pi_2+1\pi_1}{2}=\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}=\frac{1}{2^R}.
@@ -204,19 +204,19 @@ r=\frac{2\pi_2+1\pi_1}{2}=\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}=\frac{1}{2^R}.
 \end{equation}\]</span>But the same value of <span class="math inline">\(r\)</span> can obtain from different values of <span class="math inline">\(\pi_1\)</span> and <span class="math inline">\(\pi_2\)</span>.  For example, full sibs have a 25% probability of sharing two alleles and a 50% chance of sharing one allele at a locus, for a total fraction <span class="math inline">\(r=0.5\)</span> shared.  But a parent and child have 0% chance of sharing two alleles and a 100% chance of sharing one, also giving <span class="math inline">\(r=0.5\)</span>.  Thus, your parent does is not equal your sibling, despite the fact of your sharing equal amounts of your genome with each of them.  Put another way, parents cannot pass on their genotypes to their offspring.</p>
 <div id="Week2_theory_king" class="section level3 hasAnchor" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> KING<a href="Week2.html#Week2_theory_king" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>KING <span class="citation">[<a href="#ref-manichaikul_robust_2010">1</a>]</span> computes both the probability <span class="math inline">\(\pi_0\)</span> that two relatives share 0 alleles IBD as well as the coefficient of relatedness <span class="math inline">\(\phi=\frac{r}{2}\)</span>, defined as the probability that two alleles taken one from each relative are IBD at a locus (the maximum probability is <span class="math inline">\(\frac{1}{2}\)</span> because there is a 50% chance that the alleles chosen come from different parents).  The idea is to compare the counts <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> of the alternative alleles which two individuals each have at a genetic locus.  If the pair are from a single ancestral population, the expected values and variances of the allele counts are <span class="math inline">\(\mathbb{E}\left(X\right)=\mathbb{E}\left(Y\right)=2p\)</span> and <span class="math inline">\(\sigma_X^2=\mathbb{E}\left(X^2\right)-\mathbb{E}\left(X\right)^2=\mathbb{E}\left(Y^2\right)-\mathbb{E}\left(Y\right)^2=2p\left(1-p\right)\)</span>.  Thus the expected value of the difference <span class="math inline">\(\mathbb{E}\left(\left(X-Y\right)^2\right)=\mathbb{E}\left(X^2\right)+\mathbb{E}\left(Y^2\right)-2\mathbb{E}\left(XY\right)\)</span> is
+<p>KING <span class="citation">[<a href="#ref-manichaikul_robust_2010">6</a>]</span> computes both the probability <span class="math inline">\(\pi_0\)</span> that two relatives share 0 alleles IBD as well as the coefficient of relatedness <span class="math inline">\(\phi=\frac{r}{2}\)</span>, defined as the probability that two alleles taken one from each relative are IBD at a locus (the maximum probability is <span class="math inline">\(\frac{1}{2}\)</span> because there is a 50% chance that the alleles chosen come from different parents).  The idea is to compare the counts <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> of the alternative alleles which two individuals each have at a genetic locus.  If the pair are from a single ancestral population, the expected values and variances of the allele counts are <span class="math inline">\(\mathbb{E}\left(X\right)=\mathbb{E}\left(Y\right)=2p\)</span> and <span class="math inline">\(\sigma_X^2=\mathbb{E}\left(X^2\right)-\mathbb{E}\left(X\right)^2=\mathbb{E}\left(Y^2\right)-\mathbb{E}\left(Y\right)^2=2p\left(1-p\right)\)</span>.  Thus the expected value of the difference <span class="math inline">\(\mathbb{E}\left(\left(X-Y\right)^2\right)=\mathbb{E}\left(X^2\right)+\mathbb{E}\left(Y^2\right)-2\mathbb{E}\left(XY\right)\)</span> is
 <span class="math display" id="eq:2-6">\[\begin{equation}\frac{\mathbb{E}\left(\left(X-Y\right)^2\right)}{\sigma_X^2+\sigma_Y^2}=1-\frac{\sigma_{XY}}{\sigma_X\sigma_Y}=1-r,
 \tag{3.6}
-\end{equation}\]</span>where <span class="math inline">\(\sigma_{XY}=\mathbb{E}\left(XY\right)-\mathbb{E}\left(X\right)\mathbb{E}\left(Y\right)\)</span> is the covariance of the genotype counts and <span class="math inline">\(r_{ij}=2\phi_{ij}\)</span> is the genetic correlation between individuals <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>; the latter can be interpreted as the amount of the genome shared IBD.</p>
-<p>KING estimates <span class="math inline">\(\phi\)</span> from Eq. <a href="Week2.html#eq:2-6">(3.6)</a> by counting the number <span class="math inline">\(N\)</span> of loci at which two individuals are heterozygous <span class="math inline">\(Aa,Aa\)</span> or opposite homozygous <span class="math inline">\(AA,aa\)</span>, as well as the total number of alleles at which each individual is heterozygous <span class="math inline">\(Aa\)</span>:
+\end{equation}\]</span>where <span class="math inline">\(\sigma_{XY}=\mathbb{E}\left(XY\right)-\mathbb{E}\left(X\right)\mathbb{E}\left(Y\right)\)</span> is the covariance of the genotype counts and <span class="math inline">\(r_{ij}=2\varphi_{ij}\)</span> is the genetic correlation between individuals <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>; the latter can be interpreted as the amount of the genome shared IBD.</p>
+<p>KING estimates <span class="math inline">\(\varphi\)</span> from Eq. <a href="Week2.html#eq:2-6">(3.6)</a> by counting the number <span class="math inline">\(N\)</span> of loci at which two individuals are heterozygous <span class="math inline">\(Aa,Aa\)</span> or opposite homozygous <span class="math inline">\(AA,aa\)</span>, as well as the total number of alleles at which each individual is heterozygous <span class="math inline">\(Aa\)</span>:
 <span class="math display" id="eq:2-7">\[\begin{equation}
-\hat{\phi_{ij}}=\frac{N_{Aa,Aa}-2N_{AA,aa}}{N_{Aa}^{\left(i\right)}+N_{Aa}^{\left(j\right)}}.
+\hat{\varphi_{ij}}=\frac{N_{Aa,Aa}-2N_{AA,aa}}{N_{Aa}^{\left(i\right)}+N_{Aa}^{\left(j\right)}}.
 \tag{3.7}
 \end{equation}\]</span>From <a href="Week2.html#eq:2-7">(3.7)</a> it can be seen that shared heterozygous sites increase the estimated relatedness, and that unshared homozygous sites decrease relatedness.  Eq. <a href="Week2.html#eq:2-7">(3.7)</a> is called a “robust” estimator because it measures relatedness in a purely pairwise fashion: it does not rely on population estimates of allele frequencies.  However, if the individuals are not of the same genetic background, the allele frequency <span class="math inline">\(p\)</span> is not well-defined and Eq. <a href="Week2.html#eq:2-6">(3.6)</a> does not hold, leading to negative estimates of <span class="math inline">\(\phi\)</span>; this feature is not necessarily a problem, as it helps us to distinguish different ancestries within a single population.</p>
 </div>
 <div id="Week2_theory_pcair" class="section level3 hasAnchor" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> PC-AiR<a href="Week2.html#Week2_theory_pcair" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>KING provides an estimate of relatedness.  But as cryptic relatedness can skew ancestry estimates determined by PCA, we should use kinship to correct PCA.  This is where principal components analysis in related samples, or PC-AiR <span class="citation">[<a href="#ref-conomos_robust_2015">2</a>]</span> comes in handy. PC-AiR identifies a subset of <span class="math inline">\(\mathcal{U}\)</span> of individuals who are unrelated to each other (via negative KING kinship estimates), but maximally related to individuals in a remaining set <span class="math inline">\(\mathcal{R}\)</span>. Recalling the math in <a href="Week1.html#Week1">Week 1</a>, the matrix
+<p>KING provides an estimate of relatedness.  But as cryptic relatedness can skew ancestry estimates determined by PCA, we should use kinship to correct PCA.  This is where principal components analysis in related samples, or PC-AiR <span class="citation">[<a href="#ref-conomos_robust_2015">7</a>]</span> comes in handy. PC-AiR identifies a subset of <span class="math inline">\(\mathcal{U}\)</span> of individuals who are unrelated to each other (via negative KING kinship estimates), but maximally related to individuals in a remaining set <span class="math inline">\(\mathcal{R}\)</span>. Recalling the math in <a href="Week1.html#Week1">Week 1</a>, the matrix
 <span class="math display" id="eq:2-8">\[\begin{equation}
 \frac{1}{m}\mathbf{W}=\mathbf{X}^T\mathbf{U}=\mathbf{V}\mathbf{\Sigma},
 \tag{3.8}
@@ -228,11 +228,11 @@ r=\frac{2\pi_2+1\pi_1}{2}=\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}=\frac{1}{2^R}.
 </div>
 <div id="Week2_theory_pcrelate" class="section level3 hasAnchor" number="3.1.3">
 <h3><span class="header-section-number">3.1.3</span> PC-Relate<a href="Week2.html#Week2_theory_pcrelate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Once we have ancestry-corrected principal components for all individuals, we can obtain “corrected” expected genotypes <span class="math inline">\(\mathbb{E}\left(X_{ik}\right)=2p_{ik}\)</span> of SNPs <span class="math inline">\(k\)</span> for populations of admixed individuals <span class="math inline">\(i\)</span> using a method known as PC-Relate <span class="citation">[<a href="#ref-conomos_model-free_2016">3</a>]</span>.  Because in populations with both shared genetic ancestry and cryptic relatedness, we can use the PC estimates <span class="math inline">\(v_{kj}\)</span> of the allele frequencies in each population <span class="math inline">\(j\)</span> to express the scaled genotypes <span class="math inline">\(x_{ij}=\frac{g_{ik}-2p_k}{2p_k\left(1-p_k\right)}\)</span> as
+<p>Once we have ancestry-corrected principal components for all individuals, we can obtain “corrected” expected genotypes <span class="math inline">\(\mathbb{E}\left(X_{ik}\right)=2p_{ik}\)</span> of SNPs <span class="math inline">\(k\)</span> for populations of admixed individuals <span class="math inline">\(i\)</span> using a method known as PC-Relate <span class="citation">[<a href="#ref-conomos_model-free_2016">8</a>]</span>.  Because in populations with both shared genetic ancestry and cryptic relatedness, we can use the PC estimates <span class="math inline">\(v_{kj}\)</span> of the allele frequencies in each population <span class="math inline">\(j\)</span> to express the scaled genotypes <span class="math inline">\(x_{ij}=\frac{g_{ik}-2p_k}{2p_k\left(1-p_k\right)}\)</span> as
 <span class="math display" id="eq:2-9">\[\begin{equation}
 \mathbb{E}\left(x_{ik}\mid u_{ij}\right)=u_{ij}\lambda_{jj}v_{kj},
 \tag{3.9}
-\end{equation}\]</span>or in terms of the measured genotypes:
+\end{equation}\]</span>or, in terms of the measured genotypes:
 <span class="math display" id="eq:2-10">\[\begin{equation}
 \mathbb{E}\left(g_{ik}\mid u_{ij}\right)=2p_k+u_{ij}\lambda_{jj}v_{kj}\cdot 2p_k\left(1-p_k\right),
 \tag{3.10}
@@ -247,7 +247,7 @@ r=\frac{2\pi_2+1\pi_1}{2}=\frac{1}{2^{R_1}}+\frac{1}{2^{R_2}}=\frac{1}{2^R}.
 <h2><span class="header-section-number">3.2</span> Kinship: practice<a href="Week2.html#Week2_practice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="Week2_practice_import" class="section level3 hasAnchor" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Importing data<a href="Week2.html#Week2_practice_import" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Now we’ll try kinship analysis for ourselves using a simulated GWAS dataset.  This dataset was created using the program bioGWAS <span class="citation">[<a href="#ref-changalidis_biogwas_2023">4</a>]</span>, which uses other programs to simulate haplotypes <span class="citation">[<a href="#ref-su_hapgen2_2011">5</a>]</span> and phenotypes <span class="citation">[<a href="#ref-meyer_phenotypesimulator_2018">6</a>]</span> based on a set of input variants previously associated with breast cancer <span class="citation">[<a href="#ref-michailidou_genome-wide_2015">7</a>]</span> and made available by the MRC Interactive Epidemiology Unit’s Open GWAS Project <span class="citation">[<a href="#ref-elsworth_mrc_2020">8</a>]</span>.  This particular <a href="https://github.com/wletsou/BIOL-350/raw/master/docs/EUR_BCa.vcf.gz">vcf file</a> contains 1000 chromosome 10 genotypes at 345,130 variants (304,770 of which are SNPs) generated from 263 1KGP females of European origin.  Download and unzip the file:</p>
+<p>Now we’ll try kinship analysis for ourselves using a simulated GWAS dataset.  This dataset was created using the program bioGWAS <span class="citation">[<a href="#ref-changalidis_biogwas_2023">9</a>]</span>, which uses other programs to simulate haplotypes <span class="citation">[<a href="#ref-su_hapgen2_2011">10</a>]</span> and phenotypes <span class="citation">[<a href="#ref-meyer_phenotypesimulator_2018">11</a>]</span> based on a set of input variants previously associated with breast cancer <span class="citation">[<a href="#ref-michailidou_genome-wide_2015">12</a>]</span> and made available by the MRC Interactive Epidemiology Unit’s Open GWAS Project <span class="citation">[<a href="#ref-elsworth_mrc_2020">13</a>]</span>.  This particular <a href="https://github.com/wletsou/BIOL-350/raw/master/docs/EUR_BCa.vcf.gz">vcf file</a> contains 1000 chromosome 10 genotypes at 345,130 variants (304,770 of which are SNPs) generated from 263 1KGP females of European origin.  Download and unzip the file:</p>
 <pre><code>gunzip EUR_BCa.vcf.gz</code></pre>
 <p>and move it to your desired location.  The unzipped file is readable in plain text format, although it is very big.</p>
 <p>Next load the following R packages:</p>
@@ -263,13 +263,13 @@ gds.fn &lt;- sprintf(&quot;%s/EUR_BCa.gds&quot;,directory) # gds file name (abou
 <p>Next perform the conversion and importation into R:</p>
 <pre><code>snpgdsVCF2GDS(vcf.fn,gds.fn) # create gds file from vcf
 genofile &lt;- snpgdsOpen(gds.fn,readonly = FALSE) # import gds object</code></pre>
-<p>The GDS format is an efficient representation of vcf files which does not require that the entire file be loaded into memory at once <span class="citation">[<a href="#ref-zheng_high-performance_2012">9</a>]</span>.  By typing</p>
+<p>The GDS format is an efficient representation of vcf files which does not require that the entire file be loaded into memory at once <span class="citation">[<a href="#ref-zheng_high-performance_2012">4</a>]</span>.  By typing</p>
 <pre><code>genofile</code></pre>
 <p>you can see all the fields under your gds object.  To access one of these nodes, type</p>
 <pre><code>index.gdsn(genofile,&quot;sample.id&quot;) # vector of sample names</code></pre>
 <p>or</p>
 <pre><code>index.gdsn(genofile,&quot;genotype&quot;,start = c(1,1), count = c(10,10)) # 10 × 10 sample of the SNP genotype matrix</code></pre>
-<p>This second line uses the <kbd>start</kbd> and <kbd>count</kbd> options to extract a range of data from the 1000 × 304770 matrix og genotypes.  If you have a vector of phenotypes (as will will in <a href="Week3.html#Week3">Week 3</a>), you can add it as a node in your gds:</p>
+<p>This second line uses the <kbd>start</kbd> and <kbd>count</kbd> options to extract a range of data from the 1000 × 304,770 matrix of genotypes.  If you have a vector of phenotypes (as will will in <a href="Week3.html#Week3">Week 3</a>), you can add it as a node in your gds:</p>
 <pre><code>add.gdsn(genofile,&quot;phenotype&quot;,val = fam$Phenotype) # add vector of phenotypes from a table</code></pre>
 </div>
 <div id="Week2_practice_pruning" class="section level3 hasAnchor" number="3.2.2">
@@ -294,7 +294,7 @@ rownames(ibd$kinship) &lt;- ibd$sample.id</code></pre>
 <p>Finally, we will make a plot of kinship vs. the fraction of the genome shared IBS = 0.  This will take a minute or two to plot, because the data consist of all pairwise observations.</p>
 <pre><code>par(mar = c(5.1,5.1,4.1,2.1) ) # left default plus one
 plot(ibd$IBS0,ibd$kinship,ylab = &quot;Kinship coeffecient&quot;,xlab = &quot;IBS0&quot;,main = &quot;KING relatedness estimation&quot;, ylim = c(0,1),pch = 19,cex.lab = 1.5,cex.axis = 1.5,cex.main = 1.5) # plot kinship coefficient vs. proportion of SNPs not shared IBS</code></pre>
-<p>You should notice that related individuals have a low fraction of IBS = 0, whereas unrelated individuals have a larger proportion.  The graph should be approximately linear, but with discontinuities as the relationsips become closer.&amp;nsbp; There should not be many close relatives in this dataset.&amp;nsbp; What, for example, is the largest inferred value of <span class="math inline">\(\varphi\)</span>?</p>
+<p>You should notice that related individuals have a low fraction of IBS = 0, whereas unrelated individuals have a larger proportion.  The graph should be approximately linear, but with discontinuities as the relationsips become closer.  There should not be many close relatives in this dataset.  What, for example, is the largest inferred value of <span class="math inline">\(\varphi\)</span>?</p>
 <p>In addition, if you remove the <kbd>ylim = c(0,1)</kbd> option, you will see a large cluster of negative kinship coefficients.  These values are expected if the (simulated) individuals are from different genetic backgrounds.</p>
 <p>Before proceding to the next step, close your gds file:</p>
 <pre><code>closefn.gds(genofile)</code></pre>
@@ -304,7 +304,7 @@ plot(ibd$IBS0,ibd$kinship,ylab = &quot;Kinship coeffecient&quot;,xlab = &quot;IB
 <p>The PC-AiR method is part of the <kbd>GENESIS</kbd> package, which imports gds files through:</p>
 <pre><code>geno &lt;- GdsGenotypeReader(sprintf(&quot;%s/pat_filt_sim.gds&quot;,directory)) # import the gds file you created above
 genoData &lt;- GenotypeData(geno)</code></pre>
-<p>and converts the objects to <kbd>GenotypeData</kbd> format <span class="citation">[<a href="#ref-gogarten_genetic_2019">10</a>]</span>.</p>
+<p>and converts the objects to <kbd>GenotypeData</kbd> format <span class="citation">[<a href="#ref-gogarten_genetic_2019">14</a>]</span>.</p>
 <p>Now we can run PC-Air.  It is important to include the kinship estimates we got from KING, as well as the list of pruned SNPs.  These values will help PC-AiR determine a set <span class="math inline">\(\mathcal{U}\)</span> of ancestry-representative individuals and their principal components, which will then imputed into the remaining subset <span class="math inline">\(\mathcal{R}\)</span> of individuals:</p>
 <pre><code>mypcair &lt;- pcair(genoData,kinobj = ibd$kinship,divobj = ibd$kinship,snp.include = pruned) # genotype principal components based on a subset of unrelated individuals</code></pre>
 <p>Next we can make a plot of the first few PCs using:</p>
@@ -314,7 +314,7 @@ plot(mypcair,vx = 1, vy = 2) # plot of PC2 vs PC1</code></pre>
 </div>
 <div id="Week2_practice_pcrelate" class="section level3 hasAnchor" number="3.2.5">
 <h3><span class="header-section-number">3.2.5</span> PC-Relate<a href="Week2.html#Week2_practice_pcrelate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>With our improved PCA results from PC-AiR, we will next update the GRM using individual-specific expected genotype counts <span class="math inline">\(2p_{ik}\)</span>.&amp;nbps; First we need to create an interator that evaluates blocks of SNPs one at a time.</p>
+<p>With our improved PCA results from PC-AiR, we will next update the GRM using individual-specific expected genotype counts <span class="math inline">\(2p_{ik}\)</span>.  First we need to create an interator that evaluates blocks of SNPs one at a time.</p>
 <pre><code>genoData.iterator &lt;- GenotypeBlockIterator(genoData,snpInclude = pruned)</code></pre>
 <p>From our pruned set of SNPs, you should have only one block.</p>
 <p>Next we can run PC-Relate to update the kinship coefficients.  From the PCs determined from PC-Air, we can get the new GRM by running:</p>
@@ -322,7 +322,7 @@ plot(mypcair,vx = 1, vy = 2) # plot of PC2 vs PC1</code></pre>
 <p>The output object contains a field called <kbd>kinBtwn</kbd> which contains subfields <kbd>k0</kbd> and <kbd>kin</kbd> corresponding to the fraction of the genome shared IBD = 0 and the kinship between each pair of individuals.  Make a plot of these values, similar to KING’s, using:</p>
 <pre><code>par(mar = c(5.1,5.1,4.1,2.1) ) # left default plus one
 plot(mypcrel$kinBtwn$k0,mypcrel$kinBtwn$kin,xlab = &quot;IBD0 proportion&quot;,ylab = &quot;Kinship coefficient&quot;,main = &quot;PC-relate relatedness estimation&quot;,pch = 19,cex.axis = 1.5,cex.lab = 1.5,cex.main = 1.5) # kinship vs. IBD0</code></pre>
-<p>Finally, we conver the results of <kbd>pcrelate</kbd> to a GRM:</p>
+<p>Finally, we convert the results of <kbd>pcrelate</kbd> to a GRM:</p>
 <pre><code>myGRM &lt;- pcrelateToMatrix(mypcrel,scaleKin = 2) # genomic relationship matrix, multiplying each phi by 2</code></pre>
 <p>We scale by a factor of 2 in this code so that each kinship is multiplied by 2: then the entries of the GRM will represent the fraction of the genome shared IBD.  Extract a 10 × 10 subset of this matrix to see if the results make sense, and how they compare to KING’s kinship matrix computed above:</p>
 <pre><code>myGRM[1:10,1:10]</code></pre>
@@ -344,34 +344,46 @@ plot(mypcrel$kinBtwn$k0,mypcrel$kinBtwn$kin,xlab = &quot;IBD0 proportion&quot;,y
 <h2><span class="header-section-number">3.3</span> References<a href="Week2.html#Week2_ref" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="refs" class="references csl-bib-body">
 <div class="csl-entry">
-1. Manichaikul A, Mychaleckyj JC, Rich SS, Daly K, Sale M, Chen W-M. <a href="https://doi.org/10.1093/bioinformatics/btq559">Robust relationship inference in genome-wide association studies</a>. Bioinformatics. 2010;26:2867–73.
+1. The 1000 Genomes Project Consortium, Auton A, Abecasis GR, Steering committee, Altshuler DM, Durbin RM, et al. <a href="https://doi.org/10.1038/nature15393">A global reference for human genetic variation</a>. Nature. 2015;526:68–74.
 </div>
 <div class="csl-entry">
-2. Conomos MP, Miller MB, Thornton TA. <a href="https://doi.org/10.1002/gepi.21896">Robust <span>Inference</span> of <span>Population</span> <span>Structure</span> for <span>Ancestry</span> <span>Prediction</span> and <span>Correction</span> of <span>Stratification</span> in the <span>Presence</span> of <span>Relatedness</span></a>. Genetic Epidemiology. 2015;39:276–93.
+2. Price AL, Patterson NJ, Plenge RM, Weinblatt ME, Shadick NA, Reich D. <a href="https://doi.org/10.1038/ng1847">Principal components analysis corrects for stratification in genome-wide association studies</a>. Nature Genetics. 2006;38:904–9.
 </div>
 <div class="csl-entry">
-3. Conomos MP, Reiner AP, Weir BS, Thornton TA. <a href="https://doi.org/10.1016/j.ajhg.2015.11.022">Model-free <span>Estimation</span> of <span>Recent</span> <span>Genetic</span> <span>Relatedness</span></a>. The American Journal of Human Genetics. 2016;98:127–48.
+3. Shlens J. <a href="http://arxiv.org/abs/1404.1100">A <span>Tutorial</span> on <span>Principal</span> <span>Component</span> <span>Analysis</span></a>. 2014.
 </div>
 <div class="csl-entry">
-4. Changalidis AI, Alexeev DA, Nasykhova YA, Glotov AS, Barbitoff YA. <a href="https://doi.org/10.3390/biology13010010"><span class="nocase">bioGWAS</span>: <span>A</span> <span>Simple</span> and <span>Flexible</span> <span>Tool</span> for <span>Simulating</span> <span>GWAS</span> <span>Datasets</span></a>. Biology. 2023;13:10.
+4. Zheng X, Levine D, Shen J, Gogarten SM, Laurie C, Weir BS. <a href="https://doi.org/10.1093/bioinformatics/bts606">A high-performance computing toolset for relatedness and principal component analysis of <span>SNP</span> data</a>. Bioinformatics. 2012;28:3326–8.
 </div>
 <div class="csl-entry">
-5. Su Z, Marchini J, Donnelly P. <a href="https://doi.org/10.1093/bioinformatics/btr341"><span>HAPGEN2</span>: Simulation of multiple disease <span>SNPs</span></a>. Bioinformatics. 2011;27:2304–5.
+5. Zheng X, Gogarten SM, Lawrence M, Stilp A, Conomos MP, Weir BS, et al. <a href="https://doi.org/10.1093/bioinformatics/btx145"><span>SeqArray</span>—a storage-efficient high-performance data format for <span>WGS</span> variant calls</a>. Bioinformatics. 2017;33:2251–7.
 </div>
 <div class="csl-entry">
-6. Meyer HV, Birney E. <a href="https://doi.org/10.1093/bioinformatics/bty197"><span>PhenotypeSimulator</span>: <span>A</span> comprehensive framework for simulating multi-trait, multi-locus genotype to phenotype relationships</a>. Bioinformatics. 2018;34:2951–6.
+6. Manichaikul A, Mychaleckyj JC, Rich SS, Daly K, Sale M, Chen W-M. <a href="https://doi.org/10.1093/bioinformatics/btq559">Robust relationship inference in genome-wide association studies</a>. Bioinformatics. 2010;26:2867–73.
 </div>
 <div class="csl-entry">
-7. Michailidou K, BOCS, kConFab Investigators, AOCS Group, NBCS, GENICA Network, et al. <a href="https://doi.org/10.1038/ng.3242">Genome-wide association analysis of more than 120,000 individuals identifies 15 new susceptibility loci for breast cancer</a>. Nature Genetics. 2015;47:373–80.
+7. Conomos MP, Miller MB, Thornton TA. <a href="https://doi.org/10.1002/gepi.21896">Robust <span>Inference</span> of <span>Population</span> <span>Structure</span> for <span>Ancestry</span> <span>Prediction</span> and <span>Correction</span> of <span>Stratification</span> in the <span>Presence</span> of <span>Relatedness</span></a>. Genetic Epidemiology. 2015;39:276–93.
 </div>
 <div class="csl-entry">
-8. Elsworth B, Lyon M, Alexander T, Liu Y, Matthews P, Hallett J, et al. <a href="https://doi.org/10.1101/2020.08.10.244293">The <span>MRC</span> <span>IEU</span> <span>OpenGWAS</span> data infrastructure</a>. 2020.
+8. Conomos MP, Reiner AP, Weir BS, Thornton TA. <a href="https://doi.org/10.1016/j.ajhg.2015.11.022">Model-free <span>Estimation</span> of <span>Recent</span> <span>Genetic</span> <span>Relatedness</span></a>. The American Journal of Human Genetics. 2016;98:127–48.
 </div>
 <div class="csl-entry">
-9. Zheng X, Levine D, Shen J, Gogarten SM, Laurie C, Weir BS. <a href="https://doi.org/10.1093/bioinformatics/bts606">A high-performance computing toolset for relatedness and principal component analysis of <span>SNP</span> data</a>. Bioinformatics. 2012;28:3326–8.
+9. Changalidis AI, Alexeev DA, Nasykhova YA, Glotov AS, Barbitoff YA. <a href="https://doi.org/10.3390/biology13010010"><span class="nocase">bioGWAS</span>: <span>A</span> <span>Simple</span> and <span>Flexible</span> <span>Tool</span> for <span>Simulating</span> <span>GWAS</span> <span>Datasets</span></a>. Biology. 2023;13:10.
 </div>
 <div class="csl-entry">
-10. Gogarten SM, Sofer T, Chen H, Yu C, Brody JA, Thornton TA, et al. <a href="https://doi.org/10.1093/bioinformatics/btz567">Genetic association testing using the <span>GENESIS</span> <span>R</span>/<span>Bioconductor</span> package</a>. Bioinformatics. 2019;35:5346–8.
+10. Su Z, Marchini J, Donnelly P. <a href="https://doi.org/10.1093/bioinformatics/btr341"><span>HAPGEN2</span>: Simulation of multiple disease <span>SNPs</span></a>. Bioinformatics. 2011;27:2304–5.
+</div>
+<div class="csl-entry">
+11. Meyer HV, Birney E. <a href="https://doi.org/10.1093/bioinformatics/bty197"><span>PhenotypeSimulator</span>: <span>A</span> comprehensive framework for simulating multi-trait, multi-locus genotype to phenotype relationships</a>. Bioinformatics. 2018;34:2951–6.
+</div>
+<div class="csl-entry">
+12. Michailidou K, BOCS, kConFab Investigators, AOCS Group, NBCS, GENICA Network, et al. <a href="https://doi.org/10.1038/ng.3242">Genome-wide association analysis of more than 120,000 individuals identifies 15 new susceptibility loci for breast cancer</a>. Nature Genetics. 2015;47:373–80.
+</div>
+<div class="csl-entry">
+13. Elsworth B, Lyon M, Alexander T, Liu Y, Matthews P, Hallett J, et al. <a href="https://doi.org/10.1101/2020.08.10.244293">The <span>MRC</span> <span>IEU</span> <span>OpenGWAS</span> data infrastructure</a>. 2020.
+</div>
+<div class="csl-entry">
+14. Gogarten SM, Sofer T, Chen H, Yu C, Brody JA, Thornton TA, et al. <a href="https://doi.org/10.1093/bioinformatics/btz567">Genetic association testing using the <span>GENESIS</span> <span>R</span>/<span>Bioconductor</span> package</a>. Bioinformatics. 2019;35:5346–8.
 </div>
 </div>
 
@@ -379,35 +391,35 @@ plot(mypcrel$kinBtwn$k0,mypcrel$kinBtwn$kin,xlab = &quot;IBD0 proportion&quot;,y
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body">
+<div id="ref-zheng_high-performance_2012" class="csl-entry">
+4. Zheng X, Levine D, Shen J, Gogarten SM, Laurie C, Weir BS. <a href="https://doi.org/10.1093/bioinformatics/bts606">A high-performance computing toolset for relatedness and principal component analysis of <span>SNP</span> data</a>. Bioinformatics. 2012;28:3326–8.
+</div>
 <div id="ref-manichaikul_robust_2010" class="csl-entry">
-1. Manichaikul A, Mychaleckyj JC, Rich SS, Daly K, Sale M, Chen W-M. <a href="https://doi.org/10.1093/bioinformatics/btq559">Robust relationship inference in genome-wide association studies</a>. Bioinformatics. 2010;26:2867–73.
+6. Manichaikul A, Mychaleckyj JC, Rich SS, Daly K, Sale M, Chen W-M. <a href="https://doi.org/10.1093/bioinformatics/btq559">Robust relationship inference in genome-wide association studies</a>. Bioinformatics. 2010;26:2867–73.
 </div>
 <div id="ref-conomos_robust_2015" class="csl-entry">
-2. Conomos MP, Miller MB, Thornton TA. <a href="https://doi.org/10.1002/gepi.21896">Robust <span>Inference</span> of <span>Population</span> <span>Structure</span> for <span>Ancestry</span> <span>Prediction</span> and <span>Correction</span> of <span>Stratification</span> in the <span>Presence</span> of <span>Relatedness</span></a>. Genetic Epidemiology. 2015;39:276–93.
+7. Conomos MP, Miller MB, Thornton TA. <a href="https://doi.org/10.1002/gepi.21896">Robust <span>Inference</span> of <span>Population</span> <span>Structure</span> for <span>Ancestry</span> <span>Prediction</span> and <span>Correction</span> of <span>Stratification</span> in the <span>Presence</span> of <span>Relatedness</span></a>. Genetic Epidemiology. 2015;39:276–93.
 </div>
 <div id="ref-conomos_model-free_2016" class="csl-entry">
-3. Conomos MP, Reiner AP, Weir BS, Thornton TA. <a href="https://doi.org/10.1016/j.ajhg.2015.11.022">Model-free <span>Estimation</span> of <span>Recent</span> <span>Genetic</span> <span>Relatedness</span></a>. The American Journal of Human Genetics. 2016;98:127–48.
+8. Conomos MP, Reiner AP, Weir BS, Thornton TA. <a href="https://doi.org/10.1016/j.ajhg.2015.11.022">Model-free <span>Estimation</span> of <span>Recent</span> <span>Genetic</span> <span>Relatedness</span></a>. The American Journal of Human Genetics. 2016;98:127–48.
 </div>
 <div id="ref-changalidis_biogwas_2023" class="csl-entry">
-4. Changalidis AI, Alexeev DA, Nasykhova YA, Glotov AS, Barbitoff YA. <a href="https://doi.org/10.3390/biology13010010"><span class="nocase">bioGWAS</span>: <span>A</span> <span>Simple</span> and <span>Flexible</span> <span>Tool</span> for <span>Simulating</span> <span>GWAS</span> <span>Datasets</span></a>. Biology. 2023;13:10.
+9. Changalidis AI, Alexeev DA, Nasykhova YA, Glotov AS, Barbitoff YA. <a href="https://doi.org/10.3390/biology13010010"><span class="nocase">bioGWAS</span>: <span>A</span> <span>Simple</span> and <span>Flexible</span> <span>Tool</span> for <span>Simulating</span> <span>GWAS</span> <span>Datasets</span></a>. Biology. 2023;13:10.
 </div>
 <div id="ref-su_hapgen2_2011" class="csl-entry">
-5. Su Z, Marchini J, Donnelly P. <a href="https://doi.org/10.1093/bioinformatics/btr341"><span>HAPGEN2</span>: Simulation of multiple disease <span>SNPs</span></a>. Bioinformatics. 2011;27:2304–5.
+10. Su Z, Marchini J, Donnelly P. <a href="https://doi.org/10.1093/bioinformatics/btr341"><span>HAPGEN2</span>: Simulation of multiple disease <span>SNPs</span></a>. Bioinformatics. 2011;27:2304–5.
 </div>
 <div id="ref-meyer_phenotypesimulator_2018" class="csl-entry">
-6. Meyer HV, Birney E. <a href="https://doi.org/10.1093/bioinformatics/bty197"><span>PhenotypeSimulator</span>: <span>A</span> comprehensive framework for simulating multi-trait, multi-locus genotype to phenotype relationships</a>. Bioinformatics. 2018;34:2951–6.
+11. Meyer HV, Birney E. <a href="https://doi.org/10.1093/bioinformatics/bty197"><span>PhenotypeSimulator</span>: <span>A</span> comprehensive framework for simulating multi-trait, multi-locus genotype to phenotype relationships</a>. Bioinformatics. 2018;34:2951–6.
 </div>
 <div id="ref-michailidou_genome-wide_2015" class="csl-entry">
-7. Michailidou K, BOCS, kConFab Investigators, AOCS Group, NBCS, GENICA Network, et al. <a href="https://doi.org/10.1038/ng.3242">Genome-wide association analysis of more than 120,000 individuals identifies 15 new susceptibility loci for breast cancer</a>. Nature Genetics. 2015;47:373–80.
+12. Michailidou K, BOCS, kConFab Investigators, AOCS Group, NBCS, GENICA Network, et al. <a href="https://doi.org/10.1038/ng.3242">Genome-wide association analysis of more than 120,000 individuals identifies 15 new susceptibility loci for breast cancer</a>. Nature Genetics. 2015;47:373–80.
 </div>
 <div id="ref-elsworth_mrc_2020" class="csl-entry">
-8. Elsworth B, Lyon M, Alexander T, Liu Y, Matthews P, Hallett J, et al. <a href="https://doi.org/10.1101/2020.08.10.244293">The <span>MRC</span> <span>IEU</span> <span>OpenGWAS</span> data infrastructure</a>. 2020.
-</div>
-<div id="ref-zheng_high-performance_2012" class="csl-entry">
-9. Zheng X, Levine D, Shen J, Gogarten SM, Laurie C, Weir BS. <a href="https://doi.org/10.1093/bioinformatics/bts606">A high-performance computing toolset for relatedness and principal component analysis of <span>SNP</span> data</a>. Bioinformatics. 2012;28:3326–8.
+13. Elsworth B, Lyon M, Alexander T, Liu Y, Matthews P, Hallett J, et al. <a href="https://doi.org/10.1101/2020.08.10.244293">The <span>MRC</span> <span>IEU</span> <span>OpenGWAS</span> data infrastructure</a>. 2020.
 </div>
 <div id="ref-gogarten_genetic_2019" class="csl-entry">
-10. Gogarten SM, Sofer T, Chen H, Yu C, Brody JA, Thornton TA, et al. <a href="https://doi.org/10.1093/bioinformatics/btz567">Genetic association testing using the <span>GENESIS</span> <span>R</span>/<span>Bioconductor</span> package</a>. Bioinformatics. 2019;35:5346–8.
+14. Gogarten SM, Sofer T, Chen H, Yu C, Brody JA, Thornton TA, et al. <a href="https://doi.org/10.1093/bioinformatics/btz567">Genetic association testing using the <span>GENESIS</span> <span>R</span>/<span>Bioconductor</span> package</a>. Bioinformatics. 2019;35:5346–8.
 </div>
 </div>
             </section>
