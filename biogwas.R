@@ -61,7 +61,7 @@ plot(ibd$IBS0,ibd$kinship,ylab = "Kinship coeffecient",xlab = "IBS0",main = "KIN
 
 closefn.gds(genofile)
 
-geno <- GdsGenotypeReader(sprintf("%s/pat_filt_sim.gds",directory))
+geno <- GdsGenotypeReader(sprintf("%s/EUR_BCa.gds",directory))
 genoData <- GenotypeData(geno)
 
 vcfWrite(genoData,vcf.file = "/Users/wletsou/Library/CloudStorage/OneDrive-NewYorkInstituteofTechnology/Courses/BIOL 350 Spring 2024/EUR_Bca.vcf",sample.col = "sample.id",id.col = "snp.id")
