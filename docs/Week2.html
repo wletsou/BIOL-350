@@ -268,7 +268,7 @@ genofile &lt;- snpgdsOpen(gds.fn,readonly = FALSE) # import gds object</code></p
 <p>you can see all the fields under your gds object.  To access one of these nodes, type</p>
 <pre><code>index.gdsn(genofile,&quot;sample.id&quot;) # vector of sample names</code></pre>
 <p>or</p>
-<pre><code>index.gdsn(genofile,&quot;genotype&quot;,start = c(1,1), count = c(10,10)) # 10 × 10 sample of the SNP genotype matrix</code></pre>
+<pre><code>read.gdsn(index.gdsn(genofile,&quot;genotype&quot;),start = c(1,1), count = c(5,5)) # read a 5 x 5 matrix of SNP genotypes</code></pre>
 <p>This second line uses the <kbd>start</kbd> and <kbd>count</kbd> options to extract a range of data from the 1000 × 304,770 matrix of genotypes.  If you have a vector of phenotypes (as will will in <a href="Week3.html#Week3">Week 3</a>), you can add it as a node in your gds:</p>
 <pre><code>add.gdsn(genofile,&quot;phenotype&quot;,val = fam$Phenotype) # add vector of phenotypes from a table</code></pre>
 </div>
@@ -302,7 +302,7 @@ plot(ibd$IBS0,ibd$kinship,ylab = &quot;Kinship coeffecient&quot;,xlab = &quot;IB
 <div id="Week2_practice_pcair" class="section level3 hasAnchor" number="3.2.4">
 <h3><span class="header-section-number">3.2.4</span> PC-AiR<a href="Week2.html#Week2_practice_pcair" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The PC-AiR method is part of the <kbd>GENESIS</kbd> package, which imports gds files through:</p>
-<pre><code>geno &lt;- GdsGenotypeReader(sprintf(&quot;%s/pat_filt_sim.gds&quot;,directory)) # import the gds file you created above
+<pre><code>geno &lt;- GdsGenotypeReader(sprintf(&quot;%s/EUR_BCa.gds&quot;,directory)) # import the gds file you created above
 genoData &lt;- GenotypeData(geno)</code></pre>
 <p>and converts the objects to <kbd>GenotypeData</kbd> format <span class="citation">[<a href="#ref-gogarten_genetic_2019">14</a>]</span>.</p>
 <p>Now we can run PC-Air.  It is important to include the kinship estimates we got from KING, as well as the list of pruned SNPs.  These values will help PC-AiR determine a set <span class="math inline">\(\mathcal{U}\)</span> of ancestry-representative individuals and their principal components, which will then imputed into the remaining subset <span class="math inline">\(\mathcal{R}\)</span> of individuals:</p>

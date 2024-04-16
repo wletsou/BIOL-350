@@ -35,6 +35,9 @@ write.table(fam,"/Users/wletsou/Library/CloudStorage/OneDrive-NewYorkInstituteof
 
 vcf.fn <- sprintf("%s/pat_filt_sim.vcf",directory)
 gds.fn <- sprintf("%s/pat_filt_sim.gds",directory)
+
+vcf.fn <- sprintf("%s/EUR_BCa (1).vcf","Downloads")
+gds.fn <- sprintf("%s/EUR_BCa.gds",directory)
 snpgdsVCF2GDS(vcf.fn,gds.fn) # create gds file from vcf
 genofile <- snpgdsOpen(gds.fn,readonly = FALSE) # import gds object
 

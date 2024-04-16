@@ -132,7 +132,7 @@ index.gdsn(genofile,"sample.id") # vector of sample names
 or
 
 ```
-index.gdsn(genofile,"genotype",start = c(1,1), count = c(10,10)) # 10 × 10 sample of the SNP genotype matrix
+read.gdsn(index.gdsn(genofile,"genotype"),start = c(1,1), count = c(5,5)) # read a 5 x 5 matrix of SNP genotypes
 ```
 
 This second line uses the <kbd>start</kbd> and <kbd>count</kbd> options to extract a range of data from the 1000 × 304,770 matrix of genotypes.&nbsp; If you have a vector of phenotypes (as will will in [Week 3](#Week3)), you can add it as a node in your gds:
