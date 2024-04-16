@@ -100,7 +100,7 @@ library(GENESIS)
 Our first task will be to import the vcf file and convert it to gds format.&nbsp;  First specify the directory in which you saved your <kbd>EUR_BCa.vcf</kbd>:
 
 ```
-directory <- "path/to/file/EUR_BCa.vcf # fill in the appropriate path
+directory <- "path/to/folder # fill in the appropriate path to downloads folder
 ```
 
 &nbsp; Then define two file names:
