@@ -272,5 +272,3 @@ Generate the following plots generated using the different methods, and comment 
 
 
 ## References {#Week2_ref}
-
-<div id="refs"></div>

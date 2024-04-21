@@ -57,5 +57,6 @@ Week3_practice
 Week3_practice_pheno
 Week3_practice_fit
 Week3_practice_analysis
-to-turn-in-week3_practice_turnin
+Week3_practice_turnin
 Week3_ref
+refs
