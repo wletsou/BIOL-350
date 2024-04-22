@@ -249,8 +249,9 @@ V_{li}^{-1}X_{ik}\left(Y_l-X_{lj}\beta_j\right)^T+V_{il}^{-1}\left(Y_l-X_{lj}\be
 <div id="Week3_practice_pheno" class="section level3 hasAnchor" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Get phenotype<a href="Week3.html#Week3_practice_pheno" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The first item we shall need when associating SNPs with disease risk is a <a href="https://github.com/wletsou/BIOL-350/raw/master/docs/EUR_BCa.fam">phenotypes file</a>.  Download and save this file to the same location as your work from <a href="Week2.html#Week2">Week 2</a>, along with the (unzipped) <a href="https://github.com/wletsou/BIOL-350/raw/master/docs/EUR_BCa.vcf.gz">vcf file</a>.</p>
-<p>Read in the phenotypes file using</p>
-<pre><code>fam &lt;- read.table(&quot;/path/to/file/EUR_BCa.fam&quot;,header = TRUE)</code></pre>
+<p>Read in the phenotypes file and redname the columns using</p>
+<pre><code>fam &lt;- read.table(&quot;/path/to/file/EUR_BCa.fam&quot;,header = FALSE) # import
+colnames(fam) &lt;- c(&quot;FID&quot;,&quot;IID&quot;,&quot;MID&quot;,&quot;PID&quot;,&quot;Sex&quot;,&quot;Phenotype&quot;) # name the columns</code></pre>
 <p>This file is in PLINK format: its first column contains the family id of the individual in the second column; if the samples are unrelated, these two columns will be the same.  Similarly, the maternal and paternal ids are the ids of the mother and father of the sample, should they happen to be in the dataset.  Sex is left unspecified in this analysis. The most important column for our purposes is the Phenotype column, which contains a 1 for controls and a 2 for cases.</p>
 <p>Complete the steps <a href="Week2.html#Week2_practice_king">KING</a>, <a href="Week2.html#Week2_practice_pcair">PC-AiR</a>, and <a href="Week2.html#Week2_practice_pcrelate">PC-Relate</a> from <a href="Week2.html#Week2">Week 2</a>.  At the end of this analysis, you should have the results <kbd>mypcair</kbd> and <kbd>mypcrel</kbd> of PC-AiR and PC-Relate, an updated GRM, an open <kbd>GenotypeData</kbd> object called <kbd>genoData</kbd>, and a <kbd>GenotypeBlockIterator</kbd> object called <kbd>genoData.iterator</kbd>.  This last will iterate over each of the pruned SNPs included in your model as you test each one for association with the disease phenotype.</p>
 <p>The first step is to create a dataframe for the <em>null model</em>, which regresses phenotype on genetic ancestry only:</p>
@@ -276,7 +277,7 @@ close(genoData)</code></pre>
 <p>To check that your answer makes sense, extract the data for the most-statistically-significant SNP:</p>
 <pre><code>assoc[assoc$Score.pval &lt; 1e-5,] # most-significant SNP(s)</code></pre>
 <p>including its id and association statistics.  Then using the <kbd>GWASTools</kbd> <kbd>getVariable</kbd> on your <kbd>genoData</kbd> object, extract the name of this SNP:</p>
-<pre><code>getVariable(genoData,&quot;snp.rs.id&quot;)[...] # insert variant.id, i.e., the position of the variant in the list</code></pre>
+<pre><code>getVariable(genoData,&quot;snp.rs.id&quot;)[...] # insert the position of the variant in the list</code></pre>
 <p>To check that the SNP is indeed associated with disease, compute the allele frequency overall, and of the cases and controls separately (being sure to fill in <kbd>‘…’</kbd> with the <kbd>variant.id</kbd> you found above):</p>
 <pre><code>cases_genotypes &lt;- getVariable(genoData,&quot;genotype&quot;)[fam$Phenotype == 2,...] # genotypes of cases at the SNP
 controls_genotypes &lt;- getVariable(genoData,&quot;genotype&quot;)[fam$Phenotype == 1,...] # genotypes of controls at the SNP
@@ -298,6 +299,7 @@ log( p_cases * (1 - p_controls) / (1 - p_cases) / p_controls) # log-OR</code></p
 <li>A Manhattan plot of the SNPs in the region</li>
 <li>Information extracted from the <kbd>assoc</kbd> dataframe about the most-significant SNP</li>
 <li>Calculation of the crude logOR and p-value of the most-significant SNP</li>
+<li>Population genetic information, located in the <a href="https://useast.ensembl.org/Homo_sapiens/Info/Index">enselmbl genome browser</a>: what is the frequency in the European population of the allele you identified?</li>
 </ol>
 </div>
 </div>

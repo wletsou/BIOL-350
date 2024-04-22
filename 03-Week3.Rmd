@@ -80,10 +80,11 @@ V_{li}^{-1}X_{ik}\left(Y_l-X_{lj}\beta_j\right)^T+V_{il}^{-1}\left(Y_l-X_{lj}\be
 
 The first item we shall need when associating SNPs with disease risk is a [phenotypes file](https://github.com/wletsou/BIOL-350/raw/master/docs/EUR_BCa.fam).&nbsp; Download and save this file to the same location as your work from [Week 2](#Week2), along with the (unzipped) [vcf file](https://github.com/wletsou/BIOL-350/raw/master/docs/EUR_BCa.vcf.gz).
 
-Read in the phenotypes file using
+Read in the phenotypes file and redname the columns using
 
 ```
-fam <- read.table("/path/to/file/EUR_BCa.fam",header = TRUE)
+fam <- read.table("/path/to/file/EUR_BCa.fam",header = FALSE) # import
+colnames(fam) <- c("FID","IID","MID","PID","Sex","Phenotype") # name the columns
 ```
 
 This file is in PLINK format: its first column contains the family id of the individual in the second column; if the samples are unrelated, these two columns will be the same.&nbsp; Similarly, the maternal and paternal ids are the ids of the mother and father of the sample, should they happen to be in the dataset.&nbsp; Sex is left unspecified in this analysis.  The most important column for our purposes is the Phenotype column, which contains a 1 for controls and a 2 for cases.
@@ -135,7 +136,7 @@ assoc[assoc$Score.pval < 1e-5,] # most-significant SNP(s)
 including its id and association statistics.&nbsp; Then using the <kbd>GWASTools</kbd> <kbd>getVariable</kbd> on your <kbd>genoData</kbd> object, extract the name of this SNP: 
 
 ```
-getVariable(genoData,"snp.rs.id")[...] # insert variant.id, i.e., the position of the variant in the list
+getVariable(genoData,"snp.rs.id")[...] # insert the position of the variant in the list
 ```
 
 To check that the SNP is indeed associated with disease, compute the allele frequency overall, and of the cases and controls separately (being sure to fill in <kbd>'...'</kbd> with the <kbd>variant.id</kbd> you found above):
@@ -166,5 +167,6 @@ How does your answer compare with the adjusted p-value found in the <kbd>assoc</
 1. A Manhattan plot of the SNPs in the region
 2. Information extracted from the <kbd>assoc</kbd> dataframe about the most-significant SNP
 3. Calculation of the crude logOR and p-value of the most-significant SNP
+4. Population genetic information, located in the [enselmbl genome browser](https://useast.ensembl.org/Homo_sapiens/Info/Index): what is the frequency in the European population of the allele you identified?
 
 ## References {#Week3_ref}
