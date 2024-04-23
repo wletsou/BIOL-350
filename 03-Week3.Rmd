@@ -167,6 +167,6 @@ How does your answer compare with the adjusted p-value found in the <kbd>assoc</
 1. A Manhattan plot of the SNPs in the region
 2. Information extracted from the <kbd>assoc</kbd> dataframe about the most-significant SNP
 3. Calculation of the crude logOR and p-value of the most-significant SNP
-4. Biological relevance of the variant you found, located in the [enselmbl genome browser](https://useast.ensembl.org/Homo_sapiens/Info/Index): What is the frequency in the European population of the allele you identified?&nbsp; What are some nearby genes?&nbsp; What is the likely causal variant linked to the variant you found?&nbsp; Hint: see [@easton_genome-wide_2007].
+4. Biological relevance of the variant you found, located in the [ensembl genome browser](https://grch37.ensembl.org/Homo_sapiens/Info/Index): What is the frequency in the European population of the allele you identified?&nbsp; What are some nearby genes?&nbsp; What is the likely causal variant linked to the variant you found?&nbsp; Hint: see [@easton_genome-wide_2007].
 
 ## References {#Week3_ref}
