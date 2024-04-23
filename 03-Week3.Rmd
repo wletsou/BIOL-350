@@ -1,6 +1,6 @@
 # Association testing {#Week3}
 
-In this assignment, we will use the kinship matrix and principal components derived from our dataset to fit a generalized linear model using the method of restricted maximum likelihood [@] to find the association of a polymorphism with the disease phenotype.
+In this assignment, we will use the kinship matrix and principal components derived from our dataset to fit a generalized linear model using the method of restricted maximum likelihood [@henderson_estimation_1959;@patterson_recovery_1971] to find the association of a polymorphism with the disease phenotype.&nbsp;
 
 ## Statistics {#Week3_theory}
 
@@ -58,8 +58,8 @@ In genome-wide association studies (GWAS) we want to estimate the odds ratio $e^
 \begin{equation}
 Y_i=\log{\frac{p_i}{1-p_i}}=\sum_jX_{ij}\beta_j+\sum_jZ_{ij}u_j+\varepsilon_i.
 (\#eq:3-9)
-\end{equation}Here, $\mathbf{Z}$ is an $n\times m$ matrix of the (standardized) genotypes of $n$ individuals at $m$ SNPs and $u_j$ is the effect of SNP $j$ on the log-odds for individual $i$.&nbsp; The mixed-model framework assumes the random $u$ come from a normal distribution with mean 0 and standard deviation $\sigma$, so that each variant has but a small effect on disease risk.&nbsp; This theory is known as restricted maximum-likelihood (REML) [@henderson_estimation_1959;@patterson_recovery_1971]
-.
+\end{equation}Here, $\mathbf{Z}$ is an $n\times m$ matrix of the (standardized) genotypes of $n$ individuals at $m$ SNPs and $u_j$ is the effect of SNP $j$ on the log-odds for individual $i$.&nbsp; The mixed-model framework assumes the random $u$ come from a normal distribution with mean 0 and standard deviation $\sigma$, so that each variant has but a small effect on disease risk.&nbsp; This theory is known as restricted maximum-likelihood (REML) [@henderson_estimation_1959;@patterson_recovery_1971].
+
 Now, the variance of the log-odds $Y$ about its mean $\mathbf{X}\beta$ becomes
 \begin{align}
 \left(Y-\mathbf{X}\beta\right)\left(Y-\mathbf{X}\beta\right)^T&=\mathbf{Z}uu^T\mathbf{Z}^T+\varepsilon\varepsilon^T\\ &=\left(\mathbf{Z}\mathbf{Z}^T+\mathbf{I}\right)\sigma^2=\mathbf{V}.
@@ -76,7 +76,7 @@ V_{li}^{-1}X_{ik}\left(Y_l-X_{lj}\beta_j\right)^T+V_{il}^{-1}\left(Y_l-X_{lj}\be
 
 ## Practice {#Week3_practice}
 
-### Get phenotype {#Week3_practice_pheno}
+### Get phenotypes {#Week3_practice_pheno}
 
 The first item we shall need when associating SNPs with disease risk is a [phenotypes file](https://github.com/wletsou/BIOL-350/raw/master/docs/EUR_BCa.fam).&nbsp; Download and save this file to the same location as your work from [Week 2](#Week2), along with the (unzipped) [vcf file](https://github.com/wletsou/BIOL-350/raw/master/docs/EUR_BCa.vcf.gz).
 
@@ -167,6 +167,6 @@ How does your answer compare with the adjusted p-value found in the <kbd>assoc</
 1. A Manhattan plot of the SNPs in the region
 2. Information extracted from the <kbd>assoc</kbd> dataframe about the most-significant SNP
 3. Calculation of the crude logOR and p-value of the most-significant SNP
-4. Population genetic information, located in the [enselmbl genome browser](https://useast.ensembl.org/Homo_sapiens/Info/Index): what is the frequency in the European population of the allele you identified?
+4. Biological relevance of the variant you found, located in the [enselmbl genome browser](https://useast.ensembl.org/Homo_sapiens/Info/Index): What is the frequency in the European population of the allele you identified?&nbsp; What are some nearby genes?&nbsp; What is the likely causal variant linked to the variant you found?&nbsp; Hint: see [@easton_genome-wide_2007].
 
 ## References {#Week3_ref}

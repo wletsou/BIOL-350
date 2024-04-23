@@ -142,7 +142,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="Week3.html"><a href="Week3.html#Week3_practice"><i class="fa fa-check"></i><b>4.2</b> Practice</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="Week3.html"><a href="Week3.html#Week3_practice_pheno"><i class="fa fa-check"></i><b>4.2.1</b> Get phenotype</a></li>
+<li class="chapter" data-level="4.2.1" data-path="Week3.html"><a href="Week3.html#Week3_practice_pheno"><i class="fa fa-check"></i><b>4.2.1</b> Get phenotypes</a></li>
 <li class="chapter" data-level="4.2.2" data-path="Week3.html"><a href="Week3.html#Week3_practice_fit"><i class="fa fa-check"></i><b>4.2.2</b> Fitting the model</a></li>
 <li class="chapter" data-level="4.2.3" data-path="Week3.html"><a href="Week3.html#Week3_practice_analysis"><i class="fa fa-check"></i><b>4.2.3</b> Analyzing the results</a></li>
 <li class="chapter" data-level="4.2.4" data-path="Week3.html"><a href="Week3.html#Week3_practice_turnin"><i class="fa fa-check"></i><b>4.2.4</b> To turn in:</a></li>
@@ -172,12 +172,12 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="Week3" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Chapter 4</span> Association testing<a href="Week3.html#Week3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>In this assignment, we will use the kinship matrix and principal components derived from our dataset to fit a generalized linear model using the method of restricted maximum likelihood [@] to find the association of a polymorphism with the disease phenotype.</p>
+<p>In this assignment, we will use the kinship matrix and principal components derived from our dataset to fit a generalized linear model using the method of restricted maximum likelihood <span class="citation">[<a href="#ref-henderson_estimation_1959">15</a>, <a href="#ref-patterson_recovery_1971">16</a>]</span> to find the association of a polymorphism with the disease phenotype. </p>
 <div id="Week3_theory" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Statistics<a href="Week3.html#Week3_theory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="Week3_theory_or" class="section level3 hasAnchor" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> The odds ratio<a href="Week3.html#Week3_theory_or" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The logic of any genetic association study is to see if an allele is enriched in subjects affected with disease.  In other words, we want to see if the allele is <em>associated</em> with disease.  We do this by collecting may individuals with disease and a similar number of healthy controls from the general popuation.  An individual’s risk is its inherited (unobserved) probability <span class="math inline">\(p=P\left(\text{Disease}\mid\text{Allele}\right)\)</span> of developing disease over its lifetime <span class="citation">[<a href="#ref-falconer_inheritance_1965">15</a>]</span>, and the <em>relative risk</em> or RR is the ratio of the risk to carriers to the risk to non-carriers of the allele.  However, the RR is difficult to measure prosepctively because it involves waiting a long time for a potentially smaller number of cases to develop.  If we retrospectively select cases that have already developed and match them with healthy controls, we can instead calculate an individual’s probability <span class="math inline">\(P\left(\text{Allele}\mid\text{Disease}\right)\)</span> of carrying the allele conditioned on its disease status.  Related to the probability <span class="math inline">\(p\)</span> of an event is the <em>odds</em> <span class="math inline">\(\frac{p}{1-p}\)</span> of the the event, and it turns out that the <em>odds ratio</em>
+<p>The logic of any genetic association study is to see if an allele is enriched in subjects affected with disease.  In other words, we want to see if the allele is <em>associated</em> with disease.  We do this by collecting may individuals with disease and a similar number of healthy controls from the general popuation.  An individual’s risk is its inherited (unobserved) probability <span class="math inline">\(p=P\left(\text{Disease}\mid\text{Allele}\right)\)</span> of developing disease over its lifetime <span class="citation">[<a href="#ref-falconer_inheritance_1965">17</a>]</span>, and the <em>relative risk</em> or RR is the ratio of the risk to carriers to the risk to non-carriers of the allele.  However, the RR is difficult to measure prosepctively because it involves waiting a long time for a potentially smaller number of cases to develop.  If we retrospectively select cases that have already developed and match them with healthy controls, we can instead calculate an individual’s probability <span class="math inline">\(P\left(\text{Allele}\mid\text{Disease}\right)\)</span> of carrying the allele conditioned on its disease status.  Related to the probability <span class="math inline">\(p\)</span> of an event is the <em>odds</em> <span class="math inline">\(\frac{p}{1-p}\)</span> of the the event, and it turns out that the <em>odds ratio</em>
 <span class="math display" id="eq:3-1">\[\begin{equation}
 \text{OR}=\frac{\frac{P\left(\text{Allele}\mid\text{Cases}\right)}{1-P\left(\text{Allele}\mid\text{Cases}\right)}}{\frac{P\left(\text{Allele}\mid\text{Controls}\right)}{1-P\left(\text{Allele}\mid\text{Controls}\right)}}
 \tag{4.1}
@@ -227,9 +227,8 @@ div.csl-indent {
 <span class="math display" id="eq:3-9">\[\begin{equation}
 Y_i=\log{\frac{p_i}{1-p_i}}=\sum_jX_{ij}\beta_j+\sum_jZ_{ij}u_j+\varepsilon_i.
 \tag{4.9}
-\end{equation}\]</span>Here, <span class="math inline">\(\mathbf{Z}\)</span> is an <span class="math inline">\(n\times m\)</span> matrix of the (standardized) genotypes of <span class="math inline">\(n\)</span> individuals at <span class="math inline">\(m\)</span> SNPs and <span class="math inline">\(u_j\)</span> is the effect of SNP <span class="math inline">\(j\)</span> on the log-odds for individual <span class="math inline">\(i\)</span>.  The mixed-model framework assumes the random <span class="math inline">\(u\)</span> come from a normal distribution with mean 0 and standard deviation <span class="math inline">\(\sigma\)</span>, so that each variant has but a small effect on disease risk.  This theory is known as restricted maximum-likelihood (REML) <span class="citation">[<a href="#ref-henderson_estimation_1959">16</a>, <a href="#ref-patterson_recovery_1971">17</a>]</span>
-.
-Now, the variance of the log-odds <span class="math inline">\(Y\)</span> about its mean <span class="math inline">\(\mathbf{X}\beta\)</span> becomes
+\end{equation}\]</span>Here, <span class="math inline">\(\mathbf{Z}\)</span> is an <span class="math inline">\(n\times m\)</span> matrix of the (standardized) genotypes of <span class="math inline">\(n\)</span> individuals at <span class="math inline">\(m\)</span> SNPs and <span class="math inline">\(u_j\)</span> is the effect of SNP <span class="math inline">\(j\)</span> on the log-odds for individual <span class="math inline">\(i\)</span>.  The mixed-model framework assumes the random <span class="math inline">\(u\)</span> come from a normal distribution with mean 0 and standard deviation <span class="math inline">\(\sigma\)</span>, so that each variant has but a small effect on disease risk.  This theory is known as restricted maximum-likelihood (REML) <span class="citation">[<a href="#ref-henderson_estimation_1959">15</a>, <a href="#ref-patterson_recovery_1971">16</a>]</span>.</p>
+<p>Now, the variance of the log-odds <span class="math inline">\(Y\)</span> about its mean <span class="math inline">\(\mathbf{X}\beta\)</span> becomes
 <span class="math display" id="eq:3-10">\[\begin{align}
 \left(Y-\mathbf{X}\beta\right)\left(Y-\mathbf{X}\beta\right)^T&amp;=\mathbf{Z}uu^T\mathbf{Z}^T+\varepsilon\varepsilon^T\\ &amp;=\left(\mathbf{Z}\mathbf{Z}^T+\mathbf{I}\right)\sigma^2=\mathbf{V}.
 \tag{4.10}
@@ -247,7 +246,7 @@ V_{li}^{-1}X_{ik}\left(Y_l-X_{lj}\beta_j\right)^T+V_{il}^{-1}\left(Y_l-X_{lj}\be
 <div id="Week3_practice" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Practice<a href="Week3.html#Week3_practice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="Week3_practice_pheno" class="section level3 hasAnchor" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> Get phenotype<a href="Week3.html#Week3_practice_pheno" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">4.2.1</span> Get phenotypes<a href="Week3.html#Week3_practice_pheno" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The first item we shall need when associating SNPs with disease risk is a <a href="https://github.com/wletsou/BIOL-350/raw/master/docs/EUR_BCa.fam">phenotypes file</a>.  Download and save this file to the same location as your work from <a href="Week2.html#Week2">Week 2</a>, along with the (unzipped) <a href="https://github.com/wletsou/BIOL-350/raw/master/docs/EUR_BCa.vcf.gz">vcf file</a>.</p>
 <p>Read in the phenotypes file and redname the columns using</p>
 <pre><code>fam &lt;- read.table(&quot;/path/to/file/EUR_BCa.fam&quot;,header = FALSE) # import
@@ -299,7 +298,7 @@ log( p_cases * (1 - p_controls) / (1 - p_cases) / p_controls) # log-OR</code></p
 <li>A Manhattan plot of the SNPs in the region</li>
 <li>Information extracted from the <kbd>assoc</kbd> dataframe about the most-significant SNP</li>
 <li>Calculation of the crude logOR and p-value of the most-significant SNP</li>
-<li>Population genetic information, located in the <a href="https://useast.ensembl.org/Homo_sapiens/Info/Index">enselmbl genome browser</a>: what is the frequency in the European population of the allele you identified?</li>
+<li>Biological relevance of the variant you found, located in the <a href="https://useast.ensembl.org/Homo_sapiens/Info/Index">enselmbl genome browser</a>: What is the frequency in the European population of the allele you identified?  What are some nearby genes?  What is the likely causal variant linked to the variant you found?  Hint: see <span class="citation">[<a href="#ref-easton_genome-wide_2007">18</a>]</span>.</li>
 </ol>
 </div>
 </div>
@@ -316,14 +315,17 @@ log( p_cases * (1 - p_controls) / (1 - p_cases) / p_controls) # log-OR</code></p
 <div id="ref-gogarten_genetic_2019" class="csl-entry">
 14. Gogarten SM, Sofer T, Chen H, Yu C, Brody JA, Thornton TA, et al. <a href="https://doi.org/10.1093/bioinformatics/btz567">Genetic association testing using the <span>GENESIS</span> <span>R</span>/<span>Bioconductor</span> package</a>. Bioinformatics. 2019;35:5346–8.
 </div>
-<div id="ref-falconer_inheritance_1965" class="csl-entry">
-15. Falconer DS. <a href="https://doi.org/10.1111/j.1469-1809.1965.tb00500.x">The inheritance of liability to certain diseases, estimated from the incidence among relatives</a>. Annals of Human Genetics. 1965;29:51–76.
-</div>
 <div id="ref-henderson_estimation_1959" class="csl-entry">
-16. Henderson CR, Kempthorne O, Searle SR, Von Krosigk CM. <a href="https://doi.org/10.2307/2527669">The <span>Estimation</span> of <span>Environmental</span> and <span>Genetic</span> <span>Trends</span> from <span>Records</span> <span>Subject</span> to <span>Culling</span></a>. Biometrics. 1959;15:192.
+15. Henderson CR, Kempthorne O, Searle SR, Von Krosigk CM. <a href="https://doi.org/10.2307/2527669">The <span>Estimation</span> of <span>Environmental</span> and <span>Genetic</span> <span>Trends</span> from <span>Records</span> <span>Subject</span> to <span>Culling</span></a>. Biometrics. 1959;15:192.
 </div>
 <div id="ref-patterson_recovery_1971" class="csl-entry">
-17. Patterson HD, Thompson R. <a href="https://doi.org/10.1093/biomet/58.3.545">Recovery of inter-block information when block sizes are unequal</a>. Biometrika. 1971;58:545–54.
+16. Patterson HD, Thompson R. <a href="https://doi.org/10.1093/biomet/58.3.545">Recovery of inter-block information when block sizes are unequal</a>. Biometrika. 1971;58:545–54.
+</div>
+<div id="ref-falconer_inheritance_1965" class="csl-entry">
+17. Falconer DS. <a href="https://doi.org/10.1111/j.1469-1809.1965.tb00500.x">The inheritance of liability to certain diseases, estimated from the incidence among relatives</a>. Annals of Human Genetics. 1965;29:51–76.
+</div>
+<div id="ref-easton_genome-wide_2007" class="csl-entry">
+18. Easton DF, Pooley KA, Dunning AM, Pharoah PDP, Thompson D, Ballinger DG, et al. <a href="https://doi.org/10.1038/nature05887">Genome-wide association study identifies novel breast cancer susceptibility loci</a>. Nature. 2007;447:1087–93.
 </div>
 </div>
             </section>
