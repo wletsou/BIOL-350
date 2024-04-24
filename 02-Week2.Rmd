@@ -194,6 +194,12 @@ Before proceding to the next step, close your gds file:
 closefn.gds(genofile)
 ```
 
+If ever you should run into trouble, you can close all your open gds connections using:
+
+```
+showfile.gds(closeall = TRUE)
+```
+
 ### PC-AiR {#Week2_practice_pcair}
 
 The PC-AiR method is part of the <kbd>GENESIS</kbd> package, which imports gds files through:

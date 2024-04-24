@@ -299,6 +299,8 @@ plot(ibd$IBS0,ibd$kinship,ylab = &quot;Kinship coeffecient&quot;,xlab = &quot;IB
 <p>In addition, if you remove the <kbd>ylim = c(0,1)</kbd> option, you will see a large cluster of negative kinship coefficients.  These values are expected if the (simulated) individuals are from different genetic backgrounds.</p>
 <p>Before proceding to the next step, close your gds file:</p>
 <pre><code>closefn.gds(genofile)</code></pre>
+<p>If ever you should run into trouble, you can close all your open gds connections using:</p>
+<pre><code>showfile.gds(closeall = TRUE)</code></pre>
 </div>
 <div id="Week2_practice_pcair" class="section level3 hasAnchor" number="3.2.4">
 <h3><span class="header-section-number">3.2.4</span> PC-AiR<a href="Week2.html#Week2_practice_pcair" class="anchor-section" aria-label="Anchor link to header"></a></h3>
